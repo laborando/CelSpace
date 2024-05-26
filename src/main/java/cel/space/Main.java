@@ -7,20 +7,14 @@ import cmd.TabComp;
 import cmd.Exe;
 import manage.DimChecker;
 import manage.RpChecker;
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
-import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.plugin.messaging.Messenger;
-import sec.PlayerClientChecker;
 import sec.RenameListener;
 
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 public final class Main extends JavaPlugin implements Listener {

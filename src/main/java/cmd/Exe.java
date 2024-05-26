@@ -1,20 +1,11 @@
 package cmd;
 
-import Mars.MarsGen;
-import cel.space.Main;
-import cel.space.celutis;
 import manage.DimChanger;
 import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import cel.space.celutis;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Vehicle;
-import org.bukkit.permissions.Permission;
-
-import java.io.File;
 
 public class Exe implements CommandExecutor {
 

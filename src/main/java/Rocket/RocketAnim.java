@@ -1,21 +1,18 @@
 package Rocket;
 
-import Mars.MarsGen;
+import dimensions.mars.MarsGen;
 import cel.space.Main;
 import cel.space.celutis;
-import earth.MoonGen;
+import dimensions.earth.MoonGen;
 import manage.DimChanger;
 import org.bukkit.*;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Minecart;
 import org.bukkit.entity.Player;
-import org.bukkit.event.entity.EntityPotionEffectEvent;
-import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
+
+import javax.print.DocFlavor;
 
 public class RocketAnim {
 
@@ -36,6 +33,7 @@ public class RocketAnim {
 
 
         durch = 0;
+
 
         new BukkitRunnable() {
             @Override

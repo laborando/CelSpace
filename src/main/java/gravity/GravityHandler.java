@@ -2,17 +2,12 @@ package gravity;
 
 import cel.space.Main;
 import org.bukkit.Bukkit;
-import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.util.Vector;
-import org.checkerframework.checker.units.qual.A;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class GravityHandler{
 
@@ -33,6 +28,7 @@ public class GravityHandler{
                     int amp = grav.get(player.getWorld().getName());
                     if(!(amp==0)){
                         player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 45, amp, true, false, false));
+                        player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_FALLING, 45, amp/5, true, false, false));
                     }
                 }
             }

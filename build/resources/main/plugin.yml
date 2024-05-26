@@ -8,7 +8,7 @@ description: Cel20's Space Plugin
 commands:
   mars:
     description: Get to Mars
-    usage: /mars
+    usage: /dimensions.mars
   rp1:
     description: Test of Resource Pack sending
     usage: /rp1

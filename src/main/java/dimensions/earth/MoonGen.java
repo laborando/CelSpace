@@ -1,5 +1,5 @@
 
-package earth;
+package dimensions.earth;
 
 import org.bukkit.Material;
 import org.bukkit.World;

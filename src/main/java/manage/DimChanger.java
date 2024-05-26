@@ -1,12 +1,10 @@
 package manage;
 
-import Mars.MarsGen;
+import dimensions.mars.MarsGen;
 import cel.space.celutis;
-import earth.MoonGen;
+import dimensions.earth.MoonGen;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
-
-import java.util.UUID;
 
 public class DimChanger {
 
@@ -20,7 +18,9 @@ public class DimChanger {
         URANUS,
         NEPTUN,
         PLUTO,
-        MOON,
+        MOON, //THE moon
+
+
 
         ;
 
@@ -96,6 +96,8 @@ public class DimChanger {
             p.setResourcePack("https://github.com/laborando/laborando/blob/main/public/mc/space/rp/moon.zip?raw=true");
 
         }
+
+
     }
 
 }

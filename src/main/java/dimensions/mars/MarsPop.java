@@ -1,14 +1,15 @@
-package Mars;
+package dimensions.mars;
 import cel.space.celutis;
 import org.bukkit.*;
 import org.bukkit.block.Biome;
 import org.bukkit.generator.BlockPopulator;
-import org.bukkit.util.noise.SimplexOctaveGenerator;
 import utis.TripleInt;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import static cel.space.celutis.randomrange;
 
 public class MarsPop extends BlockPopulator {
 
@@ -16,7 +17,7 @@ public class MarsPop extends BlockPopulator {
     public void populate(World world, Random random, Chunk chunk) {
 
 
-        //TREES
+
         int amount = random.nextInt(5) + 1;
         for (int i = 1; i < amount; i++) {
             int X = random.nextInt(15);
@@ -34,7 +35,7 @@ public class MarsPop extends BlockPopulator {
             }
         }
         if (random.nextBoolean()) {
-            amount = random.nextInt(4) + 1; //TREE-AMOUNT
+            amount = random.nextInt(4) + 1;
             for (int i = 1; i < amount; i++) {
                 int X = random.nextInt(15);
                 int Z = random.nextInt(15);
@@ -67,10 +68,10 @@ public class MarsPop extends BlockPopulator {
             }
         }
 
-        if (celutis.randomrange(0, 15) == 1) {
+        if (randomrange(0, 15) == 1) {
 
 
-            int sphereRad = celutis.randomrange(1, 7);
+            int sphereRad = randomrange(1, 7);
 
             int lx = 8;
             int ly = finY;
@@ -82,8 +83,8 @@ public class MarsPop extends BlockPopulator {
 
                         if (Math.pow(x - lx, 2) + Math.pow(y - ly, 2) + Math.pow(z - lz, 2) <= Math.pow(sphereRad, 2)) {
                             chunk.getBlock(x, y, z).setType(Material.AIR);
-                            if(chunk.getBlock(x, y-1, z).getType()==Material.RED_SAND){
-                                chunk.getBlock(x, y-1, z).setType(Material.RED_SANDSTONE);
+                            if (chunk.getBlock(x, y - 1, z).getType() == Material.RED_SAND) {
+                                chunk.getBlock(x, y - 1, z).setType(Material.RED_SANDSTONE);
                             }
                         }
                     }
@@ -91,10 +92,9 @@ public class MarsPop extends BlockPopulator {
             }
 
 
-
-        } else if (celutis.randomrange(0, 15) == 1) {
+        } else if (randomrange(0, 15) == 1) {
             {
-                int sphereRad = celutis.randomrange(1, 7);
+                int sphereRad = randomrange(1, 7);
 
                 int lx = 8;
                 int ly = finY;
@@ -119,46 +119,35 @@ public class MarsPop extends BlockPopulator {
 
         //---------------------------EINSCHLÄGE ENDE----------------------------------
 
-       //EIS
-        if(celutis.randomrange(0, 4) == 1){
+        //EIS
+        if (randomrange(0, 4) == 1) {
 
             int lx = 8;
             int lz = 8;
-            int ly = (celutis.getHighestNonAirBlockLocation(Bukkit.getWorld("mars"), chunk.getX()*8+lx, chunk.getZ()*8+lz).getBlockY())/2;
+            int ly = (celutis.getHighestNonAirBlockLocation(Bukkit.getWorld("mars"), chunk.getX() * 8 + lx, chunk.getZ() * 8 + lz).getBlockY()) / 2;
 
-            lx += celutis.randomrange(-7, 7);
-            ly += celutis.randomrange(-7, 7);
-            lz += celutis.randomrange(-7, 7);
+            lx += randomrange(-7, 7);
+            ly += randomrange(-7, 7);
+            lz += randomrange(-7, 7);
 
             TripleInt ti = new TripleInt(lx, ly, lz);
 
             List<TripleInt> targets = new ArrayList<>();
             targets.add(ti.returnCopy());
 
-            for (int x = 0; x <= celutis.randomrange(3, 15); x++) {
-                ti.add(celutis.randomrange(-1, 1), celutis.randomrange(-1, 1), celutis.randomrange(-1, 1));
+            for (int x = 0; x <= randomrange(3, 15); x++) {
+                ti.add(randomrange(-1, 1), randomrange(-1, 1), randomrange(-1, 1));
                 targets.add(ti);
             }
 
             for (TripleInt target : targets) {
                 target.enforceRange(0, 15);
 
-                if(!(chunk.getBlock(target.getA(), target.getB(), target.getC()).getType()==Material.BEDROCK)){
+                if (!(chunk.getBlock(target.getA(), target.getB(), target.getC()).getType() == Material.BEDROCK)) {
                     chunk.getBlock(target.getA(), target.getB(), target.getC()).setType(Material.ICE);
                 }
             }
 
         }
-
-
-
-
-    //------------------------EIS ENDE-------------------------
-    //HÖHLEN
-
-        world.setBiome(1, 1, 1, Biome.DESERT);
-
-}
-
-
+    }
 }

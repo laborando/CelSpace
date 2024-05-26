@@ -5,15 +5,12 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -31,7 +28,7 @@ public class DestinyChooser implements Listener {
 
         final ItemStack Empty = new ItemStack(Material.LIGHT_GRAY_STAINED_GLASS_PANE, 1);
         final ItemMeta Emptym = Empty.getItemMeta();
-        Emptym.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("").toString());
+        Emptym.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("This will be filled in the Future").toString());
         Emptym.addEnchant(Enchantment.SILK_TOUCH, 1, true);
         Emptym.addItemFlags(new ItemFlag[]{ItemFlag.HIDE_ENCHANTS});
         Empty.setItemMeta(Emptym);
@@ -133,6 +130,24 @@ public class DestinyChooser implements Listener {
         Moonm.addItemFlags(new ItemFlag[]{ItemFlag.HIDE_ENCHANTS});
         Moon.setItemMeta(Moonm);
         gui.setItem(11, Moon);
+
+
+        //No Moon Information
+
+        final ItemStack noMoon = new ItemStack(Material.RED_STAINED_GLASS_PANE, 1);
+        final ItemMeta noMoonm = noMoon.getItemMeta();
+        noMoonm.setDisplayName(new StringBuilder().append(ChatColor.DARK_RED).append(ChatColor.BOLD).append("Mercury does not have a moon").toString());
+        noMoonm.addEnchant(Enchantment.SILK_TOUCH, 1, true);
+        noMoonm.addItemFlags(new ItemFlag[]{ItemFlag.HIDE_ENCHANTS});
+        noMoon.setItemMeta(noMoonm);
+
+        gui.setItem(10, noMoon);
+        noMoonm.setDisplayName(new StringBuilder().append(ChatColor.DARK_RED).append(ChatColor.BOLD).append("Venus does not have a moon").toString());
+        noMoon.setItemMeta(noMoonm);
+        gui.setItem(9, noMoon);
+        noMoonm.setDisplayName(new StringBuilder().append(ChatColor.DARK_RED).append(ChatColor.BOLD).append("Pluto does not have a moon").toString());
+        noMoon.setItemMeta(noMoonm);
+        gui.setItem(17, noMoon);
 
 
         //Open INV
