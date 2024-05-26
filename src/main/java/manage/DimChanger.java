@@ -11,9 +11,18 @@ import java.util.UUID;
 public class DimChanger {
 
     public enum TargetDimension{
+        MERKUR,//Merkur Venus Erde Mars Jupiter Saturn Uranus Neptun Pluto
+        VENUS,
         OVERWORLD,
+        MARS,
+        JUPITER,
+        SATURN,
+        URANUS,
+        NEPTUN,
+        PLUTO,
         MOON,
-        MARS;
+
+        ;
 
     }
 

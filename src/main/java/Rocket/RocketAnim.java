@@ -29,6 +29,7 @@ public class RocketAnim {
         }
         if(!(p.getInventory().contains(new ItemStack(Material.COAL, 64)))){
             p.sendMessage(ChatColor.RED + "You need 64 Coal in your Inventory to fuel this rocket!");
+            m.eject();
             return;
         }
         p.getInventory().removeItem(new ItemStack(Material.COAL, 64));

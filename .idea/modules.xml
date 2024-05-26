@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/CelSpace.main.iml" filepath="$PROJECT_DIR$/.idea/modules/CelSpace.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdeaProjects.CelSpace.main.iml" filepath="$PROJECT_DIR$/.idea/modules/IdeaProjects.CelSpace.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/cel.space.CelSpace.main.iml" filepath="$PROJECT_DIR$/.idea/modules/cel.space.CelSpace.main.iml" />
     </modules>
   </component>
