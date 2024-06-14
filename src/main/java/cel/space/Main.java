@@ -5,6 +5,7 @@ import Rocket.EntryListener;
 import Rocket.RocketSavety;
 import cmd.TabComp;
 import cmd.Exe;
+import craft.AddRecipes;
 import manage.DimChecker;
 import manage.RpChecker;
 import org.bukkit.event.EventHandler;
@@ -46,13 +47,16 @@ public final class Main extends JavaPlugin implements Listener {
 
         
         gravity.GravityHandler.innitGravity();
+        surv.Air.startAirHandler(getInstance());
 
+
+        AddRecipes.addRecipe1(getInstance());
     }
 
     @Override
     public void onDisable() {
 
-
+        AddRecipes.removeRecipe();
 
     }
 
@@ -68,6 +72,7 @@ public final class Main extends JavaPlugin implements Listener {
         try {
             if (blockedWorlds.contains(e.getLocation().getWorld().getName())) {
                 if(e.getSpawnReason()==CreatureSpawnEvent.SpawnReason.NATURAL || e.getSpawnReason()== CreatureSpawnEvent.SpawnReason.NETHER_PORTAL || e.getSpawnReason()== CreatureSpawnEvent.SpawnReason.PATROL){
+
 
                     e.setCancelled(true);
 

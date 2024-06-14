@@ -95,6 +95,34 @@ public class DimChanger {
             p.sendMessage("Loading Ressource Pack for 'Mars'. Some features will only work if you are using Optifine!");;
             p.setResourcePack("https://github.com/laborando/laborando/blob/main/public/mc/space/rp/moon.zip?raw=true");
 
+        }else if(t == TargetDimension.MERKUR){
+
+            final String wn = "mercury";
+            if (!celutis.doesWorldExist(wn)) {
+                p.sendMessage(ChatColor.RED + "Generation of Mercury started...");
+                final WorldCreator worldCreator = new WorldCreator(wn);
+                worldCreator.generator(new MoonGen());
+                worldCreator.seed(Bukkit.getWorld("world").getSeed());
+                Bukkit.createWorld(worldCreator);
+            }
+            World targetWorld = Bukkit.getWorld(wn);
+            if(targetWorld == null){
+
+                final WorldCreator worldCreator2 = new WorldCreator(wn);
+                worldCreator2.generator(new MoonGen());
+                worldCreator2.seed(Bukkit.getWorld("world").getSeed());
+                Bukkit.createWorld(worldCreator2);
+
+            }
+            targetWorld = Bukkit.getWorld(wn);
+            Location l = targetWorld.getHighestBlockAt(p.getLocation().getBlockX(), p.getLocation().getBlockZ()).getLocation();
+            p.teleport(l);
+
+            //RESOURCE PACK
+
+            p.sendMessage("Loading Ressource Pack for 'Mercury'. Some features will only work if you are using Optifine!");;
+            p.setResourcePack("https://github.com/laborando/laborando/blob/main/public/mc/space/rp/mercury.zip?raw=true");
+            p.sendMessage("This Resource Pack is not implemented yet!");
         }
 
 

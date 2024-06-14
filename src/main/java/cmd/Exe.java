@@ -86,6 +86,10 @@ public class Exe implements CommandExecutor {
 
                     DimChanger.sendPlayer(p, DimChanger.TargetDimension.MOON);
 
+                } else if (arg2.equalsIgnoreCase("mercury")) {
+
+                    DimChanger.sendPlayer(p, DimChanger.TargetDimension.MERKUR);
+
                 }
 
             }

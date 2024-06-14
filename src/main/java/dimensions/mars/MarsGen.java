@@ -40,7 +40,7 @@ public class MarsGen extends ChunkGenerator {
 
         for (int X = 0; X < 16; ++X) {
             for (int Z = 0; Z < 16; ++Z) {
-                this.currentHeight = (int) (generator.noise(chunkX * 16 + X, chunkZ * 16 + Z, 0.1, 0.1) * 7.0 + 50.0);
+                this.currentHeight = (int) (generator.noise(chunkX * 16 + X, chunkZ * 16 + Z, 0.1, 0.2) * 7.0 + 50.0);
 
                 currH[X][Z] = currentHeight;
 
