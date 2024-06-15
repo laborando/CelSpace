@@ -26,13 +26,17 @@ public class Air {
         hasAir.put("world_nether", true);
         hasAir.put("moon", false);
         hasAir.put("mars", false);
+        hasAir.put("mercu", false);
 
         new BukkitRunnable() {
             @Override
             public void run() {
                 for (Player player : Bukkit.getOnlinePlayers()) {
 
-                    boolean amp = hasAir.get(player.getWorld().getName());
+                    boolean amp = true;
+                    try {
+                        amp = hasAir.get(player.getWorld().getName());
+                    }catch (NullPointerException ignored){}
                     if(!amp){
 
                         ItemStack is = player.getInventory().getHelmet();

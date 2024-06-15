@@ -3,6 +3,7 @@ package manage;
 import dimensions.mars.MarsGen;
 import cel.space.celutis;
 import dimensions.earth.MoonGen;
+import dimensions.mercury.MercuryGen;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 
@@ -101,7 +102,7 @@ public class DimChanger {
             if (!celutis.doesWorldExist(wn)) {
                 p.sendMessage(ChatColor.RED + "Generation of Mercury started...");
                 final WorldCreator worldCreator = new WorldCreator(wn);
-                worldCreator.generator(new MoonGen());
+                worldCreator.generator(new MercuryGen());
                 worldCreator.seed(Bukkit.getWorld("world").getSeed());
                 Bukkit.createWorld(worldCreator);
             }
@@ -109,7 +110,7 @@ public class DimChanger {
             if(targetWorld == null){
 
                 final WorldCreator worldCreator2 = new WorldCreator(wn);
-                worldCreator2.generator(new MoonGen());
+                worldCreator2.generator(new MercuryGen());
                 worldCreator2.seed(Bukkit.getWorld("world").getSeed());
                 Bukkit.createWorld(worldCreator2);
 

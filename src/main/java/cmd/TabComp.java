@@ -10,10 +10,7 @@ import java.util.List;
 public class TabComp implements TabCompleter {
 
 	public List<String> onTabComplete(final CommandSender sender, final Command command, final String alias, final String[] args) {
-        if (command.getName().equalsIgnoreCase("mars") && args.length == 1) {
-            final List<String> completions = new ArrayList<String>();
-            return completions;
-        }
+
         if (command.getName().equalsIgnoreCase("celspace") && args.length == 1) {
             final List<String> completions = new ArrayList<String>();
             completions.add("goto");

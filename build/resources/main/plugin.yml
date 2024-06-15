@@ -6,15 +6,9 @@ authors:
   - Cel20
 description: Cel20's Space Plugin
 commands:
-  mars:
-    description: Get to Mars
-    usage: /dimensions.mars
-  rp1:
-    description: Test of Resource Pack sending
-    usage: /rp1
-  clearrp:
-    description: Clears your ressource packs
-    usage: /clearrp
   celspace:
     description: Overall command for Celspace
     usage: /celspace <goto>
+  clearrp:
+    description: Clears Server-Set resource packs
+    usage: /clearrp

@@ -30,7 +30,14 @@ public class RenameListener implements Listener {
                     e.setCancelled(true);
                     player.sendMessage("Renaming a minecart to 'Rocket' is disabled!");
                 }
+                if (e.getCurrentItem().getItemMeta().getDisplayName().equals("Space Helmet") && e.getCurrentItem().getType().equals(Material.DIAMOND_HELMET)) {
+                    e.setCancelled(true);
+                    player.sendMessage("Renaming a diamond_helmet to 'Space Helmet' is disabled!");
+                }
+
             }
+
+
         }
     }
 

@@ -124,8 +124,11 @@ public class MarsPop extends BlockPopulator {
 
             int lx = 8;
             int lz = 8;
-            int ly = (celutis.getHighestNonAirBlockLocation(Bukkit.getWorld("mars"), chunk.getX() * 8 + lx, chunk.getZ() * 8 + lz).getBlockY()) / 2;
-
+            int ly = 200;
+            try {
+                ly = (celutis.getHighestNonAirBlockLocation(Bukkit.getWorld("moon"), chunk.getX() * 8 + lx, chunk.getZ() * 8 + lz).getBlockY()) / 2;
+            }catch (NullPointerException ignored){
+            }
             lx += randomrange(-7, 7);
             ly += randomrange(-7, 7);
             lz += randomrange(-7, 7);

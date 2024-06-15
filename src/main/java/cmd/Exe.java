@@ -27,21 +27,6 @@ public class Exe implements CommandExecutor {
         }
 
 
-        if (label.equalsIgnoreCase("mars")) {
-            if(!(sender instanceof Player)){
-                sender.sendMessage(ChatColor.RED + "This command can only be executed as a player!");
-                return false;
-            }
-            if(!(sender.isOp())){
-                sender.sendMessage(ChatColor.RED + "You don't have the permission to execute this command!");
-                return false;
-            }
-            Player p = (Player) sender;
-
-            DimChanger.sendPlayer(p, DimChanger.TargetDimension.MARS);
-
-
-        }
 
         //MARS ENDE | RESSOURCE PACK TEST
 
@@ -55,7 +40,7 @@ public class Exe implements CommandExecutor {
                 return false;
             }
 
-            p.setResourcePack("");p.setResourcePack("https://github.com/laborando/laborando/blob/main/public/mc/space/rp/mars.zip?raw=true");
+            p.setResourcePack("t");//p.setResourcePack("https://github.com/laborando/laborando/blob/main/public/mc/space/rp/mars.zip?raw=true");
 
 
 
@@ -92,6 +77,10 @@ public class Exe implements CommandExecutor {
 
                 }
 
+            }else if(arg.equalsIgnoreCase("testRp")){
+                //Random Resource Pack to test if able to get resource packs from cf
+                //p.setResourcePack("");p.setResourcePack("https://mediafilez.forgecdn.net/files/5297/551/MandalasGUI%2BDakmode_1.20.5.zip");
+                //https://legacy.curseforge.com/minecraft/texture-packs/mandalas-gui-dark-mode/download
             }
 
         }

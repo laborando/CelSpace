@@ -7,7 +7,10 @@ import cmd.TabComp;
 import cmd.Exe;
 import craft.AddRecipes;
 import manage.DimChecker;
+import manage.DimRestartSaver;
 import manage.RpChecker;
+import org.bukkit.Bukkit;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -26,17 +29,30 @@ public final class Main extends JavaPlugin implements Listener {
 
         instance = this;
 
+        final FileConfiguration config = this.getConfig();
+
+
+        //Config
+        List<String> cnf = new ArrayList<>();
+        cnf.add("This is the configuration file for CelSpace!");
+        cnf.add("The following options should only be changed, if necessary!");
+        config.options().setHeader(cnf);
+        config.addDefault("performanceMode", false);
+
+
+        //Add Worlds, where mob spawning is blocked
         blockedWorlds.add("moon");
         blockedWorlds.add("mars");
+        blockedWorlds.add("mercury");
 
-        this.getCommand("mars").setExecutor(new Exe());
-        this.getCommand("rp1").setExecutor(new Exe());
+        //CMD
         this.getCommand("clearrp").setExecutor(new Exe());
         this.getCommand("celspace").setExecutor(new Exe());
 
-        this.getCommand("mars").setTabCompleter(new TabComp());
         this.getCommand("celspace").setTabCompleter(new TabComp());
 
+
+        //Listeners
         this.getServer().getPluginManager().registerEvents(this, this);
         this.getServer().getPluginManager().registerEvents(new RpChecker(), this);
         this.getServer().getPluginManager().registerEvents(new DimChecker(), this);
@@ -44,10 +60,20 @@ public final class Main extends JavaPlugin implements Listener {
         this.getServer().getPluginManager().registerEvents(new EntryListener(), this);
         this.getServer().getPluginManager().registerEvents(new DestinyChooser(), this);
         this.getServer().getPluginManager().registerEvents(new RocketSavety(), this);
+        this.getServer().getPluginManager().registerEvents(new DimRestartSaver(), this);
 
-        
+
+        //inits
         gravity.GravityHandler.innitGravity();
         surv.Air.startAirHandler(getInstance());
+
+
+
+        //Save rejoin
+        if(!config.getBoolean("performanceMode")) {
+            //For later
+            Bukkit.broadcastMessage("Performance Mode on");
+        }
 
 
         AddRecipes.addRecipe1(getInstance());

@@ -1,0 +1,18 @@
+Info about the automatic download of ressouce packs:
+
+A download link is built like this:
+https://mediafilez.forgecdn.net/files/5297/551/MandalasGUI%2BDakmode_1.20.5.zip
+
+https://mediafilez.forgecdn.net/files/
+
+, then from the download ID from the file the first 4 Chars:
+https://mediafilez.forgecdn.net/files/5297/
+
+, then from the download ID the latter 3:
+https://mediafilez.forgecdn.net/files/5297/551/
+
+, then the name of the file being downloaded
+https://mediafilez.forgecdn.net/files/5297/551/MandalasGUI%2BDakmode_1.20.5.zip
+
+
+Info: This resource pack was chosen for no reason at all, purely random!
