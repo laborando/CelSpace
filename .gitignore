@@ -1,0 +1,10 @@
+/.gradle/
+/.idea/
+/build/
+/build/classes/
+/build/generated/
+/build/libs/
+/build/libs/CelSpace-1.0-SNAPSHOT.jar
+/build/resources/
+/build/tmp/
+/gradle/

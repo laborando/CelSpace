@@ -6,6 +6,7 @@ import dimensions.earth.MoonGen;
 import dimensions.mercury.MercuryGen;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
+import packs.Load;
 
 public class DimChanger {
 
@@ -65,8 +66,10 @@ public class DimChanger {
 
             //RESOURCE PACK
 
-            p.sendMessage("Loading Ressource Pack for 'Earth'. Some features will only work if you are using Optifine!");;
-            p.setResourcePack("");
+            p.sendMessage("Loading Ressource Pack for 'Earth'. Some features will only work if you are using Optifine!");
+            Load.loadResourceoack(p, TargetDimension.OVERWORLD);
+
+
 
         }else if(t == TargetDimension.MOON){
 

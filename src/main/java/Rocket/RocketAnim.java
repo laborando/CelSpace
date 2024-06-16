@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
+import packs.Load;
 
 import javax.print.DocFlavor;
 
@@ -77,7 +78,7 @@ public class RocketAnim {
 
             }
             p.sendMessage("Loading Ressource Pack for 'Mars'. Some features will only work if you are using Optifine!");
-            p.setResourcePack("https://github.com/laborando/laborando/blob/main/public/mc/space/rp/mars.zip?raw=true");
+            Load.loadResourceoack(p, DimChanger.TargetDimension.MARS);
             targetWorld = Bukkit.getWorld(wn);
             Location l = targetWorld.getHighestBlockAt(p.getLocation().getBlockX(), p.getLocation().getBlockZ()).getLocation().add(0, 50, 0);
             m.eject();
@@ -96,7 +97,7 @@ public class RocketAnim {
                 Bukkit.getLogger().info("World 'world' was not found!");
             }
             p.sendMessage("Loading Ressource Pack for 'Earth'. Some features will only work if you are using Optifine!");
-            p.setResourcePack("");  //Replace Texture in future
+            Load.loadResourceoack(p, DimChanger.TargetDimension.OVERWORLD);
             targetWorld = Bukkit.getWorld(wn);
             Location l = targetWorld.getHighestBlockAt(p.getLocation().getBlockX(), p.getLocation().getBlockZ()).getLocation().add(0, 50, 0);
             m.eject();
@@ -125,7 +126,7 @@ public class RocketAnim {
 
             }
             p.sendMessage("Loading Ressource Pack for 'Moon'. Some features will only work if you are using Optifine!");
-            p.setResourcePack("https://github.com/laborando/laborando/blob/main/public/mc/space/rp/moon.zip?raw=true");
+            Load.loadResourceoack(p, DimChanger.TargetDimension.MOON);
             targetWorld = Bukkit.getWorld(wn);
             Location l = targetWorld.getHighestBlockAt(p.getLocation().getBlockX(), p.getLocation().getBlockZ()).getLocation().add(0, 50, 0);
             m.eject();
