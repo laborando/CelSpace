@@ -4,6 +4,7 @@ import dimensions.mars.MarsGen;
 import cel.space.celutis;
 import dimensions.earth.MoonGen;
 import dimensions.mercury.MercuryGen;
+import dimensions.venus.VenusGen;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import packs.Load;
@@ -55,8 +56,7 @@ public class DimChanger {
             //RESOURCE PACK
 
             p.sendMessage("Loading Ressource Pack for 'Mars'. Some features will only work if you are using Optifine!");;
-            p.setResourcePack("https://github.com/laborando/laborando/blob/main/public/mc/space/rp/mars.zip?raw=true");
-
+            Load.loadResourceoack(p, TargetDimension.MARS);
         }else if(t == TargetDimension.OVERWORLD){
 
             final String wn = "world";
@@ -97,7 +97,7 @@ public class DimChanger {
             //RESOURCE PACK
 
             p.sendMessage("Loading Ressource Pack for 'Mars'. Some features will only work if you are using Optifine!");;
-            p.setResourcePack("https://github.com/laborando/laborando/blob/main/public/mc/space/rp/moon.zip?raw=true");
+            Load.loadResourceoack(p, TargetDimension.MOON);
 
         }else if(t == TargetDimension.MERKUR){
 
@@ -125,8 +125,34 @@ public class DimChanger {
             //RESOURCE PACK
 
             p.sendMessage("Loading Ressource Pack for 'Mercury'. Some features will only work if you are using Optifine!");;
-            p.setResourcePack("https://github.com/laborando/laborando/blob/main/public/mc/space/rp/mercury.zip?raw=true");
-            p.sendMessage("This Resource Pack is not implemented yet!");
+            Load.loadResourceoack(p, TargetDimension.MERKUR);
+        }else if(t == TargetDimension.VENUS){
+
+            final String wn = "venus";
+            if (!celutis.doesWorldExist(wn)) {
+                p.sendMessage(ChatColor.RED + "Generation of Venus started...");
+                final WorldCreator worldCreator = new WorldCreator(wn);
+                worldCreator.generator(new VenusGen());
+                worldCreator.seed(Bukkit.getWorld("world").getSeed());
+                Bukkit.createWorld(worldCreator);
+            }
+            World targetWorld = Bukkit.getWorld(wn);
+            if(targetWorld == null){
+
+                final WorldCreator worldCreator2 = new WorldCreator(wn);
+                worldCreator2.generator(new VenusGen());
+                worldCreator2.seed(Bukkit.getWorld("world").getSeed());
+                Bukkit.createWorld(worldCreator2);
+
+            }
+            targetWorld = Bukkit.getWorld(wn);
+            Location l = targetWorld.getHighestBlockAt(p.getLocation().getBlockX(), p.getLocation().getBlockZ()).getLocation();
+            p.teleport(l);
+
+            //RESOURCE PACK
+
+            p.sendMessage("Loading Ressource Pack for 'Venus'. Some features will only work if you are using Optifine!");;
+            Load.loadResourceoack(p, TargetDimension.VENUS);
         }
 
 

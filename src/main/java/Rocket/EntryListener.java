@@ -17,7 +17,7 @@ public class EntryListener implements Listener {
 
         //GOTO REQUEST
 
-        if(e.getVehicle().getType().equals(EntityType.MINECART) && e.getVehicle().getName().equals(ChatColor.RED + "Rocket")){
+        if(e.getVehicle().getType().equals(EntityType.MINECART) && e.getVehicle().getName().equals("Rocket")){
 
             if(!(e.getEntered() instanceof Player p)){return;}
 

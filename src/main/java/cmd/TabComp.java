@@ -1,5 +1,7 @@
 package cmd;
 
+import org.bukkit.Bukkit;
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
@@ -15,6 +17,12 @@ public class TabComp implements TabCompleter {
             final List<String> completions = new ArrayList<String>();
             completions.add("goto");
             return completions;
+        }else if (command.getName().equalsIgnoreCase("unload") && args.length == 1) {
+            final List<String> completions = new ArrayList<String>();
+            for (World world : Bukkit.getWorlds()) {
+                completions.add(world.getName());
+            }
+            return completions;
         }else if (command.getName().equalsIgnoreCase("celspace")) {
 
             if(args[0].equalsIgnoreCase("goto")){
@@ -24,6 +32,7 @@ public class TabComp implements TabCompleter {
                 completions.add("earth");
                 completions.add("moon");
                 completions.add("mercury");
+                completions.add("venus");
                 return completions;
 
             }

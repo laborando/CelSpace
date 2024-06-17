@@ -53,9 +53,10 @@ public final class Main extends JavaPlugin implements Listener {
         //CMD
         this.getCommand("clearrp").setExecutor(new Exe());
         this.getCommand("celspace").setExecutor(new Exe());
+        this.getCommand("unload").setExecutor(new Exe());
 
         this.getCommand("celspace").setTabCompleter(new TabComp());
-
+        this.getCommand("unload").setTabCompleter(new TabComp());
 
         //Listeners
         this.getServer().getPluginManager().registerEvents(this, this);

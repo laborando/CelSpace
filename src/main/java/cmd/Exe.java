@@ -42,21 +42,43 @@ public class Exe implements CommandExecutor {
 
             p.setResourcePack("t");//p.setResourcePack("https://github.com/laborando/laborando/blob/main/public/mc/space/rp/mars.zip?raw=true");
 
+        }else if (label.equalsIgnoreCase("unload")) {
 
+            if (!(sender.isOp())) {
+                sender.sendMessage(ChatColor.RED + "You don't have the permission to execute this command!");
+                return false;
+            }
 
+            if(arg.equals("")){
+                sender.sendMessage("Usage: /celspace unload <worldname>");
+                return false;
+            }
+
+            try {
+                Bukkit.getServer().unloadWorld(arg, true);
+                sender.sendMessage(ChatColor.GREEN + "World '" + arg + "' should now be unloaded!");
+            }catch (Exception e){
+                sender.sendMessage("This was not possible: \n" + e.getMessage());
+            }
 
         }else if (label.equalsIgnoreCase("celspace")) {
+
+
+
+            if (!(sender.isOp())) {
+                sender.sendMessage(ChatColor.RED + "You don't have the permission to execute this command!");
+                return false;
+            }
+
+
+
+
 
 
             if (!(sender instanceof Player p)) {
                 sender.sendMessage(ChatColor.RED + "This command can only be executed as a player!");
                 return false;
             }
-            if (!(sender.isOp())) {
-                sender.sendMessage(ChatColor.RED + "You don't have the permission to execute this command!");
-                return false;
-            }
-
             if (arg.equalsIgnoreCase("goto")) {
 
                 if (arg2.equalsIgnoreCase("mars")) {
@@ -74,6 +96,10 @@ public class Exe implements CommandExecutor {
                 } else if (arg2.equalsIgnoreCase("mercury")) {
 
                     DimChanger.sendPlayer(p, DimChanger.TargetDimension.MERKUR);
+
+                } else if (arg2.equalsIgnoreCase("venus")) {
+
+                    DimChanger.sendPlayer(p, DimChanger.TargetDimension.VENUS);
 
                 }
 

@@ -12,3 +12,6 @@ commands:
   clearrp:
     description: Clears Server-Set resource packs
     usage: /clearrp
+  unload:
+    description: Unload a world
+    usage: /unload <worldname>

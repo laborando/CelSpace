@@ -54,7 +54,7 @@ public class AddRecipes {
         AddRecipes.map.put(1, key);
         final ItemStack itemStack = new ItemStack(Material.MINECART, 1);
         final ItemMeta itemMeta = itemStack.getItemMeta();
-        itemMeta.setDisplayName(ChatColor.RED + "Rocket");
+        itemMeta.setDisplayName("Rocket");
         itemMeta.addEnchant(Enchantment.KNOCKBACK, 1, true);
         itemStack.setItemMeta(itemMeta);
         final ShapedRecipe shapedRecipe = new ShapedRecipe(key, itemStack);
