@@ -20,6 +20,8 @@ public class GravityHandler{
         grav.put("world_nether", 0);
         grav.put("moon", 4);
         grav.put("mars", 2);
+        grav.put("venus", 3);
+        grav.put("mercury", 3);
 
         new BukkitRunnable() {
             @Override

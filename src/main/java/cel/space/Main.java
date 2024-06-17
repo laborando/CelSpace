@@ -27,6 +27,10 @@ public final class Main extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
 
+        double now = System.currentTimeMillis();
+
+        Bukkit.getLogger().info("Starting CelSpace...");
+
         instance = this;
 
         final FileConfiguration config = this.getConfig();
@@ -38,7 +42,8 @@ public final class Main extends JavaPlugin implements Listener {
         cnf.add("The following options should only be changed, if necessary!");
         config.options().setHeader(cnf);
         config.addDefault("performanceMode", false);
-
+        config.options().copyDefaults(true);
+        this.saveConfig();
 
         //Add Worlds, where mob spawning is blocked
         blockedWorlds.add("moon");
@@ -70,13 +75,23 @@ public final class Main extends JavaPlugin implements Listener {
 
 
         //Save rejoin
-        if(!config.getBoolean("performanceMode")) {
+        //TODO: Save rejoin
+
+        if(config.getBoolean("performanceMode")) {
             //For later
             Bukkit.broadcastMessage("Performance Mode on");
         }
 
-
+        DimRestartSaver.loadData(this.getDataFolder() + "/dimensionPlayerData");
         AddRecipes.addRecipe1(getInstance());
+        AddRecipes.addRecipe2(getInstance());
+        AddRecipes.addRecipe3(getInstance());
+
+
+
+        //Ende
+        double startTime = System.currentTimeMillis() - now;
+        Bukkit.getLogger().info("Started in: " + startTime + "ms!");
     }
 
     @Override
@@ -84,6 +99,8 @@ public final class Main extends JavaPlugin implements Listener {
 
         AddRecipes.removeRecipe();
 
+        Bukkit.getLogger().info("Saving Data...");
+        DimRestartSaver.saveData(this.getDataFolder() + "/dimensionPlayerData");
     }
 
     public static Main getInstance() {

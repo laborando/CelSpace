@@ -33,6 +33,7 @@ public class AddRecipes {
     }
     public static void addRecipe1(final Main pluginint) {
         final NamespacedKey key = new NamespacedKey((Plugin)pluginint, "opitems_desc_1");
+        Bukkit.removeRecipe(key);
         AddRecipes.map.put(1, key);
         final ItemStack itemStack = new ItemStack(Material.DIAMOND_HELMET, 1);
         final ItemMeta itemMeta = itemStack.getItemMeta();
@@ -44,6 +45,39 @@ public class AddRecipes {
         shapedRecipe.setIngredient('@', Material.DIAMOND_HELMET);
         shapedRecipe.setIngredient('!', Material.GLASS);
         shapedRecipe.setIngredient('b', Material.IRON_BLOCK);
+
+        Bukkit.getServer().addRecipe((Recipe)shapedRecipe);
+    }
+    public static void addRecipe2(final Main pluginint) {
+        final NamespacedKey key = new NamespacedKey((Plugin)pluginint, "opitems_desc_2");
+        Bukkit.removeRecipe(key);
+        AddRecipes.map.put(1, key);
+        final ItemStack itemStack = new ItemStack(Material.MINECART, 1);
+        final ItemMeta itemMeta = itemStack.getItemMeta();
+        itemMeta.setDisplayName(ChatColor.RED + "Rocket");
+        itemMeta.addEnchant(Enchantment.KNOCKBACK, 1, true);
+        itemStack.setItemMeta(itemMeta);
+        final ShapedRecipe shapedRecipe = new ShapedRecipe(key, itemStack);
+        shapedRecipe.shape(new String[] { "b!b", "!@!", "a@a" });
+        shapedRecipe.setIngredient('@', Material.MINECART);
+        shapedRecipe.setIngredient('!', Material.DIAMOND);
+        shapedRecipe.setIngredient('b', Material.REDSTONE_BLOCK);
+
+        Bukkit.getServer().addRecipe((Recipe)shapedRecipe);
+    }
+    public static void addRecipe3(final Main pluginint) {
+        final NamespacedKey key = new NamespacedKey((Plugin)pluginint, "opitems_desc_3");
+        Bukkit.removeRecipe(key);
+        AddRecipes.map.put(1, key);
+        final ItemStack itemStack = new ItemStack(Material.DIAMOND_CHESTPLATE, 1);
+        final ItemMeta itemMeta = itemStack.getItemMeta();
+        itemMeta.setDisplayName(ChatColor.RED + "Thermo Chestplate");
+        itemMeta.addEnchant(Enchantment.KNOCKBACK, 1, true);
+        itemStack.setItemMeta(itemMeta);
+        final ShapedRecipe shapedRecipe = new ShapedRecipe(key, itemStack);
+        shapedRecipe.shape(new String[] { "bbb", "b@b", "bbb" });
+        shapedRecipe.setIngredient('@', Material.DIAMOND_CHESTPLATE);
+        shapedRecipe.setIngredient('b', Material.WHITE_WOOL);
 
         Bukkit.getServer().addRecipe((Recipe)shapedRecipe);
     }

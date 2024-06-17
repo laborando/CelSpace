@@ -8,18 +8,16 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.HashMap;
 
-public class Air {
+public class Thermo {
 
     private static HashMap<String, Boolean> hasAir = new HashMap<>();
 
 
-    public static void startAirHandler(Main p){
+    public static void startThermoHandler(Main p){
 
         hasAir.put("world", true);
         hasAir.put("world_the_end", true);
@@ -40,7 +38,7 @@ public class Air {
                     }catch (NullPointerException ignored){}
                     if(!amp){
 
-                        ItemStack is = player.getInventory().getHelmet();
+                        ItemStack is = player.getInventory().getChestplate();
                         if(is == null){
                             is = new ItemStack(Material.DIAMOND, 1);
                         }
@@ -52,11 +50,11 @@ public class Air {
                             im = new ItemStack(Material.DIAMOND, 1).getItemMeta();
                         }
 
-                    if((t.equals(Material.DIAMOND_HELMET) && im.getDisplayName().equals(ChatColor.RED + "Space Helmet")) || ((player.getGameMode()== GameMode.CREATIVE) ||(player.getGameMode()==GameMode.SPECTATOR))) {
+                    if((t.equals(Material.DIAMOND_HELMET) && im.getDisplayName().equals(ChatColor.RED + "Thermo Chestplate")) || ((player.getGameMode()== GameMode.CREATIVE) ||(player.getGameMode()==GameMode.SPECTATOR))) {
                     }else{
 
                         player.damage(1);
-                        player.sendTitle("", ChatColor.RED + "No oxygen", 3, 20, 3);
+                        player.sendTitle("", ChatColor.RED + "You don't have any thermically protective gear!", 3, 20, 3);
                     }
                     }
                 }

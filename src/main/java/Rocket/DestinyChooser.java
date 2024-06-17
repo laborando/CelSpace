@@ -78,7 +78,7 @@ public class DestinyChooser implements Listener {
         //Jupiter
         final ItemStack Jupiter = new ItemStack(Material.ENDER_EYE, 1);
         final ItemMeta Jupiterm = Jupiter.getItemMeta();
-        Jupiterm.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("Jupiter").toString());
+        Jupiterm.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("Jupiter | Not available in Alpha").toString());
         Jupiterm.addEnchant(Enchantment.SILK_TOUCH, 1, true);
         Jupiterm.addItemFlags(new ItemFlag[]{ItemFlag.HIDE_ENCHANTS});
         Jupiter.setItemMeta(Jupiterm);
@@ -87,7 +87,7 @@ public class DestinyChooser implements Listener {
         //Saturn
         final ItemStack Saturn = new ItemStack(Material.ENDER_EYE, 1);
         final ItemMeta Saturnm = Saturn.getItemMeta();
-        Saturnm.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("Saturn").toString());
+        Saturnm.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("Saturn | Not available in Alpha").toString());
         Saturnm.addEnchant(Enchantment.SILK_TOUCH, 1, true);
         Saturnm.addItemFlags(new ItemFlag[]{ItemFlag.HIDE_ENCHANTS});
         Saturn.setItemMeta(Saturnm);
@@ -96,7 +96,7 @@ public class DestinyChooser implements Listener {
         //Uranus
         final ItemStack Uranus = new ItemStack(Material.ENDER_EYE, 1);
         final ItemMeta Uranusm = Uranus.getItemMeta();
-        Uranusm.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("Uranus").toString());
+        Uranusm.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("Uranus | Not available in Alpha").toString());
         Uranusm.addEnchant(Enchantment.SILK_TOUCH, 1, true);
         Uranusm.addItemFlags(new ItemFlag[]{ItemFlag.HIDE_ENCHANTS});
         Uranus.setItemMeta(Uranusm);
@@ -105,7 +105,7 @@ public class DestinyChooser implements Listener {
         //Neptune
         final ItemStack Neptune = new ItemStack(Material.ENDER_EYE, 1);
         final ItemMeta Neptunem = Neptune.getItemMeta();
-        Neptunem.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("Neptune").toString());
+        Neptunem.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("Neptune | Not available in Alpha").toString());
         Neptunem.addEnchant(Enchantment.SILK_TOUCH, 1, true);
         Neptunem.addItemFlags(new ItemFlag[]{ItemFlag.HIDE_ENCHANTS});
         Neptune.setItemMeta(Neptunem);
@@ -114,7 +114,7 @@ public class DestinyChooser implements Listener {
         //Pluto
         final ItemStack Pluto = new ItemStack(Material.ENDER_EYE, 1);
         final ItemMeta Plutom = Pluto.getItemMeta();
-        Plutom.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("Pluto").toString());
+        Plutom.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("Pluto | Not available in Alpha").toString());
         Plutom.addEnchant(Enchantment.SILK_TOUCH, 1, true);
         Plutom.addItemFlags(new ItemFlag[]{ItemFlag.HIDE_ENCHANTS});
         Pluto.setItemMeta(Plutom);
@@ -176,7 +176,7 @@ public class DestinyChooser implements Listener {
             if (e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Mercury")) {
                 e.setCancelled(true);
                 if (p.getWorld().equals(Bukkit.getWorld("mercury"))) {
-                    p.sendMessage("You are already on Mars!");
+                    p.sendMessage("You are already on Mercury!");
                 } else {
                     p.sendMessage("Going to Mercury!");
                     p.closeInventory();

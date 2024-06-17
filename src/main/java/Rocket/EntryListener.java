@@ -1,5 +1,6 @@
 package Rocket;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,7 +17,7 @@ public class EntryListener implements Listener {
 
         //GOTO REQUEST
 
-        if(e.getVehicle().getType().equals(EntityType.MINECART) && e.getVehicle().getName().equals("Rocket")){
+        if(e.getVehicle().getType().equals(EntityType.MINECART) && e.getVehicle().getName().equals(ChatColor.RED + "Rocket")){
 
             if(!(e.getEntered() instanceof Player p)){return;}
 
