@@ -99,11 +99,11 @@ public final class Main extends JavaPlugin implements Listener {
         //SpaceArmorCrafting
         if(config.getBoolean("SpaceArmorCrafting")) {
             AddRecipes.addRecipe1(getInstance());
+            AddRecipes.addRecipe2(getInstance());
         }
         DimRestartSaver.loadData(this.getDataFolder() + "/dimensionPlayerData");
-        AddRecipes.addRecipe1(getInstance());
-        AddRecipes.addRecipe2(getInstance());
-        AddRecipes.addRecipe3(getInstance());
+
+
 
 
 

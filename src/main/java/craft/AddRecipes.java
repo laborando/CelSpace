@@ -10,6 +10,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.plugin.Plugin;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -54,6 +55,7 @@ public class AddRecipes {
     }
 
     public static void addRecipe1(final Main pluginint) {
+
         final NamespacedKey key = new NamespacedKey(pluginint, "celspace_desc_1");
         AddRecipes.map.put(1, key);
         final ItemStack itemStack = new ItemStack(Material.DIAMOND_HELMET, 1);
@@ -69,29 +71,11 @@ public class AddRecipes {
         shapedRecipe.setIngredient('b', Material.IRON_BLOCK);
 
         Bukkit.getServer().addRecipe(shapedRecipe);
-        Bukkit.getServer().addRecipe((Recipe)shapedRecipe);
     }
     public static void addRecipe2(final Main pluginint) {
-        final NamespacedKey key = new NamespacedKey((Plugin)pluginint, "opitems_desc_2");
+        final NamespacedKey key = new NamespacedKey((Plugin)pluginint, "celspace_desc_2");
         Bukkit.removeRecipe(key);
-        AddRecipes.map.put(1, key);
-        final ItemStack itemStack = new ItemStack(Material.MINECART, 1);
-        final ItemMeta itemMeta = itemStack.getItemMeta();
-        itemMeta.setDisplayName("Rocket");
-        itemMeta.addEnchant(Enchantment.KNOCKBACK, 1, true);
-        itemStack.setItemMeta(itemMeta);
-        final ShapedRecipe shapedRecipe = new ShapedRecipe(key, itemStack);
-        shapedRecipe.shape(new String[] { "b!b", "!@!", "a@a" });
-        shapedRecipe.setIngredient('@', Material.MINECART);
-        shapedRecipe.setIngredient('!', Material.DIAMOND);
-        shapedRecipe.setIngredient('b', Material.REDSTONE_BLOCK);
-
-        Bukkit.getServer().addRecipe((Recipe)shapedRecipe);
-    }
-    public static void addRecipe3(final Main pluginint) {
-        final NamespacedKey key = new NamespacedKey((Plugin)pluginint, "opitems_desc_3");
-        Bukkit.removeRecipe(key);
-        AddRecipes.map.put(1, key);
+        AddRecipes.map.put(2, key);
         final ItemStack itemStack = new ItemStack(Material.DIAMOND_CHESTPLATE, 1);
         final ItemMeta itemMeta = itemStack.getItemMeta();
         itemMeta.setDisplayName(ChatColor.RED + "Thermo Chestplate");

@@ -3,6 +3,7 @@ package manage;
 import dimensions.earth.MoonGen;
 import dimensions.mars.MarsGen;
 import dimensions.mercury.MercuryGen;
+import dimensions.venus.VenusGen;
 import org.bukkit.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -55,6 +56,12 @@ public class DimRestartSaver implements Listener {
                 e.setResult(PlayerLoginEvent.Result.KICK_OTHER);
                 final WorldCreator worldCreator2 = new WorldCreator(wn);
                 worldCreator2.generator(new MercuryGen());
+                worldCreator2.seed(Bukkit.getWorld("world").getSeed());
+                Bukkit.createWorld(worldCreator2);
+            }else if(wn.equals("venus")){
+                e.setResult(PlayerLoginEvent.Result.KICK_OTHER);
+                final WorldCreator worldCreator2 = new WorldCreator(wn);
+                worldCreator2.generator(new VenusGen());
                 worldCreator2.seed(Bukkit.getWorld("world").getSeed());
                 Bukkit.createWorld(worldCreator2);
             }else{
