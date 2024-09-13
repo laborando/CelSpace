@@ -14,6 +14,7 @@ public class TabComp implements TabCompleter {
         if (command.getName().equalsIgnoreCase("celspace") && args.length == 1) {
             final List<String> completions = new ArrayList<String>();
             completions.add("goto");
+            completions.add("clearRp");
             return completions;
         }else if (command.getName().equalsIgnoreCase("celspace")) {
 

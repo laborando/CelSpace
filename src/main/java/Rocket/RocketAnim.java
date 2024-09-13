@@ -4,6 +4,7 @@ import dimensions.mars.MarsGen;
 import cel.space.Main;
 import cel.space.celutis;
 import dimensions.earth.MoonGen;
+import dimensions.mercury.MercuryGen;
 import manage.DimChanger;
 import org.bukkit.*;
 import org.bukkit.entity.Minecart;
@@ -127,6 +128,35 @@ public class RocketAnim {
             }
             p.sendMessage("Loading Ressource Pack for 'Moon'. Some features will only work if you are using Optifine!");
             Load.loadResourceoack(p, DimChanger.TargetDimension.MOON);
+            targetWorld = Bukkit.getWorld(wn);
+            Location l = targetWorld.getHighestBlockAt(p.getLocation().getBlockX(), p.getLocation().getBlockZ()).getLocation().add(0, 50, 0);
+            m.eject();
+            m.teleport(l);
+            p.teleport(l);
+            m.addPassenger(p);
+            p.closeInventory();
+
+        }else if(td.equals(DimChanger.TargetDimension.MERKUR)){
+
+            final String wn = "mercury";
+            if (!celutis.doesWorldExist(wn)) {
+                p.sendMessage(ChatColor.RED + "Generation of Mercury started...");
+                final WorldCreator worldCreator = new WorldCreator(wn);
+                worldCreator.generator(new MercuryGen());
+                worldCreator.seed(Bukkit.getWorld("world").getSeed());
+                Bukkit.createWorld(worldCreator);
+            }
+            World targetWorld = Bukkit.getWorld(wn);
+            if(targetWorld == null){
+
+                final WorldCreator worldCreator2 = new WorldCreator(wn);
+                worldCreator2.generator(new MercuryGen());
+                worldCreator2.seed(Bukkit.getWorld("world").getSeed());
+                Bukkit.createWorld(worldCreator2);
+
+            }
+            p.sendMessage("Loading Ressource Pack for 'Mercury'. Some features will only work if you are using Optifine!");
+            Load.loadResourceoack(p, DimChanger.TargetDimension.MERKUR);
             targetWorld = Bukkit.getWorld(wn);
             Location l = targetWorld.getHighestBlockAt(p.getLocation().getBlockX(), p.getLocation().getBlockZ()).getLocation().add(0, 50, 0);
             m.eject();

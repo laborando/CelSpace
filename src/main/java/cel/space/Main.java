@@ -16,6 +16,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import packs.RpConnected;
 import sec.RenameListener;
 
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ import java.util.List;
 
 public final class Main extends JavaPlugin implements Listener {
     private static Main instance;
-    private static  List<String> blockedWorlds = new ArrayList<>();
+    private static final List<String> blockedWorlds = new ArrayList<>();
     @Override
     public void onEnable() {
 
@@ -38,7 +39,13 @@ public final class Main extends JavaPlugin implements Listener {
         cnf.add("The following options should only be changed, if necessary!");
         config.options().setHeader(cnf);
         config.addDefault("performanceMode", false);
+        config.addDefault("rocketCrafting", true);
+        config.addDefault("SpaceArmorCrafting", true);
+        config.addDefault("DisableReconnectResourcePackEnforce", false);
+        config.addDefault("LoadRPDelayAfterJoin", 2);
 
+        config.options().copyDefaults(true);
+        this.saveConfig();
 
         //Add Worlds, where mob spawning is blocked
         blockedWorlds.add("moon");
@@ -62,6 +69,9 @@ public final class Main extends JavaPlugin implements Listener {
         this.getServer().getPluginManager().registerEvents(new RocketSavety(), this);
         this.getServer().getPluginManager().registerEvents(new DimRestartSaver(), this);
 
+        if(!config.getBoolean("DisableReconnectResourcePackEnforce")) {
+            this.getServer().getPluginManager().registerEvents(new RpConnected(), this);
+        }
 
         //inits
         gravity.GravityHandler.innitGravity();
@@ -76,8 +86,19 @@ public final class Main extends JavaPlugin implements Listener {
         }
 
 
-        AddRecipes.addRecipe1(getInstance());
+        if(config.getBoolean("rocketCrafting")) {
+            AddRecipes.addRecipe0(getInstance());
+        }
+        //SpaceArmorCrafting
+        if(config.getBoolean("SpaceArmorCrafting")) {
+            AddRecipes.addRecipe1(getInstance());
+        }
+
+
+
     }
+
+
 
     @Override
     public void onDisable() {

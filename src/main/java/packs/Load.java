@@ -3,8 +3,6 @@ package packs;
 import manage.DimChanger;
 import org.bukkit.entity.Player;
 
-import java.lang.annotation.Target;
-
 public class Load {
 
     public static void loadResourceoack(Player p, DimChanger.TargetDimension td){

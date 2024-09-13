@@ -20,19 +20,23 @@ public class GravityHandler{
         grav.put("world_nether", 0);
         grav.put("moon", 4);
         grav.put("mars", 2);
+        grav.put("venus", 0);
+        grav.put("mercury", 3);
 
         new BukkitRunnable() {
             @Override
             public void run() {
                 for (Player player : Bukkit.getOnlinePlayers()) {
-                    int amp = grav.get(player.getWorld().getName());
-                    if(!(amp==0)){
-                        player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 45, amp, true, false, false));
-                        player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_FALLING, 45, amp/5, true, false, false));
-                    }
+                    try {
+                        int amp = grav.get(player.getWorld().getName());
+                        if (!(amp == 0)) {
+                            player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 45, amp, true, false, false));
+                            player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_FALLING, 45, amp / 5, true, false, false));
+                        }
+                    }catch (Exception ignored){}
                 }
             }
-        }.runTaskTimer(Main.getInstance(), 0 /*<- init delay */, 20L*2 /*<- interval */);
+        }.runTaskTimer(Main.getInstance(), 0 /*<- ini del */, 20L*2 /*<- inter */);
 
     }
 

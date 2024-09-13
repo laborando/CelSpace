@@ -52,6 +52,14 @@ public class Exe implements CommandExecutor {
                 sender.sendMessage(ChatColor.RED + "This command can only be executed as a player!");
                 return false;
             }
+
+            if (arg.equalsIgnoreCase("clearRp")) {
+                p.performCommand("clearrp");
+            }
+
+
+
+            //Nur noch OP Zeugs
             if (!(sender.isOp())) {
                 sender.sendMessage(ChatColor.RED + "You don't have the permission to execute this command!");
                 return false;

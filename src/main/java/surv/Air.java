@@ -26,7 +26,7 @@ public class Air {
         hasAir.put("world_nether", true);
         hasAir.put("moon", false);
         hasAir.put("mars", false);
-        hasAir.put("mercu", false);
+        hasAir.put("mercury", false);
 
         new BukkitRunnable() {
             @Override
@@ -55,7 +55,8 @@ public class Air {
                     }else{
 
                         player.damage(1);
-                        player.sendTitle("", ChatColor.RED + "You don't have any protective gear!", 3, 20, 3);
+                        player.sendTitle(ChatColor.RED + "No Air!", ChatColor.RED + "You are not able to breathe!", 3, 20, 3);
+
                     }
                     }
                 }

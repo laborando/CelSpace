@@ -7,11 +7,10 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.plugin.Plugin;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class AddRecipes {
@@ -19,7 +18,7 @@ public class AddRecipes {
     static HashMap<Integer, NamespacedKey> map;
 
     static {
-        AddRecipes.map = new HashMap<Integer, NamespacedKey>();
+        AddRecipes.map = new HashMap<>();
     }
 
 
@@ -29,22 +28,47 @@ public class AddRecipes {
                 Bukkit.removeRecipe(p);
             }
         }
-        catch (Exception ex) {}
+        catch (Exception ignored) {
+
+        }
     }
+    public static void addRecipe0(final Main pluginint) {
+        final NamespacedKey key = new NamespacedKey(pluginint, "celspace_desc_0");
+        AddRecipes.map.put(0, key);
+        final ItemStack itemStack = new ItemStack(Material.MINECART, 1);
+        final ItemMeta itemMeta = itemStack.getItemMeta();
+        assert itemMeta != null;
+        itemMeta.setDisplayName("Rocket");
+        String[] lore = {ChatColor.RED + "- Click on ground to place" , ChatColor.RED + "- Needs Coal as fuel!"};
+        itemMeta.setLore(Arrays.asList(lore));
+        itemStack.setItemMeta(itemMeta);
+        final ShapedRecipe shapedRecipe = new ShapedRecipe(key, itemStack);
+        shapedRecipe.shape("aza", "!@!", "bcb");
+        shapedRecipe.setIngredient('@', Material.MINECART);
+        shapedRecipe.setIngredient('!', Material.IRON_BLOCK);
+        shapedRecipe.setIngredient('c', Material.DIAMOND);
+        shapedRecipe.setIngredient('b', Material.IRON_INGOT);
+        shapedRecipe.setIngredient('z', Material.END_ROD);
+        Bukkit.getServer().addRecipe(shapedRecipe);
+    }
+
     public static void addRecipe1(final Main pluginint) {
-        final NamespacedKey key = new NamespacedKey((Plugin)pluginint, "opitems_desc_1");
+        final NamespacedKey key = new NamespacedKey(pluginint, "celspace_desc_1");
         AddRecipes.map.put(1, key);
         final ItemStack itemStack = new ItemStack(Material.DIAMOND_HELMET, 1);
         final ItemMeta itemMeta = itemStack.getItemMeta();
+        assert itemMeta != null;
         itemMeta.setDisplayName(ChatColor.RED + "Space Helmet");
         itemMeta.addEnchant(Enchantment.KNOCKBACK, 1, true);
         itemStack.setItemMeta(itemMeta);
         final ShapedRecipe shapedRecipe = new ShapedRecipe(key, itemStack);
-        shapedRecipe.shape(new String[] { "b!b", "!@!", "a!a" });
+        shapedRecipe.shape("b!b", "!@!", "a!a");
         shapedRecipe.setIngredient('@', Material.DIAMOND_HELMET);
         shapedRecipe.setIngredient('!', Material.GLASS);
         shapedRecipe.setIngredient('b', Material.IRON_BLOCK);
 
-        Bukkit.getServer().addRecipe((Recipe)shapedRecipe);
+        Bukkit.getServer().addRecipe(shapedRecipe);
     }
+
+
 }
