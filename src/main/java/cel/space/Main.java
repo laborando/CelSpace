@@ -28,6 +28,10 @@ public final class Main extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
 
+        double now = System.currentTimeMillis();
+
+        Bukkit.getLogger().info("Starting CelSpace...");
+
         instance = this;
 
         final FileConfiguration config = this.getConfig();
@@ -55,9 +59,10 @@ public final class Main extends JavaPlugin implements Listener {
         //CMD
         this.getCommand("clearrp").setExecutor(new Exe());
         this.getCommand("celspace").setExecutor(new Exe());
+        this.getCommand("unload").setExecutor(new Exe());
 
         this.getCommand("celspace").setTabCompleter(new TabComp());
-
+        this.getCommand("unload").setTabCompleter(new TabComp());
 
         //Listeners
         this.getServer().getPluginManager().registerEvents(this, this);
@@ -80,7 +85,9 @@ public final class Main extends JavaPlugin implements Listener {
 
 
         //Save rejoin
-        if(!config.getBoolean("performanceMode")) {
+        //TODO: Save rejoin
+
+        if(config.getBoolean("performanceMode")) {
             //For later
             Bukkit.broadcastMessage("Performance Mode on");
         }
@@ -93,12 +100,17 @@ public final class Main extends JavaPlugin implements Listener {
         if(config.getBoolean("SpaceArmorCrafting")) {
             AddRecipes.addRecipe1(getInstance());
         }
+        DimRestartSaver.loadData(this.getDataFolder() + "/dimensionPlayerData");
+        AddRecipes.addRecipe1(getInstance());
+        AddRecipes.addRecipe2(getInstance());
+        AddRecipes.addRecipe3(getInstance());
 
 
 
+        //Ende
+        double startTime = System.currentTimeMillis() - now;
+        Bukkit.getLogger().info("Started in: " + startTime + "ms!");
     }
-
-
 
     @Override
     public void onDisable() {

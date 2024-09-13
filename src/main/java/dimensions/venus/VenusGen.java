@@ -41,16 +41,16 @@ public class VenusGen extends ChunkGenerator {
                     currentHeight = world.getMaxHeight() - 1;
                 }
 
-                chunk.setBlock(X, currentHeight, Z, Material.STONE);
+                chunk.setBlock(X, currentHeight, Z, Material.END_STONE);
 
                 //Oberster Layer
-                chunk.setBlock(X, this.currentHeight - 1, Z, Material.STONE);
+                chunk.setBlock(X, this.currentHeight - 1, Z, Material.END_STONE);
 
 
                 //STONE & ORES
                 for (int i = this.currentHeight - 2; i > world.getMinHeight()+1; --i) {
 
-                    chunk.setBlock(X, i, Z, Material.STONE);
+                    chunk.setBlock(X, i, Z, Material.END_STONE);
 
                 }
 

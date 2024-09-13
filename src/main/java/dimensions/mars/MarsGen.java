@@ -35,12 +35,17 @@ public class MarsGen extends ChunkGenerator {
         final ChunkData chunk = this.createChunkData(world);
 
         generator.setScale(0.015);
+        gen2.setScale(0.015);
 
         int[][] currH = new int[16][16];
 
         for (int X = 0; X < 16; ++X) {
             for (int Z = 0; Z < 16; ++Z) {
                 this.currentHeight = (int) (generator.noise(chunkX * 16 + X, chunkZ * 16 + Z, 0.1, 0.2) * 7.0 + 50.0);
+
+                int currdif = (int) (gen2.noise(chunkX * 16 + X, chunkZ * 16 + Z, 0.1, 0.2) * 7.0);
+
+                currentHeight += currdif;
 
                 currH[X][Z] = currentHeight;
 

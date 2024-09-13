@@ -27,6 +27,7 @@ public class Air {
         hasAir.put("moon", false);
         hasAir.put("mars", false);
         hasAir.put("mercury", false);
+        hasAir.put("venus", false);
 
         new BukkitRunnable() {
             @Override
@@ -55,8 +56,7 @@ public class Air {
                     }else{
 
                         player.damage(1);
-                        player.sendTitle(ChatColor.RED + "No Air!", ChatColor.RED + "You are not able to breathe!", 3, 20, 3);
-
+                        player.sendTitle("", ChatColor.RED + "No oxygen", 3, 20, 3);
                     }
                     }
                 }

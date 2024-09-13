@@ -18,6 +18,7 @@ public class DimChecker implements Listener {
         blockedWorlds.add("mars");
         blockedWorlds.add("moon");
         blockedWorlds.add("mercury");
+        blockedWorlds.add("venus");
 
         if (blockedWorlds.contains(e.getWorld().getName())) {
 
