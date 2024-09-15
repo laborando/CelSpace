@@ -62,7 +62,7 @@ public class MarsGen extends ChunkGenerator {
                 //STONE & ORES
                 for (int i = this.currentHeight - 2; i > 0; --i) {
 
-                    chunk.setBlock(X, i, Z, Material.RED_SAND);
+                    chunk.setBlock(X, i, Z, Material.RED_SANDSTONE);
 
                 }
 

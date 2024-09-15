@@ -1,6 +1,7 @@
 
 package dimensions.venus;
 
+import cel.space.celutis;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.generator.BlockPopulator;
@@ -41,16 +42,28 @@ public class VenusGen extends ChunkGenerator {
                     currentHeight = world.getMaxHeight() - 1;
                 }
 
-                chunk.setBlock(X, currentHeight, Z, Material.END_STONE);
+                if(celutis.randomrange(0, 7) == 0){
+                    chunk.setBlock(X, currentHeight, Z, Material.COBBLESTONE);
+                }else{
+                    chunk.setBlock(X, currentHeight, Z, Material.STONE);
+                }
+
+
 
                 //Oberster Layer
-                chunk.setBlock(X, this.currentHeight - 1, Z, Material.END_STONE);
+                chunk.setBlock(X, this.currentHeight - 1, Z, Material.STONE);
 
 
                 //STONE & ORES
                 for (int i = this.currentHeight - 2; i > world.getMinHeight()+1; --i) {
 
-                    chunk.setBlock(X, i, Z, Material.END_STONE);
+
+                    if(celutis.randomrange(0, 9) == 0){
+                        chunk.setBlock(X, i, Z, Material.COBBLESTONE);
+                    }else{
+                        chunk.setBlock(X, i, Z, Material.STONE);
+                    }
+
 
                 }
 

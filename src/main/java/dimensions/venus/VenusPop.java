@@ -26,8 +26,8 @@ public class VenusPop extends BlockPopulator {
                 if ((Y + 2) > 320) {
                     break;
                 }
-                if (chunk.getBlock(X, Y, Z).getType() == Material.END_STONE) {
-                    chunk.getBlock(X, Y + 1, Z).setType(Material.END_STONE);
+                if (chunk.getBlock(X, Y, Z).getType() == Material.RED_SANDSTONE) {
+                    chunk.getBlock(X, Y + 1, Z).setType(Material.RED_SANDSTONE);
 
                     break;
                 }
@@ -43,10 +43,10 @@ public class VenusPop extends BlockPopulator {
                     if ((Y + 2) > 320) {
                         break;
                     }
-                    if (chunk.getBlock(X, Y, Z).getType() == Material.END_STONE) {
+                    if (chunk.getBlock(X, Y, Z).getType() == Material.STONE) {
 
-                        chunk.getBlock(X, Y + 1, Z).setType(Material.END_STONE);
-                        chunk.getBlock(X, Y + 2, Z).setType(Material.END_STONE);
+                        chunk.getBlock(X, Y + 1, Z).setType(Material.STONE);
+                        chunk.getBlock(X, Y + 2, Z).setType(Material.STONE);
 
                         break;
                     }
@@ -61,7 +61,7 @@ public class VenusPop extends BlockPopulator {
 
         for (int y = world.getMaxHeight() - 1; y > 0; y--) {
 
-            if (chunk.getBlock(8, y, 8).getType() == Material.END_STONE) {
+            if (chunk.getBlock(8, y, 8).getType() == Material.STONE) {
                 finY = y;
                 break;
             }
@@ -102,7 +102,7 @@ public class VenusPop extends BlockPopulator {
                         for (int z = lz - sphereRad; z <= lz + sphereRad; z++) {
 
                             if (Math.pow(x - lx, 2) + Math.pow(y - ly, 2) + Math.pow(z - lz, 2) <= Math.pow(sphereRad, 2)) {
-                                chunk.getBlock(x, y, z).setType(Material.END_STONE);
+                                chunk.getBlock(x, y, z).setType(Material.STONE);
                             }
                         }
                     }
@@ -144,7 +144,7 @@ public class VenusPop extends BlockPopulator {
                 target.enforceRange(0, 15);
 
                 if(!(chunk.getBlock(target.getA(), target.getB(), target.getC()).getType()==Material.BEDROCK)){
-                    chunk.getBlock(target.getA(), target.getB(), target.getC()).setType(Material.ICE);
+                    chunk.getBlock(target.getA(), target.getB(), target.getC()).setType(Material.LAVA);
                 }
             }
 

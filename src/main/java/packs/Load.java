@@ -21,6 +21,9 @@ public class Load {
         }else if(td.equals(DimChanger.TargetDimension.MOON)){
             //5431893
             p.setResourcePack("https://mediafilez.forgecdn.net/files/5431/893/Earth.zip");
+        }else if(td.equals(DimChanger.TargetDimension.VENUS)){
+            //5431893
+            p.setResourcePack("https://mediafilez.forgecdn.net/files/5431/893/Earth.zip");
         }
 
     }

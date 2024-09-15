@@ -78,7 +78,7 @@ public class DestinyChooser implements Listener {
         //Jupiter
         final ItemStack Jupiter = new ItemStack(Material.ENDER_EYE, 1);
         final ItemMeta Jupiterm = Jupiter.getItemMeta();
-        Jupiterm.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("Jupiter | Not available in Alpha").toString());
+        Jupiterm.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("Jupiter | Not viable").toString());
         Jupiterm.addEnchant(Enchantment.SILK_TOUCH, 1, true);
         Jupiterm.addItemFlags(new ItemFlag[]{ItemFlag.HIDE_ENCHANTS});
         Jupiter.setItemMeta(Jupiterm);
@@ -122,7 +122,6 @@ public class DestinyChooser implements Listener {
 
 
         //ERSTE REIHE ENDE; ZWEITE REIHE MONDE
-
         final ItemStack Moon = new ItemStack(Material.ENDER_EYE, 1);
         final ItemMeta Moonm = Moon.getItemMeta();
         Moonm.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("Moon").toString());
@@ -132,8 +131,17 @@ public class DestinyChooser implements Listener {
         gui.setItem(11, Moon);
 
 
-        //No Moon Information
+        //ZWEITE REIHE ENDE; DRITTE REIHE ORBITS
+        final ItemStack EarthOrbit = new ItemStack(Material.ENDER_EYE, 1);
+        final ItemMeta EarthOrbitM = Moon.getItemMeta();
+        EarthOrbitM.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("E.'s Orbit | Not available currently").toString());
+        EarthOrbitM.addEnchant(Enchantment.SILK_TOUCH, 1, true);
+        EarthOrbitM.addItemFlags(new ItemFlag[]{ItemFlag.HIDE_ENCHANTS});
+        EarthOrbit.setItemMeta(EarthOrbitM);
+        gui.setItem(20, EarthOrbit);
 
+
+        //No Moon Information
         final ItemStack noMoon = new ItemStack(Material.RED_STAINED_GLASS_PANE, 1);
         final ItemMeta noMoonm = noMoon.getItemMeta();
         noMoonm.setDisplayName(new StringBuilder().append(ChatColor.DARK_RED).append(ChatColor.BOLD).append("Mercury does not have a moon").toString());
@@ -170,6 +178,12 @@ public class DestinyChooser implements Listener {
         if (e.getCurrentItem().getType() == Material.LIGHT_GRAY_STAINED_GLASS_PANE && e.getCurrentItem().containsEnchantment(Enchantment.SILK_TOUCH)) {
             e.setCancelled(true);
         }
+        if (e.getCurrentItem().getType() == Material.ENDER_EYE && e.getCurrentItem().containsEnchantment(Enchantment.SILK_TOUCH)) {
+            e.setCancelled(true);
+        }
+        if (e.getCurrentItem().getType() == Material.RED_STAINED_GLASS_PANE && e.getCurrentItem().containsEnchantment(Enchantment.SILK_TOUCH)) {
+            e.setCancelled(true);
+        }
 //Merkur Venus Erde Mars Jupiter Saturn Uranus Neptun Pluto
 
         if (e.getCurrentItem().getType() == Material.ENDER_EYE && e.getCurrentItem().containsEnchantment(Enchantment.SILK_TOUCH)) {
@@ -183,107 +197,123 @@ public class DestinyChooser implements Listener {
                     RocketAnim.startRocket(p, DimChanger.TargetDimension.MERKUR);
                 }
             }
-             if (e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Venus")) {
-                    e.setCancelled(true);
-                    if (p.getWorld().equals(Bukkit.getWorld("venus"))) {
-                        p.sendMessage("You are already on Venus!");
-                    } else {
-                        p.sendMessage("Going to Venus!");
-                        p.closeInventory();
-                        RocketAnim.startRocket(p, DimChanger.TargetDimension.VENUS);
-                    }
+            if (e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Venus")) {
+                e.setCancelled(true);
+                if (p.getWorld().equals(Bukkit.getWorld("venus"))) {
+                    p.sendMessage("You are already on Venus!");
+                } else {
+                    p.sendMessage("Going to Venus!");
+                    p.closeInventory();
+                    RocketAnim.startRocket(p, DimChanger.TargetDimension.VENUS);
                 }
-
-                if (e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Earth")) {
-                    e.setCancelled(true);
-                    if (p.getWorld().equals(Bukkit.getWorld("world"))) {
-                        p.sendMessage("You are already on Earth!");
-                    } else {
-                        p.sendMessage("Going to Earth!");
-                        p.closeInventory();
-                        RocketAnim.startRocket(p, DimChanger.TargetDimension.OVERWORLD);
-                    }
-                }
-
-                    if (e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Mars")) {
-                        e.setCancelled(true);
-                        if (p.getWorld().equals(Bukkit.getWorld("mars"))) {
-                            p.sendMessage("You are already on Mars!");
-                        } else {
-                            p.sendMessage("Going to Mars!");
-                            p.closeInventory();
-                            RocketAnim.startRocket(p, DimChanger.TargetDimension.MARS);
-                        }
-                    }
-                    if (e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Jupiter")) {
-                        e.setCancelled(true);
-                        if (p.getWorld().equals(Bukkit.getWorld("jupiter"))) {
-                            p.sendMessage("You are already on Jupiter!");
-                        } else {
-                            p.sendMessage("Going to Jupiter!");
-                            p.closeInventory();
-                            RocketAnim.startRocket(p, DimChanger.TargetDimension.JUPITER);
-                        }
-                    }
-                    //Saturn Uranus Neptun Pluto
-
-                    if (e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Saturn")) {
-                        e.setCancelled(true);
-                        if (p.getWorld().equals(Bukkit.getWorld("saturn"))) {
-                            p.sendMessage("You are already on Saturn!");
-                        } else {
-                            p.sendMessage("Going to Saturn!");
-                            p.closeInventory();
-                            RocketAnim.startRocket(p, DimChanger.TargetDimension.SATURN);
-                        }
-                    }
-                    if (e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Uranus")) {
-                        e.setCancelled(true);
-                        if (p.getWorld().equals(Bukkit.getWorld("uranus"))) {
-                            p.sendMessage("You are already on Uranus!");
-                        } else {
-                            p.sendMessage("Going to Uranus!");
-                            p.closeInventory();
-                            RocketAnim.startRocket(p, DimChanger.TargetDimension.URANUS);
-                        }
-                    }
-                    if (e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Neptune")) {
-                        e.setCancelled(true);
-                        if (p.getWorld().equals(Bukkit.getWorld("neptune"))) {
-                            p.sendMessage("You are already on Neptune!");
-                        } else {
-                            p.sendMessage("Going to Neptune!");
-                            p.closeInventory();
-                            RocketAnim.startRocket(p, DimChanger.TargetDimension.NEPTUN);
-                        }
-                    }
-                    if (e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Pluto")) {
-                        e.setCancelled(true);
-                        if (p.getWorld().equals(Bukkit.getWorld("pluto"))) {
-                            p.sendMessage("You are already on Pluto!");
-                        } else {
-                            p.sendMessage("Going to Pluto!");
-                            p.closeInventory();
-                            RocketAnim.startRocket(p, DimChanger.TargetDimension.PLUTO);
-                        }
-                    }
-
-
-                    //Monde
-
-                }
-                if (e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Moon")) {
-                    e.setCancelled(true);
-                    if (p.getWorld().equals(Bukkit.getWorld("moon"))) {
-                        p.sendMessage("You are already on Moon!");
-                    } else {
-                        p.sendMessage("Going to the Moon!");
-                        p.closeInventory();
-                        RocketAnim.startRocket(p, DimChanger.TargetDimension.MOON);
-                    }
-                }
-
-
             }
 
+            if (e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Earth")) {
+                e.setCancelled(true);
+                if (p.getWorld().equals(Bukkit.getWorld("world"))) {
+                    p.sendMessage("You are already on Earth!");
+                } else {
+                    p.sendMessage("Going to Earth!");
+                    p.closeInventory();
+                    RocketAnim.startRocket(p, DimChanger.TargetDimension.OVERWORLD);
+                }
+            }
+
+            if (e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Mars")) {
+                e.setCancelled(true);
+                if (p.getWorld().equals(Bukkit.getWorld("mars"))) {
+                    p.sendMessage("You are already on Mars!");
+                } else {
+                    p.sendMessage("Going to Mars!");
+                    p.closeInventory();
+                    RocketAnim.startRocket(p, DimChanger.TargetDimension.MARS);
+                }
+            }
+            if (e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Jupiter")) {
+                e.setCancelled(true);
+                if (p.getWorld().equals(Bukkit.getWorld("jupiter"))) {
+                    p.sendMessage("You are already on Jupiter!");
+                } else {
+                    p.sendMessage("Going to Jupiter!");
+                    p.closeInventory();
+                    RocketAnim.startRocket(p, DimChanger.TargetDimension.JUPITER);
+                }
+            }
+            //Saturn Uranus Neptun Pluto
+
+            if (e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Saturn")) {
+                e.setCancelled(true);
+                if (p.getWorld().equals(Bukkit.getWorld("saturn"))) {
+                    p.sendMessage("You are already on Saturn!");
+                } else {
+                    p.sendMessage("Going to Saturn!");
+                    p.closeInventory();
+                    RocketAnim.startRocket(p, DimChanger.TargetDimension.SATURN);
+                }
+            }
+            if (e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Uranus")) {
+                e.setCancelled(true);
+                if (p.getWorld().equals(Bukkit.getWorld("uranus"))) {
+                    p.sendMessage("You are already on Uranus!");
+                } else {
+                    p.sendMessage("Going to Uranus!");
+                    p.closeInventory();
+                    RocketAnim.startRocket(p, DimChanger.TargetDimension.URANUS);
+                }
+            }
+            if (e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Neptune")) {
+                e.setCancelled(true);
+                if (p.getWorld().equals(Bukkit.getWorld("neptune"))) {
+                    p.sendMessage("You are already on Neptune!");
+                } else {
+                    p.sendMessage("Going to Neptune!");
+                    p.closeInventory();
+                    RocketAnim.startRocket(p, DimChanger.TargetDimension.NEPTUN);
+                }
+            }
+            if (e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Pluto")) {
+                e.setCancelled(true);
+                if (p.getWorld().equals(Bukkit.getWorld("pluto"))) {
+                    p.sendMessage("You are already on Pluto!");
+                } else {
+                    p.sendMessage("Going to Pluto!");
+                    p.closeInventory();
+                    RocketAnim.startRocket(p, DimChanger.TargetDimension.PLUTO);
+                }
+            }
+
+
+            //Monde
+
+        }
+        if (e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Moon")) {
+            e.setCancelled(true);
+            if (p.getWorld().equals(Bukkit.getWorld("moon"))) {
+                p.sendMessage("You are already on Moon!");
+            } else {
+                p.sendMessage("Going to the Moon!");
+                p.closeInventory();
+                RocketAnim.startRocket(p, DimChanger.TargetDimension.MOON);
+            }
+        }
+
+
+        //Orbits
+
+        //E.'s Orbi
+        /*
+        if (e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Moon")) {
+            e.setCancelled(true);
+            if (p.getWorld().equals(Bukkit.getWorld("e-orbit"))) {
+                p.sendMessage("You are already in Earths Orbit!");
+            } else {
+                p.sendMessage("Going to the Orbit of Earth!");
+                p.closeInventory();
+                RocketAnim.startRocket(p, DimChanger.TargetDimension.MOON);
+            }
+        }
+        */
+
     }
+
+}

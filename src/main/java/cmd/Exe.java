@@ -1,5 +1,6 @@
 package cmd;
 
+import cel.space.Celspace;
 import manage.DimChanger;
 import org.bukkit.*;
 import org.bukkit.command.Command;
@@ -63,6 +64,32 @@ public class Exe implements CommandExecutor {
 
         }else if (label.equalsIgnoreCase("celspace")) {
 
+            if(arg.equalsIgnoreCase("")){
+                sender.sendMessage(ChatColor.BLUE + "Celspace v." + Celspace.version + ChatColor.GOLD + " by cel20");
+                sender.sendMessage(ChatColor.YELLOW + "No subcommand! For help execute /celspace help");
+            }
+
+            if (arg.equalsIgnoreCase("help")) {
+                sender.sendMessage(ChatColor.BLUE + "Celspace v." + Celspace.version + ChatColor.GOLD + " by cel20");
+                sender.sendMessage(ChatColor.YELLOW + "Commands: ");
+                sender.sendMessage(ChatColor.YELLOW + " - celspace    | Main celspace command");
+                sender.sendMessage(ChatColor.YELLOW + "   --> help    | Shows this list");
+                sender.sendMessage(ChatColor.YELLOW + "   --> clearRp | Clears the resource pack set by this plugin");
+                sender.sendMessage(ChatColor.YELLOW + "   --> goto    | lets you change between planets");
+                sender.sendMessage(ChatColor.YELLOW + " - clearrp     | Clears the resource pack set by this plugin");
+                sender.sendMessage(ChatColor.YELLOW + " - autoRp      | Automatically assigns you the right rp");
+
+            }
+
+
+
+            if (arg.equalsIgnoreCase("clearRp")) {
+                if (!(sender instanceof Player p)) {
+                    sender.sendMessage(ChatColor.RED + "This command can only be executed as a player!");
+                    return false;
+                }
+                p.setResourcePack("");
+            }
 
 
             if (!(sender.isOp())) {
@@ -103,10 +130,10 @@ public class Exe implements CommandExecutor {
 
                 }
 
-            }else if(arg.equalsIgnoreCase("testRp")){
-                //Random Resource Pack to test if able to get resource packs from cf
-                //p.setResourcePack("");p.setResourcePack("https://mediafilez.forgecdn.net/files/5297/551/MandalasGUI%2BDakmode_1.20.5.zip");
-                //https://legacy.curseforge.com/minecraft/texture-packs/mandalas-gui-dark-mode/download
+            }else if (arg.equalsIgnoreCase("cw")) {
+                p.getWorld().setStorm(false);
+                p.getWorld().setThundering(false);
+                p.sendMessage("Weather should now be clear");
             }
 
         }

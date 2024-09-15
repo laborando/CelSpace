@@ -17,6 +17,7 @@ public class TabComp implements TabCompleter {
             final List<String> completions = new ArrayList<String>();
             completions.add("goto");
             completions.add("clearRp");
+            completions.add("help");
             return completions;
         }else if (command.getName().equalsIgnoreCase("unload") && args.length == 1) {
             final List<String> completions = new ArrayList<String>();

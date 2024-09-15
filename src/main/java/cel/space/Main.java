@@ -3,9 +3,11 @@ package cel.space;
 import Rocket.DestinyChooser;
 import Rocket.EntryListener;
 import Rocket.RocketSavety;
+import actions.RocketPlacer;
 import cmd.TabComp;
 import cmd.Exe;
 import craft.AddRecipes;
+import enviroment.Weater;
 import manage.DimChecker;
 import manage.DimRestartSaver;
 import manage.RpChecker;
@@ -30,12 +32,11 @@ public final class Main extends JavaPlugin implements Listener {
 
         double now = System.currentTimeMillis();
 
-        Bukkit.getLogger().info("Starting CelSpace...");
+        Bukkit.getLogger().info("Starting CelSpace v." + Celspace.version + " ...");
 
         instance = this;
 
         final FileConfiguration config = this.getConfig();
-
 
         //Config
         List<String> cnf = new ArrayList<>();
@@ -47,6 +48,7 @@ public final class Main extends JavaPlugin implements Listener {
         config.addDefault("SpaceArmorCrafting", true);
         config.addDefault("DisableReconnectResourcePackEnforce", false);
         config.addDefault("LoadRPDelayAfterJoin", 2);
+        config.addDefault("enableFalseWeather", false);
 
         config.options().copyDefaults(true);
         this.saveConfig();
@@ -55,6 +57,7 @@ public final class Main extends JavaPlugin implements Listener {
         blockedWorlds.add("moon");
         blockedWorlds.add("mars");
         blockedWorlds.add("mercury");
+        blockedWorlds.add("venus");
 
         //CMD
         this.getCommand("clearrp").setExecutor(new Exe());
@@ -73,9 +76,17 @@ public final class Main extends JavaPlugin implements Listener {
         this.getServer().getPluginManager().registerEvents(new DestinyChooser(), this);
         this.getServer().getPluginManager().registerEvents(new RocketSavety(), this);
         this.getServer().getPluginManager().registerEvents(new DimRestartSaver(), this);
+        this.getServer().getPluginManager().registerEvents(new RocketPlacer(), this);
+
 
         if(!config.getBoolean("DisableReconnectResourcePackEnforce")) {
             this.getServer().getPluginManager().registerEvents(new RpConnected(), this);
+        }
+
+        //enableFalseWeather
+        if(config.getBoolean("enableFalseWeather")) {
+            Weater.innitGravity();
+            this.getServer().getPluginManager().registerEvents(new Weater(), this);
         }
 
         //inits
@@ -115,6 +126,7 @@ public final class Main extends JavaPlugin implements Listener {
     @Override
     public void onDisable() {
 
+        DimRestartSaver.saveData(this.getDataFolder() + "/dimensionPlayerData");
         AddRecipes.removeRecipe();
 
     }

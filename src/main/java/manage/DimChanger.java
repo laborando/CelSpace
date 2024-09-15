@@ -23,7 +23,9 @@ public class DimChanger {
         PLUTO,
         MOON, //THE moon
 
-
+        ORBIT_OVERWORLD,
+        ORBIT_MARS,
+        ORBIT_MERCUR
 
         ;
 
