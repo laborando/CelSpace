@@ -45,6 +45,8 @@ public class RocketPlacer implements Listener {
             im.setDisplayName("Rocket");
             i.setItemMeta(im);
 
+
+
             if(!(p.getInventory().contains(itemStack) && p.getInventory().getItemInMainHand().equals(itemStack))){
                 if((p.getInventory().contains(i)  && p.getInventory().getItemInMainHand().equals(i))) {
                     try {

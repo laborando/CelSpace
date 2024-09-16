@@ -49,6 +49,7 @@ public final class Main extends JavaPlugin implements Listener {
         config.addDefault("DisableReconnectResourcePackEnforce", false);
         config.addDefault("LoadRPDelayAfterJoin", 2);
         config.addDefault("enableFalseWeather", false);
+        config.addDefault("AllowPortables", false);
 
         config.options().copyDefaults(true);
         this.saveConfig();
@@ -112,6 +113,12 @@ public final class Main extends JavaPlugin implements Listener {
             AddRecipes.addRecipe1(getInstance());
             AddRecipes.addRecipe2(getInstance());
         }
+
+        //AllowPortables
+        if(config.getBoolean("SpaceArmorCrafting")) {
+            AddRecipes.addRecipe3(getInstance());
+        }
+
         DimRestartSaver.loadData(this.getDataFolder() + "/dimensionPlayerData");
 
 
