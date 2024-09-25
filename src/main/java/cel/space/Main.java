@@ -50,9 +50,14 @@ public final class Main extends JavaPlugin implements Listener {
         config.addDefault("LoadRPDelayAfterJoin", 2);
         config.addDefault("enableFalseWeather", false);
         config.addDefault("AllowPortables", false);
+        config.addDefault("rocketEntryYDistanceToGround", 50);
+        config.addDefault("rocketParticlesYDistanceFromMinecartEntitiy", 1.5);
 
         config.options().copyDefaults(true);
         this.saveConfig();
+
+        Celspace.rocketParticlesYDistanceFromMinecartEntitiy = config.getDouble("rocketParticlesYDistanceFromMinecartEntitiy");
+        Celspace.rocketEntryYDistanceToGround = config.getInt("rocketEntryYDistanceToGround");
 
         //Add Worlds, where mob spawning is blocked
         blockedWorlds.add("moon");
@@ -80,6 +85,8 @@ public final class Main extends JavaPlugin implements Listener {
         this.getServer().getPluginManager().registerEvents(new RocketPlacer(), this);
 
 
+
+        //ConfigReact
         if(!config.getBoolean("DisableReconnectResourcePackEnforce")) {
             this.getServer().getPluginManager().registerEvents(new RpConnected(), this);
         }
@@ -94,10 +101,6 @@ public final class Main extends JavaPlugin implements Listener {
         gravity.GravityHandler.innitGravity();
         surv.Air.startAirHandler(getInstance());
 
-
-
-        //Save rejoin
-        //TODO: Save rejoin
 
         if(config.getBoolean("performanceMode")) {
             //For later

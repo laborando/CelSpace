@@ -7,10 +7,10 @@ public class Load {
 
     public static void loadResourceoack(Player p, DimChanger.TargetDimension td){
 
+        p.sendMessage("Changing texturepacket...");
+
         if(td.equals(DimChanger.TargetDimension.OVERWORLD)){
             //5431893
-            p.sendMessage("Requesting client to change texture pack...");
-            p.sendMessage("Pack: Earth v0.1");
             p.setResourcePack("https://mediafilez.forgecdn.net/files/5431/893/Earth.zip");
         }else if(td.equals(DimChanger.TargetDimension.MARS)){
             //5431893

@@ -1,5 +1,6 @@
 package Rocket;
 
+import cel.space.Celspace;
 import dimensions.mars.MarsGen;
 import cel.space.Main;
 import cel.space.celutis;
@@ -41,7 +42,7 @@ public class RocketAnim {
         new BukkitRunnable() {
             @Override
             public void run() {
-                p.getWorld().spawnParticle(Particle.FLAME, p.getLocation().add(0, -1.5, 0), 20, 0.3, 0.2, 0.3);
+                p.getWorld().spawnParticle(Particle.FLAME, p.getLocation().add(0, -1 * Celspace.rocketParticlesYDistanceFromMinecartEntitiy, 0), 20, 0.3, 0.2, 0.3);
                 p.spawnParticle(Particle.FLAME, p.getLocation().add(0, -1.5, 0),  50, 0, 0,0);
                 m.setVelocity(m.getVelocity().add(new Vector(0, 0.5, 0)));
 
@@ -82,7 +83,7 @@ public class RocketAnim {
             p.sendMessage("Loading Ressource Pack for 'Mars'. Some features will only work if you are using Optifine!");
             Load.loadResourceoack(p, DimChanger.TargetDimension.MARS);
             targetWorld = Bukkit.getWorld(wn);
-            Location l = targetWorld.getHighestBlockAt(p.getLocation().getBlockX(), p.getLocation().getBlockZ()).getLocation().add(0, 50, 0);
+            Location l = targetWorld.getHighestBlockAt(p.getLocation().getBlockX(), p.getLocation().getBlockZ()).getLocation().add(0, Celspace.rocketEntryYDistanceToGround, 0);
             m.eject();
             m.teleport(l);
             p.teleport(l);
@@ -101,7 +102,7 @@ public class RocketAnim {
             p.sendMessage("Loading Ressource Pack for 'Earth'. Some features will only work if you are using Optifine!");
             Load.loadResourceoack(p, DimChanger.TargetDimension.OVERWORLD);
             targetWorld = Bukkit.getWorld(wn);
-            Location l = targetWorld.getHighestBlockAt(p.getLocation().getBlockX(), p.getLocation().getBlockZ()).getLocation().add(0, 50, 0);
+            Location l = targetWorld.getHighestBlockAt(p.getLocation().getBlockX(), p.getLocation().getBlockZ()).getLocation().add(0, Celspace.rocketEntryYDistanceToGround, 0);
             m.eject();
             m.teleport(l);
             p.teleport(l);
@@ -130,7 +131,7 @@ public class RocketAnim {
             p.sendMessage("Loading Ressource Pack for 'Moon'. Some features will only work if you are using Optifine!");
             Load.loadResourceoack(p, DimChanger.TargetDimension.MOON);
             targetWorld = Bukkit.getWorld(wn);
-            Location l = targetWorld.getHighestBlockAt(p.getLocation().getBlockX(), p.getLocation().getBlockZ()).getLocation().add(0, 50, 0);
+            Location l = targetWorld.getHighestBlockAt(p.getLocation().getBlockX(), p.getLocation().getBlockZ()).getLocation().add(0, Celspace.rocketEntryYDistanceToGround, 0);
             m.eject();
             m.teleport(l);
             p.teleport(l);
@@ -159,7 +160,7 @@ public class RocketAnim {
             p.sendMessage("Loading Ressource Pack for 'Mercuy'. Some features will only work if you are using Optifine!");
             Load.loadResourceoack(p, DimChanger.TargetDimension.MERKUR);
             targetWorld = Bukkit.getWorld(wn);
-            Location l = targetWorld.getHighestBlockAt(p.getLocation().getBlockX(), p.getLocation().getBlockZ()).getLocation().add(0, 50, 0);
+            Location l = targetWorld.getHighestBlockAt(p.getLocation().getBlockX(), p.getLocation().getBlockZ()).getLocation().add(0, Celspace.rocketEntryYDistanceToGround, 0);
             m.eject();
             m.teleport(l);
             p.teleport(l);
@@ -187,7 +188,7 @@ public class RocketAnim {
             p.sendMessage("Loading Ressource Pack for 'Venus'. Some features will only work if you are using Optifine!");
             Load.loadResourceoack(p, DimChanger.TargetDimension.VENUS);
             targetWorld = Bukkit.getWorld(wn);
-            Location l = targetWorld.getHighestBlockAt(p.getLocation().getBlockX(), p.getLocation().getBlockZ()).getLocation().add(0, 50, 0);
+            Location l = targetWorld.getHighestBlockAt(p.getLocation().getBlockX(), p.getLocation().getBlockZ()).getLocation().add(0, Celspace.rocketEntryYDistanceToGround, 0);
             m.eject();
             m.teleport(l);
             p.teleport(l);
