@@ -17,6 +17,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/*
+Needs testing
+ */
+
 public class Weater  implements Listener {
 
     static List<String> nwwl = new ArrayList<>();
