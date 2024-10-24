@@ -21,6 +21,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import packs.RpConnected;
 import sec.RenameListener;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +30,7 @@ public final class Main extends JavaPlugin implements Listener {
     private static final List<String> blockedWorlds = new ArrayList<>();
     @Override
     public void onEnable() {
+
 
         double now = System.currentTimeMillis();
 
