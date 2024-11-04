@@ -16,7 +16,7 @@ import java.util.*;
 public class celutis
 {
 	
-	//v0.6 MC CelSpace
+	//v0.7 MC CelSpace
 	
     public static int randomrange(final int min, final int max) {
         if (min >= max) {

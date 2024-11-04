@@ -15,21 +15,30 @@ public class RpConnected implements Listener {
     public void event(final PlayerLoginEvent e) {
 
         Player p = e.getPlayer();
-        String wn = p.getWorld().getName();
         new BukkitRunnable() {
             @Override
             public void run() {
+
+                String wn = p.getWorld().getName();
+
+                p.sendMessage("Loading rp for world " + wn);
+
                 switch (wn) {
                     case "moon":
                         Load.loadResourceoack(p, DimChanger.TargetDimension.MOON);
+                        break;
                     case "mercury":
                         Load.loadResourceoack(p, DimChanger.TargetDimension.MERKUR);
+                        break;
                     case "venus":
                         Load.loadResourceoack(p, DimChanger.TargetDimension.VENUS);
+                        break;
                     case "mars":
                         Load.loadResourceoack(p, DimChanger.TargetDimension.MARS);
+                        break;
                     default:
                         Load.loadResourceoack(p, DimChanger.TargetDimension.OVERWORLD);
+                        break;
                 }
 
             }

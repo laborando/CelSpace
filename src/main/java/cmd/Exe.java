@@ -36,12 +36,8 @@ public class Exe implements CommandExecutor {
                 sender.sendMessage(ChatColor.RED + "This command can only be executed as a player!");
                 return false;
             }
-            if(!(sender.isOp())){
-                sender.sendMessage(ChatColor.RED + "You don't have the permission to execute this command!");
-                return false;
-            }
-
-            p.setResourcePack("t");//p.setResourcePack("https://github.com/laborando/laborando/blob/main/public/mc/space/rp/mars.zip?raw=true");
+            p.sendMessage("Clearing Server-set Resource Pack...");
+            p.setResourcePack("");//p.setResourcePack("https://github.com/laborando/laborando/blob/main/public/mc/space/rp/mars.zip?raw=true");
 
         }else if (label.equalsIgnoreCase("unload")) {
 
@@ -67,6 +63,7 @@ public class Exe implements CommandExecutor {
             if(arg.equalsIgnoreCase("")){
                 sender.sendMessage(ChatColor.BLUE + "Celspace v." + Celspace.version + ChatColor.GOLD + " by cel20");
                 sender.sendMessage(ChatColor.YELLOW + "No subcommand! For help execute /celspace help");
+                return false;
             }
 
             if (arg.equalsIgnoreCase("help")) {
@@ -78,7 +75,7 @@ public class Exe implements CommandExecutor {
                 sender.sendMessage(ChatColor.YELLOW + "   --> goto    | lets you change between planets");
                 sender.sendMessage(ChatColor.YELLOW + " - clearrp     | Clears the resource pack set by this plugin");
                 sender.sendMessage(ChatColor.YELLOW + " - autoRp      | Automatically assigns you the right rp");
-
+                return false;
             }
 
 
@@ -106,6 +103,9 @@ public class Exe implements CommandExecutor {
                 sender.sendMessage(ChatColor.RED + "This command can only be executed as a player!");
                 return false;
             }
+
+            //Ab hier: nur noch commands, die nur für players sind
+
             if (arg.equalsIgnoreCase("goto")) {
 
                 if (arg2.equalsIgnoreCase("mars")) {

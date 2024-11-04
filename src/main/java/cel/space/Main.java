@@ -18,6 +18,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import packs.Load;
 import packs.RpConnected;
 import sec.RenameListener;
 
@@ -34,7 +35,7 @@ public final class Main extends JavaPlugin implements Listener {
 
         double now = System.currentTimeMillis();
 
-        Bukkit.getLogger().info("Starting CelSpace v." + Celspace.version + " ...");
+        Bukkit.getLogger().info("Starting CelSpace v." + Celspace.version + " using Texture Packs of Version " + Load.rpVer + " ...");
 
         instance = this;
 
@@ -51,6 +52,7 @@ public final class Main extends JavaPlugin implements Listener {
         config.addDefault("DisableReconnectResourcePackEnforce", false);
         config.addDefault("LoadRPDelayAfterJoin", 2);
         config.addDefault("enableFalseWeather", false);
+        config.addDefault("enableThermoDamage", false);
         config.addDefault("AllowPortables", false);
         config.addDefault("rocketEntryYDistanceToGround", 50);
         config.addDefault("rocketParticlesYDistanceFromMinecartEntitiy", 1.5);
@@ -93,6 +95,12 @@ public final class Main extends JavaPlugin implements Listener {
             this.getServer().getPluginManager().registerEvents(new RpConnected(), this);
         }
 
+        if (config.getBoolean("enableThermoDamage")) {
+
+            surv.Thermo.startThermoHandler(this);
+
+        }
+
         //enableFalseWeather
         if(config.getBoolean("enableFalseWeather")) {
             Weater.innitGravity();
@@ -120,19 +128,15 @@ public final class Main extends JavaPlugin implements Listener {
         }
 
         //AllowPortables
-        if(config.getBoolean("SpaceArmorCrafting")) {
+        if(config.getBoolean("AllowPortables")) {
             AddRecipes.addRecipe3(getInstance());
         }
 
         DimRestartSaver.loadData(this.getDataFolder() + "/dimensionPlayerData");
 
-
-
-
-
         //Ende
         double startTime = System.currentTimeMillis() - now;
-        Bukkit.getLogger().info("Started in: " + startTime + "ms!");
+        Bukkit.getLogger().info("[Celspace] Started in: " + startTime + "ms!");
     }
 
     @Override
@@ -162,8 +166,6 @@ public final class Main extends JavaPlugin implements Listener {
                 }
             }
         }catch (NullPointerException ignored){}
-
-
 
     }
 

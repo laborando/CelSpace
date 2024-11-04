@@ -54,7 +54,7 @@ public class Thermo {
                     }else{
 
                         player.damage(1);
-                        player.sendTitle("", ChatColor.RED + "You don't have any thermically protective gear!", 3, 20, 3);
+                        player.sendTitle("", ChatColor.RED + "You don't have any protective gear against these harsh temperatures!", 3, 20, 3);
                     }
                     }
                 }

@@ -5,25 +5,32 @@ import org.bukkit.entity.Player;
 
 public class Load {
 
+    public static String rpVer = "v0.2";
+
     public static void loadResourceoack(Player p, DimChanger.TargetDimension td){
 
-        p.sendMessage("Changing texturepacket...");
+
 
         if(td.equals(DimChanger.TargetDimension.OVERWORLD)){
-            //5431893
-            p.setResourcePack("https://mediafilez.forgecdn.net/files/5431/893/Earth.zip");
+            p.sendMessage("Changing texturepacket to " + td.name());
+            //v0.2
+            p.setResourcePack("https://mediafilez.forgecdn.net/files/5756/153/earth.zip");
         }else if(td.equals(DimChanger.TargetDimension.MARS)){
-            //5431893
-            p.setResourcePack("https://mediafilez.forgecdn.net/files/5431/893/Earth.zip");
+            p.sendMessage("Changing texturepacket to " + td.name());
+            //v0.2
+            p.setResourcePack("https://mediafilez.forgecdn.net/files/5756/162/mars.zip");
         }else if(td.equals(DimChanger.TargetDimension.MERKUR)){
-            //5431893
-            p.setResourcePack("https://mediafilez.forgecdn.net/files/5431/893/Earth.zip");
+            p.sendMessage("Changing texturepacket to " + td.name());
+            //v0.2
+            p.setResourcePack("https://mediafilez.forgecdn.net/files/5756/176/mercury.zip");
         }else if(td.equals(DimChanger.TargetDimension.MOON)){
-            //5431893
-            p.setResourcePack("https://mediafilez.forgecdn.net/files/5431/893/Earth.zip");
+            p.sendMessage("Changing texturepacket to " + td.name());
+            //v0.2
+            p.setResourcePack("https://mediafilez.forgecdn.net/files/5756/179/moon.zip");
         }else if(td.equals(DimChanger.TargetDimension.VENUS)){
-            //5431893
-            p.setResourcePack("https://mediafilez.forgecdn.net/files/5431/893/Earth.zip");
+            p.sendMessage("Changing texturepacket to " + td.name());
+            //v0.2
+            p.setResourcePack("https://mediafilez.forgecdn.net/files/5756/184/venus.zip");
         }
 
     }
