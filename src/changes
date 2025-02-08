@@ -3,11 +3,12 @@ Disable non finished Targets and make them red
 CIT for rocket not working when not named by hand
 
 not so important TODO:
-Weather blocking needs testing
 
 Class DimChanger must be changed to use non static rp change
 
 Changes:
+
+
 
 Plugin:
 

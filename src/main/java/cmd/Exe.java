@@ -7,6 +7,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import player.Gimme;
 
 public class Exe implements CommandExecutor {
 
@@ -102,6 +103,10 @@ public class Exe implements CommandExecutor {
             if (!(sender instanceof Player p)) {
                 sender.sendMessage(ChatColor.RED + "This command can only be executed as a player!");
                 return false;
+            }
+
+            if(arg.equalsIgnoreCase("items")){
+                Gimme.gimmeThatSpaceStuff((Player) sender);
             }
 
             //Ab hier: nur noch commands, die nur für players sind

@@ -22,7 +22,6 @@ import packs.Load;
 import packs.RpConnected;
 import sec.RenameListener;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -102,8 +101,8 @@ public final class Main extends JavaPlugin implements Listener {
         }
 
         //enableFalseWeather
-        if(config.getBoolean("enableFalseWeather")) {
-            Weater.innitGravity();
+        if(!config.getBoolean("enableFalseWeather")) {
+            Weater.innitWeather();
             this.getServer().getPluginManager().registerEvents(new Weater(), this);
         }
 

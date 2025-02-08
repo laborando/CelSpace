@@ -55,13 +55,14 @@ public class Air {
                     if((t.equals(Material.DIAMOND_HELMET) && im.getDisplayName().equals(ChatColor.RED + "Space Helmet")) || ((player.getGameMode()== GameMode.CREATIVE) ||(player.getGameMode()==GameMode.SPECTATOR))) {
                     }else{
 
-
                         final ItemStack itemStack = new ItemStack(Material.DIAMOND, 1);
                         final ItemMeta itemMeta = itemStack.getItemMeta();
+                        assert itemMeta != null;
                         itemMeta.setDisplayName(ChatColor.RED + "Portable Air Provider");
                         itemStack.setItemMeta(itemMeta);
 
-                        if(!player.getInventory().contains(itemStack)){
+
+                        if(!player.getInventory().containsAtLeast(itemStack, 1)){
                             player.damage(1);
                             player.sendTitle("", ChatColor.RED + "No oxygen", 3, 20, 3);
                         }

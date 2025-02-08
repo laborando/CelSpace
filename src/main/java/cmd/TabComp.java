@@ -5,6 +5,7 @@ import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
+import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,15 @@ public class TabComp implements TabCompleter {
             completions.add("goto");
             completions.add("clearRp");
             completions.add("help");
+
+            if(sender.isOp()){
+
+                if (sender instanceof Player){
+                    completions.add("items");
+                }
+
+            }
+
             return completions;
         }else if (command.getName().equalsIgnoreCase("unload") && args.length == 1) {
             final List<String> completions = new ArrayList<String>();

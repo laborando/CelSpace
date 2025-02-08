@@ -98,7 +98,7 @@ public class DimChanger {
 
             //RESOURCE PACK
 
-            p.sendMessage("Loading Ressource Pack for 'Mars'. Some features will only work if you are using Optifine!");;
+            p.sendMessage("Loading Ressource Pack for 'Moon'. Some features will only work if you are using Optifine!");;
             Load.loadResourceoack(p, TargetDimension.MOON);
 
         }else if(t == TargetDimension.MERKUR){
