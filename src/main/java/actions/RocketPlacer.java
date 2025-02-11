@@ -2,6 +2,7 @@ package actions;
 
 import net.md_5.bungee.api.chat.ClickEvent;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -50,7 +51,9 @@ public class RocketPlacer implements Listener {
             if(!(p.getInventory().contains(itemStack) && p.getInventory().getItemInMainHand().equals(itemStack))){
                 if((p.getInventory().contains(i)  && p.getInventory().getItemInMainHand().equals(i))) {
                     try {
-                        p.getInventory().removeItem(i);
+
+                        if(!(p.getGameMode() == GameMode.CREATIVE))
+                            p.getInventory().removeItem(i);
 
                         Location spawnLocation = e.getClickedBlock().getLocation().add(0, 1, 0);
 
@@ -67,7 +70,8 @@ public class RocketPlacer implements Listener {
             }
 
             try {
-                p.getInventory().removeItem(itemStack);
+                if(!(p.getGameMode() == GameMode.CREATIVE))
+                    p.getInventory().removeItem(itemStack);
 
                 Location spawnLocation = e.getClickedBlock().getLocation().add(0, 1, 0);
 

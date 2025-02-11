@@ -15,6 +15,10 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class DestinyChooser implements Listener {
 
     public static void chooseDest(Player p) {
@@ -24,15 +28,24 @@ public class DestinyChooser implements Listener {
             return;
         }
 
-        final Inventory gui = Bukkit.createInventory(null, 27, new StringBuilder().append(ChatColor.BOLD).append(ChatColor.GOLD).append("Please choose your destiny").toString());
+        final Inventory gui = Bukkit.createInventory(null, 36, new StringBuilder().append(ChatColor.BOLD).append(ChatColor.GOLD).append("Please choose your destiny").toString());
 
         final ItemStack Empty = new ItemStack(Material.LIGHT_GRAY_STAINED_GLASS_PANE, 1);
         final ItemMeta Emptym = Empty.getItemMeta();
         Emptym.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("This will be filled in the Future").toString());
         Emptym.addEnchant(Enchantment.SILK_TOUCH, 1, true);
-        Emptym.addItemFlags(new ItemFlag[]{ItemFlag.HIDE_ENCHANTS});
+        Emptym.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         Empty.setItemMeta(Emptym);
         for (int zae = 0; zae < 27; zae++) {
+            gui.setItem(zae, Empty);
+        }
+
+        Emptym.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("").toString());
+        Emptym.addEnchant(Enchantment.SILK_TOUCH, 1, true);
+        Emptym.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        Empty.setItemMeta(Emptym);
+
+        for (int zae = 27; zae < 36; zae++) {
             gui.setItem(zae, Empty);
         }
 
@@ -44,7 +57,7 @@ public class DestinyChooser implements Listener {
         final ItemMeta Mercurym = Mercury.getItemMeta();
         Mercurym.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("Mercury").toString());
         Mercurym.addEnchant(Enchantment.SILK_TOUCH, 1, true);
-        Mercurym.addItemFlags(new ItemFlag[]{ItemFlag.HIDE_ENCHANTS});
+        Mercurym.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         Mercury.setItemMeta(Mercurym);
         gui.setItem(0, Mercury);
 
@@ -53,7 +66,7 @@ public class DestinyChooser implements Listener {
         final ItemMeta Venusm = Venus.getItemMeta();
         Venusm.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("Venus").toString());
         Venusm.addEnchant(Enchantment.SILK_TOUCH, 1, true);
-        Venusm.addItemFlags(new ItemFlag[]{ItemFlag.HIDE_ENCHANTS});
+        Venusm.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         Venus.setItemMeta(Venusm);
         gui.setItem(1, Venus);
 
@@ -62,7 +75,7 @@ public class DestinyChooser implements Listener {
         final ItemMeta Earthm = Earth.getItemMeta();
         Earthm.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("Earth").toString());
         Earthm.addEnchant(Enchantment.SILK_TOUCH, 1, true);
-        Earthm.addItemFlags(new ItemFlag[]{ItemFlag.HIDE_ENCHANTS});
+        Earthm.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         Earth.setItemMeta(Earthm);
         gui.setItem(2, Earth);
 
@@ -71,7 +84,7 @@ public class DestinyChooser implements Listener {
         final ItemMeta Marsm = Mars.getItemMeta();
         Marsm.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("Mars").toString());
         Marsm.addEnchant(Enchantment.SILK_TOUCH, 1, true);
-        Marsm.addItemFlags(new ItemFlag[]{ItemFlag.HIDE_ENCHANTS});
+        Marsm.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         Mars.setItemMeta(Marsm);
         gui.setItem(3, Mars);
 
@@ -79,35 +92,39 @@ public class DestinyChooser implements Listener {
         final ItemStack Jupiter = new ItemStack(Material.ENDER_EYE, 1);
         final ItemMeta Jupiterm = Jupiter.getItemMeta();
         Jupiterm.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("Jupiter | Not viable").toString());
+        Jupiterm.setLore(new ArrayList<String>(Arrays.asList("Is a gas giant!")));
         Jupiterm.addEnchant(Enchantment.SILK_TOUCH, 1, true);
-        Jupiterm.addItemFlags(new ItemFlag[]{ItemFlag.HIDE_ENCHANTS});
+        Jupiterm.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         Jupiter.setItemMeta(Jupiterm);
         gui.setItem(4, Jupiter);
 
         //Saturn
         final ItemStack Saturn = new ItemStack(Material.ENDER_EYE, 1);
         final ItemMeta Saturnm = Saturn.getItemMeta();
-        Saturnm.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("Saturn | Not available in Alpha").toString());
+        Saturnm.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("Saturn | Not viable").toString());
+        Saturnm.setLore(new ArrayList<String>(Arrays.asList("Is a gas giant!")));
         Saturnm.addEnchant(Enchantment.SILK_TOUCH, 1, true);
-        Saturnm.addItemFlags(new ItemFlag[]{ItemFlag.HIDE_ENCHANTS});
+        Saturnm.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         Saturn.setItemMeta(Saturnm);
         gui.setItem(5, Saturn);
 
         //Uranus
         final ItemStack Uranus = new ItemStack(Material.ENDER_EYE, 1);
         final ItemMeta Uranusm = Uranus.getItemMeta();
-        Uranusm.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("Uranus | Not available in Alpha").toString());
+        Uranusm.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("Uranus | Not viable").toString());
+        Uranusm.setLore(new ArrayList<String>(Arrays.asList("Is a gas giant!")));
         Uranusm.addEnchant(Enchantment.SILK_TOUCH, 1, true);
-        Uranusm.addItemFlags(new ItemFlag[]{ItemFlag.HIDE_ENCHANTS});
+        Uranusm.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         Uranus.setItemMeta(Uranusm);
         gui.setItem(6, Uranus);
 
         //Neptune
         final ItemStack Neptune = new ItemStack(Material.ENDER_EYE, 1);
         final ItemMeta Neptunem = Neptune.getItemMeta();
-        Neptunem.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("Neptune | Not available in Alpha").toString());
+        Neptunem.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("Neptune | Not viable").toString());
+        Neptunem.setLore(new ArrayList<String>(Arrays.asList("Is a gas giant!")));
         Neptunem.addEnchant(Enchantment.SILK_TOUCH, 1, true);
-        Neptunem.addItemFlags(new ItemFlag[]{ItemFlag.HIDE_ENCHANTS});
+        Neptunem.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         Neptune.setItemMeta(Neptunem);
         gui.setItem(7, Neptune);
 
@@ -116,7 +133,7 @@ public class DestinyChooser implements Listener {
         final ItemMeta Plutom = Pluto.getItemMeta();
         Plutom.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("Pluto | Not available in Alpha").toString());
         Plutom.addEnchant(Enchantment.SILK_TOUCH, 1, true);
-        Plutom.addItemFlags(new ItemFlag[]{ItemFlag.HIDE_ENCHANTS});
+        Plutom.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         Pluto.setItemMeta(Plutom);
         gui.setItem(8, Pluto);
 
@@ -126,7 +143,7 @@ public class DestinyChooser implements Listener {
         final ItemMeta Moonm = Moon.getItemMeta();
         Moonm.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("Moon").toString());
         Moonm.addEnchant(Enchantment.SILK_TOUCH, 1, true);
-        Moonm.addItemFlags(new ItemFlag[]{ItemFlag.HIDE_ENCHANTS});
+        Moonm.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         Moon.setItemMeta(Moonm);
         gui.setItem(11, Moon);
 
@@ -134,26 +151,44 @@ public class DestinyChooser implements Listener {
         //ZWEITE REIHE ENDE; DRITTE REIHE ORBITS
         final ItemStack EarthOrbit = new ItemStack(Material.ENDER_EYE, 1);
         final ItemMeta EarthOrbitM = Moon.getItemMeta();
-        EarthOrbitM.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("E.'s Orbit | Not available currently").toString());
+        EarthOrbitM.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("Orbit of E. | Not available currently").toString());
         EarthOrbitM.addEnchant(Enchantment.SILK_TOUCH, 1, true);
-        EarthOrbitM.addItemFlags(new ItemFlag[]{ItemFlag.HIDE_ENCHANTS});
+        EarthOrbitM.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         EarthOrbit.setItemMeta(EarthOrbitM);
         gui.setItem(20, EarthOrbit);
+
+        EarthOrbitM.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("Orbit of M. | Not available currently").toString());
+        EarthOrbitM.addEnchant(Enchantment.SILK_TOUCH, 1, true);
+        EarthOrbitM.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        EarthOrbit.setItemMeta(EarthOrbitM);
+        gui.setItem(18, EarthOrbit);
+
+        EarthOrbitM.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("Orbit of V. | Not available currently").toString());
+        EarthOrbitM.addEnchant(Enchantment.SILK_TOUCH, 1, true);
+        EarthOrbitM.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        EarthOrbit.setItemMeta(EarthOrbitM);
+        gui.setItem(19, EarthOrbit);
+
+        EarthOrbitM.setDisplayName(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("Orbit of P. | Not available currently").toString());
+        EarthOrbitM.addEnchant(Enchantment.SILK_TOUCH, 1, true);
+        EarthOrbitM.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        EarthOrbit.setItemMeta(EarthOrbitM);
+        gui.setItem(26, EarthOrbit);
 
 
         //No Moon Information
         final ItemStack noMoon = new ItemStack(Material.RED_STAINED_GLASS_PANE, 1);
         final ItemMeta noMoonm = noMoon.getItemMeta();
-        noMoonm.setDisplayName(new StringBuilder().append(ChatColor.DARK_RED).append(ChatColor.BOLD).append("Mercury does not have a moon").toString());
+        noMoonm.setDisplayName(String.valueOf(ChatColor.DARK_RED) + ChatColor.BOLD + "Mercury does not have a moon");
         noMoonm.addEnchant(Enchantment.SILK_TOUCH, 1, true);
-        noMoonm.addItemFlags(new ItemFlag[]{ItemFlag.HIDE_ENCHANTS});
+        noMoonm.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         noMoon.setItemMeta(noMoonm);
 
         gui.setItem(10, noMoon);
-        noMoonm.setDisplayName(new StringBuilder().append(ChatColor.DARK_RED).append(ChatColor.BOLD).append("Venus does not have a moon").toString());
+        noMoonm.setDisplayName(String.valueOf(ChatColor.DARK_RED) + ChatColor.BOLD + "Venus does not have a moon");
         noMoon.setItemMeta(noMoonm);
         gui.setItem(9, noMoon);
-        noMoonm.setDisplayName(new StringBuilder().append(ChatColor.DARK_RED).append(ChatColor.BOLD).append("Pluto does not have a moon").toString());
+        noMoonm.setDisplayName(String.valueOf(ChatColor.DARK_RED) + ChatColor.BOLD + "Pluto does not have a moon");
         noMoon.setItemMeta(noMoonm);
         gui.setItem(17, noMoon);
 
@@ -229,6 +264,8 @@ public class DestinyChooser implements Listener {
                     RocketAnim.startRocket(p, DimChanger.TargetDimension.MARS);
                 }
             }
+
+            //Not suitable
             if (e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Jupiter")) {
                 e.setCancelled(true);
                 if (p.getWorld().equals(Bukkit.getWorld("jupiter"))) {

@@ -49,28 +49,6 @@ public class Gimme {
         p.getInventory().addItem(itemStack);
     }
 
-    /*
-    *
-    *
-    public static void addRecipe3(final Main pluginint) {
-        final NamespacedKey key = new NamespacedKey((Plugin)pluginint, "celspace_desc_3");
-        Bukkit.removeRecipe(key);
-        AddRecipes.map.put(3, key);
-        final ItemStack itemStack = new ItemStack(Material.DIAMOND, 1);
-        final ItemMeta itemMeta = itemStack.getItemMeta();
-        itemMeta.setDisplayName(ChatColor.RED + "Portable Air Provider");
-        itemStack.setItemMeta(itemMeta);
-        final ShapedRecipe shapedRecipe = new ShapedRecipe(key, itemStack);
-        shapedRecipe.shape(new String[] { "bbb", "b@b", "bcb" });
-        shapedRecipe.setIngredient('@', Material.NETHER_STAR);
-        shapedRecipe.setIngredient('b', Material.DIAMOND);
-        shapedRecipe.setIngredient('c', Material.BUCKET);
 
-        Bukkit.getServer().addRecipe((Recipe)shapedRecipe);
-    }
-}
-
-    *
-    * */
 
 }
