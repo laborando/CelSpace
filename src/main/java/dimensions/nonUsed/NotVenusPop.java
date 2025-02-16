@@ -1,4 +1,4 @@
-package dimensions.venus;
+package dimensions.nonUsed;
 
 import cel.space.celutis;
 import org.bukkit.Bukkit;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class VenusPop extends BlockPopulator {
+public class NotVenusPop extends BlockPopulator {
 
     @Override
     public void populate(World world, Random random, Chunk chunk) {

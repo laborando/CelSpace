@@ -3,6 +3,7 @@ package cel.space;
 import Rocket.DestinyChooser;
 import Rocket.EntryListener;
 import Rocket.RocketSavety;
+import actions.RocketDestroyer;
 import actions.RocketPlacer;
 import cmd.TabComp;
 import cmd.Exe;
@@ -86,7 +87,7 @@ public final class Main extends JavaPlugin implements Listener {
         this.getServer().getPluginManager().registerEvents(new RocketSavety(), this);
         this.getServer().getPluginManager().registerEvents(new DimRestartSaver(), this);
         this.getServer().getPluginManager().registerEvents(new RocketPlacer(), this);
-
+        this.getServer().getPluginManager().registerEvents(new RocketDestroyer(), this);
 
 
         //ConfigReact

@@ -1,8 +1,7 @@
 
-package dimensions.venus;
+package dimensions.nonUsed;
 
 import Libs.FastNoiseLite;
-import cel.space.Main;
 import cel.space.celutis;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -14,19 +13,19 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class VenusGen extends ChunkGenerator {
+public class NotVenusGen extends ChunkGenerator {
     int currentHeight;
 
 
 
-    public VenusGen() {
+    public NotVenusGen() {
         this.currentHeight = 50;
     }
 
     @Override
     public List<BlockPopulator> getDefaultPopulators(World world) {
 
-        return Arrays.asList(new VenusPop());
+        return Arrays.asList(new NotVenusPop());
 
     }
 
@@ -53,8 +52,8 @@ public class VenusGen extends ChunkGenerator {
 
                 currentHeight += currdif;
 
-                float chdiff = ((int) Math.pow(50, -1f * fnl.GetNoise(chunkX * 16 + X, chunkZ * 16 + Z))) / 10f;
-                currentHeight += Math.max(-25, Math.min(25, (int) Math.pow(chdiff, 5) / 5000));
+                currentHeight += (int) Math.pow(100, -1f*fnl.GetNoise(chunkX * 16 + X, chunkZ * 16 + Z));
+
 
                 if (currentHeight > world.getMaxHeight() || currentHeight < 0) {
                     currentHeight = world.getMaxHeight() - 1;

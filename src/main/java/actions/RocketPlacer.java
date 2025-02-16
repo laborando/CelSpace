@@ -28,62 +28,58 @@ public class RocketPlacer implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
     private void event(final PlayerInteractEvent e) {
 
-        if(e.getAction() == Action.RIGHT_CLICK_BLOCK){
+        if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
+
 
             Player p = e.getPlayer();
 
             final ItemStack itemStack = new ItemStack(Material.MINECART, 1);
             final ItemMeta itemMeta = itemStack.getItemMeta();
             assert itemMeta != null;
-            itemMeta.setDisplayName("Rocket");
-            String[] lore = {ChatColor.RED + "- Click on ground to place" , ChatColor.RED + "- Needs Coal as fuel!"};
+            itemMeta.setDisplayName(ChatColor.RED + "Rocket");
+            String[] lore = {ChatColor.RED + "- Click on ground to place", ChatColor.RED + "- Needs Coal as fuel!"};
             itemMeta.setLore(Arrays.asList(lore));
             itemStack.setItemMeta(itemMeta);
 
             final ItemStack i = new ItemStack(Material.MINECART, 1);
             final ItemMeta im = i.getItemMeta();
             assert im != null;
-            im.setDisplayName("Rocket");
+            im.setDisplayName(ChatColor.RED + "Rocket");
             i.setItemMeta(im);
 
 
-
-            if(!(p.getInventory().contains(itemStack) && p.getInventory().getItemInMainHand().equals(itemStack))){
-                if((p.getInventory().contains(i)  && p.getInventory().getItemInMainHand().equals(i))) {
+            if ((p.getInventory().contains(itemStack) && p.getInventory().getItemInMainHand().equals(itemStack))) {
+                try {
+                    placeRocket(itemStack, e, p);
+                } catch (Exception niceException) {
+                    throw new RuntimeException(niceException);
+                }
+            }else if ((p.getInventory().contains(i) && p.getInventory().getItemInMainHand().equals(i))) {
                     try {
-
-                        if(!(p.getGameMode() == GameMode.CREATIVE))
-                            p.getInventory().removeItem(i);
-
-                        Location spawnLocation = e.getClickedBlock().getLocation().add(0, 1, 0);
-
-                        Entity ent = spawnLocation.getWorld().spawnEntity(spawnLocation, EntityType.MINECART);
-
-                        ent.setCustomName("Rocket");
-
-                        e.setCancelled(true);
-
-                    }catch (Exception ignored){}
+                        placeRocket(i, e, p);
+                    } catch (Exception niceException) {
+                        throw new RuntimeException(niceException);
+                    }
                 }
 
-                    return;
             }
 
-            try {
-                if(!(p.getGameMode() == GameMode.CREATIVE))
-                    p.getInventory().removeItem(itemStack);
-
-                Location spawnLocation = e.getClickedBlock().getLocation().add(0, 1, 0);
-
-                Entity ent = spawnLocation.getWorld().spawnEntity(spawnLocation, EntityType.MINECART);
-
-                ent.setCustomName("Rocket");
-
-                e.setCancelled(true);
-
-            }catch (Exception ignored){}
 
         }
 
-    }
+        public static void placeRocket(ItemStack i, PlayerInteractEvent e, Player p){
+            if(!(p.getGameMode() == GameMode.CREATIVE))
+                p.getInventory().removeItem(i);
+
+            Location spawnLocation = e.getClickedBlock().getLocation().add(0, 1, 0);
+
+            Entity ent = spawnLocation.getWorld().spawnEntity(spawnLocation, EntityType.MINECART);
+
+            ent.setCustomNameVisible(false);
+            ent.setCustomName(ChatColor.RED + "Rocket");
+
+            e.setCancelled(true);
+        }
+
+
 }

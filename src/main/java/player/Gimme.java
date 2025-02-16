@@ -17,7 +17,7 @@ public class Gimme {
         ItemStack itemStack = new ItemStack(Material.MINECART, 1);
         ItemMeta itemMeta = itemStack.getItemMeta();
         assert itemMeta != null;
-        itemMeta.setDisplayName("Rocket");
+        itemMeta.setDisplayName(ChatColor.RED + "Rocket");
         String[] lore = {ChatColor.RED + "- Click on ground to place" , ChatColor.RED + "- Needs Coal as fuel!"};
         itemMeta.setLore(Arrays.asList(lore));
         itemStack.setItemMeta(itemMeta);

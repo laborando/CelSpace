@@ -7,6 +7,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.meta.ItemMeta;
 import player.Gimme;
 
 public class Exe implements CommandExecutor {
@@ -139,7 +140,16 @@ public class Exe implements CommandExecutor {
                 p.getWorld().setStorm(false);
                 p.getWorld().setThundering(false);
                 p.sendMessage("Weather should now be clear");
+            }else if (arg.equalsIgnoreCase("ki")) {
+                p.sendMessage("Testing appending itemname");
+                ItemMeta tmpIm = p.getItemInHand().getItemMeta();
+                tmpIm.setDisplayName(p.getItemInHand().getItemMeta().getDisplayName() + "test+");
+                p.getItemInHand().setItemMeta(tmpIm);
+
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "give cel20 minecraft:minecart[ minecraft:custom_name=Rocket]");
+
             }
+
 
         }
 

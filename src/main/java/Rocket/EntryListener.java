@@ -17,7 +17,7 @@ public class EntryListener implements Listener {
 
         //GOTO REQUEST
 
-        if(e.getVehicle().getType().equals(EntityType.MINECART) && e.getVehicle().getName().equals("Rocket")){
+        if(e.getVehicle().getType().equals(EntityType.MINECART) && e.getVehicle().getName().equals(ChatColor.RED + "Rocket")){
 
             if(!(e.getEntered() instanceof Player p)){return;}
 
@@ -32,7 +32,7 @@ public class EntryListener implements Listener {
     @EventHandler(priority = EventPriority.HIGH)
     public void event(final VehicleExitEvent e) {
 
-        if(e.getVehicle().getType().equals(EntityType.MINECART) && e.getVehicle().getName().equals("Rocket")){
+        if(e.getVehicle().getType().equals(EntityType.MINECART) && e.getVehicle().getName().equals(ChatColor.RED + "Rocket")){
 
             if(!(e.getExited() instanceof Player p)){return;}
 

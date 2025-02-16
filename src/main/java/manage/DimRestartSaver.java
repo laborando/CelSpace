@@ -10,7 +10,6 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.event.vehicle.VehicleEnterEvent;
 import org.bukkit.util.io.BukkitObjectInputStream;
 import org.bukkit.util.io.BukkitObjectOutputStream;
 
@@ -124,6 +123,7 @@ public class DimRestartSaver implements Listener {
         }
     }
 
+    @SuppressWarnings("unchecked") //dims = (HashMap<String, String>)in.readObject(); is unsafe, but not important to be checked
     public static void loadData(final String filePath) {
         try {
             final BukkitObjectInputStream in = new BukkitObjectInputStream(new GZIPInputStream(new FileInputStream(filePath)));
