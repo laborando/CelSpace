@@ -1,6 +1,7 @@
 
 package dimensions.solar.mars;
 
+import dimensions.shared.populators.SimpleCavePopulator;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.generator.BlockPopulator;
@@ -24,7 +25,7 @@ public class MarsGen extends ChunkGenerator {
     @Override
     public List<BlockPopulator> getDefaultPopulators(World world) {
 
-        return Arrays.asList(new MarsPop());
+        return Arrays.asList(new MarsPop(), new SimpleCavePopulator());
 
     }
 
