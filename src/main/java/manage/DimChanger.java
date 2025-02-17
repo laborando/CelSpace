@@ -1,10 +1,10 @@
 package manage;
 
-import dimensions.mars.MarsGen;
+import dimensions.solar.mars.MarsGen;
 import cel.space.celutis;
-import dimensions.earth.MoonGen;
-import dimensions.mercury.MercuryGen;
-import dimensions.venus.VenusGen;
+import dimensions.solar.earth.MoonGen;
+import dimensions.solar.mercury.MercuryGen;
+import dimensions.solar.venus.VenusGen;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import packs.Load;

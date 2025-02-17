@@ -1,5 +1,5 @@
 
-package dimensions.mars;
+package dimensions.solar.mars;
 
 import org.bukkit.Material;
 import org.bukkit.World;

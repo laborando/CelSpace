@@ -1,9 +1,9 @@
 package manage;
 
-import dimensions.earth.MoonGen;
-import dimensions.mars.MarsGen;
-import dimensions.mercury.MercuryGen;
-import dimensions.venus.VenusGen;
+import dimensions.solar.earth.MoonGen;
+import dimensions.solar.mars.MarsGen;
+import dimensions.solar.mercury.MercuryGen;
+import dimensions.solar.venus.VenusGen;
 import org.bukkit.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;

@@ -24,9 +24,7 @@ public class NotVenusGen extends ChunkGenerator {
 
     @Override
     public List<BlockPopulator> getDefaultPopulators(World world) {
-
         return Arrays.asList(new NotVenusPop());
-
     }
 
 

@@ -1,8 +1,7 @@
 
-package dimensions.venus;
+package dimensions.solar.venus;
 
 import Libs.FastNoiseLite;
-import cel.space.Main;
 import cel.space.celutis;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -53,15 +52,23 @@ public class VenusGen extends ChunkGenerator {
 
                 currentHeight += currdif;
 
+                if(celutis.randomrange(0,3) == 0){
+                    currentHeight -= 1;
+                }
+
+                /*
                 float chdiff = ((int) Math.pow(50, -1f * fnl.GetNoise(chunkX * 16 + X, chunkZ * 16 + Z))) / 10f;
                 currentHeight += Math.max(-25, Math.min(25, (int) Math.pow(chdiff, 5) / 5000));
 
                 if (currentHeight > world.getMaxHeight() || currentHeight < 0) {
                     currentHeight = world.getMaxHeight() - 1;
                 }
+                */
 
-                if(celutis.randomrange(0, 7) == 0){
+                if(celutis.randomrange(0, 3) == 0){
                     chunk.setBlock(X, currentHeight, Z, Material.COBBLESTONE);
+                }else if(celutis.randomrange(0, 9) < 3) {
+                    chunk.setBlock(X, currentHeight, Z, Material.BASALT);
                 }else{
                     chunk.setBlock(X, currentHeight, Z, Material.STONE);
                 }

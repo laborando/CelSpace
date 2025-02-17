@@ -1,6 +1,7 @@
 
-package dimensions.mercury;
+package dimensions.solar.earth;
 
+import cel.space.celutis;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.generator.BlockPopulator;
@@ -11,20 +12,17 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import static cel.space.celutis.randomrange;
-import static cel.space.celutis.randomrangeSecure;
-
-public class MercuryGen extends ChunkGenerator {
+public class MoonGen extends ChunkGenerator {
     int currentHeight;
 
-    public MercuryGen() {
+    public MoonGen() {
         this.currentHeight = 50;
     }
 
     @Override
     public List<BlockPopulator> getDefaultPopulators(World world) {
 
-        return Arrays.asList(new MercuryPop());
+        return Arrays.asList(new MoonPop());
 
     }
 
@@ -34,29 +32,30 @@ public class MercuryGen extends ChunkGenerator {
         final SimplexOctaveGenerator gen2 = new SimplexOctaveGenerator(new Random(world.getSeed() * -1), 8);
         final ChunkData chunk = this.createChunkData(world);
 
-        int[][] currH = new int[16][16];
-
         generator.setScale(0.0015);
         for (int X = 0; X < 16; ++X) {
             for (int Z = 0; Z < 16; ++Z) {
                 this.currentHeight = (int) (generator.noise(chunkX * 16 + X, chunkZ * 16 + Z, 0.1, 0.1) * 7.0 + 50.0);
 
-                currH[X][Z] = currentHeight;
 
                 if (currentHeight > world.getMaxHeight() || currentHeight < 0) {
                     currentHeight = world.getMaxHeight() - 1;
                 }
 
-                chunk.setBlock(X, currentHeight, Z, Material.STONE);
+                if(celutis.randomrange(0,3) == 0){
+                    currentHeight -= 1;
+                }
+
+                chunk.setBlock(X, currentHeight, Z, Material.END_STONE);
 
                 //Oberster Layer
-                chunk.setBlock(X, this.currentHeight - 1, Z, Material.STONE);
+                chunk.setBlock(X, this.currentHeight - 1, Z, Material.END_STONE);
 
 
                 //STONE & ORES
                 for (int i = this.currentHeight - 2; i > world.getMinHeight()+1; --i) {
 
-                    chunk.setBlock(X, i, Z, Material.STONE);
+                    chunk.setBlock(X, i, Z, Material.END_STONE);
 
                 }
 
@@ -66,33 +65,6 @@ public class MercuryGen extends ChunkGenerator {
             }
         }
 
-        
-//ERZE
-        for (int i = 0; i < 50; i++) {
-            int x = randomrange(0, 15);
-            int z = randomrange(0, 15);
-            int th = currH[x][z];
-            chunk.setBlock(x , randomrangeSecure(1, th-3, 1), z, Material.IRON_ORE);
-        }
-        for (int i = 0; i < 7; i++) {
-            int x = randomrange(0, 15);
-            int z = randomrange(0, 15);
-            int th = currH[x][z];
-            chunk.setBlock(x , randomrangeSecure(1, th-10, 1), z, Material.GOLD_ORE);
-        }
-        for (int i = 0; i < 1; i++) {
-            int x = randomrange(0, 15);
-            int z = randomrange(0, 15);
-            int th = currH[x][z];
-            chunk.setBlock(x , randomrangeSecure(1, th-20, 1), z, Material.DIAMOND_ORE);
-        }
-        for (int i = 0; i < 30; i++) {
-            int x = randomrange(0, 15);
-            int z = randomrange(0, 15);
-            int th = currH[x][z];
-            chunk.setBlock(x , randomrangeSecure(1, th-20, 1), z, Material.COAL_ORE);
-        }
-        //ENDE ERZE
 
         return chunk;
     }

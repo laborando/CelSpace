@@ -1,12 +1,12 @@
 package Rocket;
 
 import cel.space.Celspace;
-import dimensions.mars.MarsGen;
+import dimensions.solar.mars.MarsGen;
 import cel.space.Main;
 import cel.space.celutis;
-import dimensions.earth.MoonGen;
-import dimensions.mercury.MercuryGen;
-import dimensions.venus.VenusGen;
+import dimensions.solar.earth.MoonGen;
+import dimensions.solar.mercury.MercuryGen;
+import dimensions.solar.venus.VenusGen;
 import manage.DimChanger;
 import org.bukkit.*;
 import org.bukkit.entity.Minecart;
@@ -16,10 +16,12 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 import packs.Load;
 
-import javax.print.DocFlavor;
-
 public class RocketAnim {
 
+    //        ___ Kritisch für mehrere Spieler :O
+    //      /
+     //     |
+     //     \/
     static int durch = 0;
 
     public static void startRocket(Player p, DimChanger.TargetDimension td){
@@ -47,7 +49,7 @@ public class RocketAnim {
                 m.setVelocity(m.getVelocity().add(new Vector(0, 0.5, 0)));
 
                 durch++;
-                if(durch == 40){
+                if(durch > 40){
 
                     executeDimChange(m, p, td);
 

@@ -1,4 +1,4 @@
-package dimensions.venus;
+package dimensions.solar.earth;
 
 import cel.space.celutis;
 import org.bukkit.Bukkit;
@@ -12,12 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class VenusPop extends BlockPopulator {
+public class MoonPop extends BlockPopulator {
 
     @Override
     public void populate(World world, Random random, Chunk chunk) {
 
-        try{
         int amount = random.nextInt(5) + 1;
         for (int i = 1; i < amount; i++) {
             int X = random.nextInt(15);
@@ -27,8 +26,8 @@ public class VenusPop extends BlockPopulator {
                 if ((Y + 2) > 320) {
                     break;
                 }
-                if (chunk.getBlock(X, Y, Z).getType() == Material.RED_SANDSTONE) {
-                    chunk.getBlock(X, Y + 1, Z).setType(Material.RED_SANDSTONE);
+                if (chunk.getBlock(X, Y, Z).getType() == Material.END_STONE) {
+                    chunk.getBlock(X, Y + 1, Z).setType(Material.END_STONE);
 
                     break;
                 }
@@ -44,10 +43,10 @@ public class VenusPop extends BlockPopulator {
                     if ((Y + 2) > 320) {
                         break;
                     }
-                    if (chunk.getBlock(X, Y, Z).getType() == Material.STONE) {
+                    if (chunk.getBlock(X, Y, Z).getType() == Material.END_STONE) {
 
-                        chunk.getBlock(X, Y + 1, Z).setType(Material.STONE);
-                        chunk.getBlock(X, Y + 2, Z).setType(Material.STONE);
+                        chunk.getBlock(X, Y + 1, Z).setType(Material.END_STONE);
+                        chunk.getBlock(X, Y + 2, Z).setType(Material.END_STONE);
 
                         break;
                     }
@@ -62,16 +61,16 @@ public class VenusPop extends BlockPopulator {
 
         for (int y = world.getMaxHeight() - 1; y > 0; y--) {
 
-            if (chunk.getBlock(8, y, 8).getType() == Material.STONE) {
+            if (chunk.getBlock(8, y, 8).getType() == Material.END_STONE) {
                 finY = y;
                 break;
             }
         }
 
-        if (celutis.randomrange(0, 20) == 1) {
+        if (celutis.randomrange(0, 15) == 1) {
 
 
-            int sphereRad = celutis.randomrange(4, 7);
+            int sphereRad = celutis.randomrange(1, 7);
 
             int lx = 8;
             int ly = finY;
@@ -89,9 +88,10 @@ public class VenusPop extends BlockPopulator {
             }
 
 
-        } else if (celutis.randomrange(0, 20) == 1) {
+
+        } else if (celutis.randomrange(0, 15) == 1) {
             {
-                int sphereRad = celutis.randomrange(4, 7);
+                int sphereRad = celutis.randomrange(1, 7);
 
                 int lx = 8;
                 int ly = finY;
@@ -102,7 +102,7 @@ public class VenusPop extends BlockPopulator {
                         for (int z = lz - sphereRad; z <= lz + sphereRad; z++) {
 
                             if (Math.pow(x - lx, 2) + Math.pow(y - ly, 2) + Math.pow(z - lz, 2) <= Math.pow(sphereRad, 2)) {
-                                chunk.getBlock(x, y, z).setType(Material.STONE);
+                                chunk.getBlock(x, y, z).setType(Material.END_STONE);
                             }
                         }
                     }
@@ -116,15 +116,15 @@ public class VenusPop extends BlockPopulator {
 
         //---------------------------EINSCHLÄGE ENDE----------------------------------
 
-        //EIS
-        if (celutis.randomrange(0, 20) == 1) {
+       //EIS
+        if(celutis.randomrange(0, 4) == 1){
 
             int lx = 8;
             int lz = 8;
             int ly = 200;
             try {
-                ly = (celutis.getHighestNonAirBlockLocation(Bukkit.getWorld("venus"), chunk.getX() * 8 + lx, chunk.getZ() * 8 + lz).getBlockY()) / 2;
-            } catch (NullPointerException ignored) {
+                ly = (celutis.getHighestNonAirBlockLocation(Bukkit.getWorld("moon"), chunk.getX() * 8 + lx, chunk.getZ() * 8 + lz).getBlockY()) / 2;
+            }catch (NullPointerException ignored){
             }
             lx += celutis.randomrange(-7, 7);
             ly += celutis.randomrange(-7, 7);
@@ -143,20 +143,20 @@ public class VenusPop extends BlockPopulator {
             for (TripleInt target : targets) {
                 target.enforceRange(0, 15);
 
-                if (!(chunk.getBlock(target.getA(), target.getB(), target.getC()).getType() == Material.BEDROCK)) {
-                    chunk.getBlock(target.getA(), target.getB(), target.getC()).setType(Material.LAVA);
+                if(!(chunk.getBlock(target.getA(), target.getB(), target.getC()).getType()==Material.BEDROCK)){
+                    chunk.getBlock(target.getA(), target.getB(), target.getC()).setType(Material.ICE);
                 }
             }
 
         }
 
 
-        //------------------------EIS ENDE-------------------------
-        //HÖHLEN
 
-    }catch (Exception e){
 
-        }
+    //------------------------EIS ENDE-------------------------
+    //HÖHLEN
+
 }
+
 
 }
