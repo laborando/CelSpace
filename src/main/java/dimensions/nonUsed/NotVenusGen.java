@@ -1,7 +1,7 @@
 
 package dimensions.nonUsed;
 
-import Libs.FastNoiseLite;
+import libs.FastNoiseLite;
 import cel.space.celutis;
 import org.bukkit.Material;
 import org.bukkit.World;

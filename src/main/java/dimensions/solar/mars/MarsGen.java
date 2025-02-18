@@ -18,6 +18,12 @@ import static cel.space.celutis.randomrangeSecure;
 public class MarsGen extends ChunkGenerator {
     int currentHeight;
 
+    boolean innit = false;
+
+    static SimplexOctaveGenerator generator;
+    static SimplexOctaveGenerator gen2;
+    static SimplexOctaveGenerator gen3;
+
     public MarsGen() {
         this.currentHeight = 50;
     }
@@ -31,20 +37,33 @@ public class MarsGen extends ChunkGenerator {
 
 
     public ChunkData generateChunkData(final World world, final Random random, final int chunkX, final int chunkZ, final BiomeGrid biome) {
-        final SimplexOctaveGenerator generator = new SimplexOctaveGenerator(new Random(world.getSeed()), 8);
-        final SimplexOctaveGenerator gen2 = new SimplexOctaveGenerator(new Random(world.getSeed() * -1), 8);
+
         final ChunkData chunk = this.createChunkData(world);
 
-        generator.setScale(0.015);
-        gen2.setScale(0.015);
+        if(!innit){
+
+            generator = new SimplexOctaveGenerator(new Random(world.getSeed()), 8);
+            gen2 = new SimplexOctaveGenerator(new Random(world.getSeed() * -1), 8);
+            gen3 = new SimplexOctaveGenerator(new Random(world.getSeed() * -1), 8);
+
+            generator.setScale(0.015);
+            gen2.setScale(0.015);
+            gen3.setScale(0.015);
+
+            innit = true;
+        }
 
         int[][] currH = new int[16][16];
 
         for (int X = 0; X < 16; ++X) {
             for (int Z = 0; Z < 16; ++Z) {
-                this.currentHeight = (int) (generator.noise(chunkX * 16 + X, chunkZ * 16 + Z, 0.1, 0.2) * 7.0 + 50.0);
+                this.currentHeight = (int) (generator.noise(chunkX * 16 + X, chunkZ * 16 + Z, 0.1, 0.2) * 7.0 + 150.0);
 
                 int currdif = (int) (gen2.noise(chunkX * 16 + X, chunkZ * 16 + Z, 0.1, 0.2) * 7.0);
+
+                currentHeight += currdif;
+
+                currdif = (int) (gen3.noise(chunkX, chunkZ, 0.1, 0.2) * 7.0);
 
                 currentHeight += currdif;
 

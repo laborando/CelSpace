@@ -1,7 +1,7 @@
 
 package dimensions.solar.venus;
 
-import Libs.FastNoiseLite;
+import libs.FastNoiseLite;
 import cel.space.celutis;
 import org.bukkit.Material;
 import org.bukkit.World;

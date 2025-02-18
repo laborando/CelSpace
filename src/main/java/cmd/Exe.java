@@ -1,6 +1,9 @@
 package cmd;
 
 import cel.space.Celspace;
+import cel.space.celutis;
+import dimensions.solar.earth.MoonGen;
+import dimensions.solar.mars.MarsGen;
 import manage.DimChanger;
 import org.bukkit.*;
 import org.bukkit.command.Command;
@@ -147,6 +150,29 @@ public class Exe implements CommandExecutor {
                 p.getItemInHand().setItemMeta(tmpIm);
 
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "give cel20 minecraft:minecart[ minecraft:custom_name=Rocket]");
+
+            }else if (arg.equalsIgnoreCase("tw")) {
+
+                final String wn = System.currentTimeMillis() + "";
+                if (!celutis.doesWorldExist(wn)) {
+                    p.sendMessage(ChatColor.RED + "Generation of Test World started...");
+                    final WorldCreator worldCreator = new WorldCreator(wn);
+                    worldCreator.generator(new MarsGen());
+                    worldCreator.seed(Bukkit.getWorld("world").getSeed());
+                    Bukkit.createWorld(worldCreator);
+                }
+                World targetWorld = Bukkit.getWorld(wn);
+                if(targetWorld == null){
+
+                    final WorldCreator worldCreator2 = new WorldCreator(wn);
+                    worldCreator2.generator(new MarsGen());
+                    worldCreator2.seed(Bukkit.getWorld("world").getSeed());
+                    Bukkit.createWorld(worldCreator2);
+
+                }
+                targetWorld = Bukkit.getWorld(wn);
+                Location l = targetWorld.getHighestBlockAt(p.getLocation().getBlockX(), p.getLocation().getBlockZ()).getLocation();
+                p.teleport(l);
 
             }
 
