@@ -31,7 +31,7 @@ public class MarsGen extends ChunkGenerator {
     @Override
     public List<BlockPopulator> getDefaultPopulators(World world) {
 
-        return Arrays.asList(new MarsPop(), new SimpleCavePopulator());
+        return Arrays.asList(new MarsTerrainPop(), new SimpleCavePopulator());
 
     }
 

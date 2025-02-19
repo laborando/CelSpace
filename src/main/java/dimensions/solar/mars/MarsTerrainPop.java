@@ -10,7 +10,7 @@ import java.util.Random;
 
 import static cel.space.celutis.randomrange;
 
-public class MarsPop extends BlockPopulator {
+public class MarsTerrainPop extends BlockPopulator {
 
     @Override
     public void populate(World world, Random random, Chunk chunk) {

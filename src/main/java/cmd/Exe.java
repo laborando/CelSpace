@@ -2,7 +2,6 @@ package cmd;
 
 import cel.space.Celspace;
 import cel.space.celutis;
-import dimensions.solar.earth.MoonGen;
 import dimensions.solar.mars.MarsGen;
 import manage.DimChanger;
 import org.bukkit.*;
@@ -117,7 +116,7 @@ public class Exe implements CommandExecutor {
 
             if (arg.equalsIgnoreCase("goto")) {
 
-                if (arg2.equalsIgnoreCase("mars")) {
+                if (arg2.equalsIgnoreCase("source/structure/mars")) {
 
                     DimChanger.sendPlayer(p, DimChanger.TargetDimension.MARS);
 

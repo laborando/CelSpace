@@ -8,8 +8,6 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.HashMap;
@@ -25,7 +23,7 @@ public class Air {
         hasAir.put("world_the_end", true);
         hasAir.put("world_nether", true);
         hasAir.put("moon", false);
-        hasAir.put("mars", false);
+        hasAir.put("source/structure/mars", false);
         hasAir.put("mercury", false);
         hasAir.put("venus", false);
 

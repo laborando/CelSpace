@@ -19,7 +19,7 @@ public class GravityHandler{
         grav.put("world_the_end", 0);
         grav.put("world_nether", 0);
         grav.put("moon", 4);
-        grav.put("mars", 2);
+        grav.put("source/structure/mars", 2);
         grav.put("venus", 0);
         grav.put("mercury", 3);
 

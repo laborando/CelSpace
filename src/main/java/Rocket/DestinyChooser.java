@@ -17,7 +17,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class DestinyChooser implements Listener {
 
@@ -256,7 +255,7 @@ public class DestinyChooser implements Listener {
 
             if (e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Mars")) {
                 e.setCancelled(true);
-                if (p.getWorld().equals(Bukkit.getWorld("mars"))) {
+                if (p.getWorld().equals(Bukkit.getWorld("source/structure/mars"))) {
                     p.sendMessage("You are already on Mars!");
                 } else {
                     p.sendMessage("Going to Mars!");

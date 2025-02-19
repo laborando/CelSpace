@@ -1,13 +1,11 @@
 package dimensions.shared.populators;
 
 
-import cel.space.celutis;
 import libs.FastNoiseLite;
 import org.bukkit.Chunk;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.generator.BlockPopulator;
-import org.bukkit.util.noise.SimplexOctaveGenerator;
 
 import java.util.Random;
 

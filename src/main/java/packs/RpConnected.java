@@ -33,7 +33,7 @@ public class RpConnected implements Listener {
                     case "venus":
                         Load.loadResourceoack(p, DimChanger.TargetDimension.VENUS);
                         break;
-                    case "mars":
+                    case "source/structure/mars":
                         Load.loadResourceoack(p, DimChanger.TargetDimension.MARS);
                         break;
                     default:
@@ -53,7 +53,7 @@ public class RpConnected implements Listener {
                 Load.loadResourceoack(p, DimChanger.TargetDimension.MERKUR);
             case "venus":
                 Load.loadResourceoack(p, DimChanger.TargetDimension.VENUS);
-            case "mars":
+            case "source/structure/mars":
                 Load.loadResourceoack(p, DimChanger.TargetDimension.MARS);
             default:
                 Load.loadResourceoack(p, DimChanger.TargetDimension.OVERWORLD);

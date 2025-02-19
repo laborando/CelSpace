@@ -23,7 +23,7 @@ public class Thermo {
         hasAir.put("world_the_end", true);
         hasAir.put("world_nether", true);
         hasAir.put("moon", false);
-        hasAir.put("mars", false);
+        hasAir.put("source/structure/mars", false);
         hasAir.put("mercury", false);
         hasAir.put("venus", false);
 
