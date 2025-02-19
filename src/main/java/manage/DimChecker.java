@@ -15,7 +15,7 @@ public class DimChecker implements Listener {
 
         List<String> blockedWorlds = new ArrayList<>();
 
-        blockedWorlds.add("source/structure/mars");
+        blockedWorlds.add("mars");
         blockedWorlds.add("moon");
         blockedWorlds.add("mercury");
         blockedWorlds.add("venus");

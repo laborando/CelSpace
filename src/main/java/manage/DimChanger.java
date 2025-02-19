@@ -34,7 +34,7 @@ public class DimChanger {
     public static void sendPlayer(Player p, TargetDimension t){
         if(t == TargetDimension.MARS){
 
-            final String wn = "source/structure/mars";
+            final String wn = "mars";
             if (!celutis.doesWorldExist(wn)) {
                 p.sendMessage(ChatColor.RED + "Generation of Mars started...");
                 final WorldCreator worldCreator = new WorldCreator(wn);

@@ -40,7 +40,7 @@ public class TabComp implements TabCompleter {
             if(args[0].equalsIgnoreCase("goto")){
 
                 final List<String> completions = new ArrayList<String>();
-                completions.add("source/structure/mars");
+                completions.add("mars");
                 completions.add("earth");
                 completions.add("moon");
                 completions.add("mercury");

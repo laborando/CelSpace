@@ -255,7 +255,7 @@ public class DestinyChooser implements Listener {
 
             if (e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.GOLD + "" + ChatColor.BOLD + "Mars")) {
                 e.setCancelled(true);
-                if (p.getWorld().equals(Bukkit.getWorld("source/structure/mars"))) {
+                if (p.getWorld().equals(Bukkit.getWorld("mars"))) {
                     p.sendMessage("You are already on Mars!");
                 } else {
                     p.sendMessage("Going to Mars!");

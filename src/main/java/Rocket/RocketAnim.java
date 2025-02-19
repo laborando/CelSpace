@@ -65,7 +65,7 @@ public class RocketAnim {
 
         if(td.equals(DimChanger.TargetDimension.MARS)){
 
-            final String wn = "source/structure/mars";
+            final String wn = "mars";
             if (!celutis.doesWorldExist(wn)) {
                 p.sendMessage(ChatColor.RED + "Generation of Mars started...");
                 final WorldCreator worldCreator = new WorldCreator(wn);

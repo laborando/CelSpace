@@ -43,7 +43,7 @@ public class Weater  implements Listener {
     public static void innitWeather(){
 
         nwwl.add("moon");
-        nwwl.add("source/structure/mars");
+        nwwl.add("mars");
         nwwl.add("venus");
         nwwl.add("mercury");
 

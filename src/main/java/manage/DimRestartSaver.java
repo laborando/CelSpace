@@ -40,7 +40,7 @@ public class DimRestartSaver implements Listener {
 
 
 
-            if(wn.equals("source/structure/mars")){
+            if(wn.equals("mars")){
                 e.setResult(PlayerLoginEvent.Result.KICK_OTHER);
                 final WorldCreator worldCreator2 = new WorldCreator(wn);
                 worldCreator2.generator(new MarsGen());

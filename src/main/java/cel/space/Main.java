@@ -65,7 +65,7 @@ public final class Main extends JavaPlugin implements Listener {
 
         //Add Worlds, where mob spawning is blocked
         blockedWorlds.add("moon");
-        blockedWorlds.add("source/structure/mars");
+        blockedWorlds.add("ars");
         blockedWorlds.add("mercury");
         blockedWorlds.add("venus");
 

@@ -116,7 +116,7 @@ public class Exe implements CommandExecutor {
 
             if (arg.equalsIgnoreCase("goto")) {
 
-                if (arg2.equalsIgnoreCase("source/structure/mars")) {
+                if (arg2.equalsIgnoreCase("mars")) {
 
                     DimChanger.sendPlayer(p, DimChanger.TargetDimension.MARS);
 
