@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class Main extends JavaPlugin implements Listener {
+
     private static Main instance;
     private static final List<String> blockedWorlds = new ArrayList<>();
     @Override

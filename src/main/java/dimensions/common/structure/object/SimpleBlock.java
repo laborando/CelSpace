@@ -1,26 +1,23 @@
-package dimensions.common.structure;
+package dimensions.common.structure.object;
 
-import jdk.jfr.Description;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.block.Block;
 
-/*
-    TEst
-     */
 public class SimpleBlock {
 
     private int x,y,z;
 
+    private boolean relativeY;
+
     private Material material;
 
     /**
-    TEst
+    new SBlock, x,y,z Coords, isRelative to highest Y Block, Material
      */
-    public SimpleBlock(int x, int y, int z, Material material) {
+    public SimpleBlock(int x, int y, int z, boolean isRelativeY, Material material) {
         this.x = x;
         this.y = y;
         this.z = z;
+        this.relativeY = isRelativeY;
         this.material = material;
     }
 

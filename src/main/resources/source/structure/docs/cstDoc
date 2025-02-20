@@ -1,0 +1,26 @@
+Basic:
+;pre <- Sets Instruction State to pre. Should be first!
+innit() <- Must be first! Innits the Structure Object
+;out <- Breaks out of the Instruction State
+
+;structure <- Sets Instruction state to Structure
+0,0,0=DIRT <- Sets the Block 0,0,0 relative to the structure Center to Dirt
+;out
+
+return() <- Returns the object to the inquiring function. Needs to be called last and MUST BE CALLED!
+
+/----------------------
+Other:
+;pre <- Sets Instruction State to pre. Should be first!
+innit() <- Must be first! Innits the Structure Object
+x=
+y=
+z= <- Sets the Center relative to the Center relative to where it will be centered by the code
+rel=true/false <- Sets "force Y Coord Relative to the highest place there"
+;out <- Breaks out of the Instruction State
+
+;structure <- Sets Instruction state to Structure
+0,0,0=DIRT <- Sets the Block 0,0,0 relative to the structure Center to Dirt
+;out
+
+return() <- Returns the object to the inquiring function. Needs to be called last and MUST BE CALLED!

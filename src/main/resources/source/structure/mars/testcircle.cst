@@ -1,0 +1,13 @@
+;pre
+innit()
+;out
+
+;structure
+0,0,0=GOLD_BLOCK
+2,0,0=GOLD_BLOCK
+-2,0,0=GOLD_BLOCK
+0,0,2=GOLD_BLOCK
+0,0,-2=GOLD_BLOCK
+;out
+
+return()

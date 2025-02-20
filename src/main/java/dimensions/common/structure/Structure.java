@@ -1,8 +1,6 @@
 package dimensions.common.structure;
 
-import jdk.jfr.Description;
-import org.bukkit.Material;
-import org.bukkit.block.Block;
+import dimensions.common.structure.object.SimpleBlock;
 
 import java.util.List;
 
@@ -19,6 +17,8 @@ public class Structure {
     public void setBlocks(List<SimpleBlock> blocks) {
         this.blocks = blocks;
     }
+
+    private boolean isRelative = false;
 
     public Structure(int x, int y, int z) {
         this.x = x;
@@ -48,5 +48,17 @@ public class Structure {
 
     public void setZ(int z) {
         this.z = z;
+    }
+
+    public boolean isRelative() {
+        return isRelative;
+    }
+
+    public void setRelative(boolean relative) {
+        isRelative = relative;
+    }
+
+    public void addBlock(SimpleBlock sb){
+        blocks.add(sb);
     }
 }
