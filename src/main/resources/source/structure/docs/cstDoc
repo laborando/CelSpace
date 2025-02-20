@@ -6,7 +6,7 @@ innit() <- Must be first! Innits the Structure Object
 ;structure <- Sets Instruction state to Structure
 0,0,0=DIRT <- Sets the Block 0,0,0 relative to the structure Center to Dirt
 ;out
-
+# comment <- Comments can be made with a #
 return() <- Returns the object to the inquiring function. Needs to be called last and MUST BE CALLED!
 
 /----------------------

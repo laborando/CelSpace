@@ -5,7 +5,7 @@ import org.bukkit.Material;
 
 import java.util.logging.Logger;
 
-public class StaticStructureBuilder {
+public class StructureBuilder {
 
     private enum InstructionState {
         OUTSIDE,
@@ -15,37 +15,39 @@ public class StaticStructureBuilder {
         LOOTTABLES
     }
 
-    private static InstructionState crrState = InstructionState.OUTSIDE;
-    private static Structure structure = null;
+    private  InstructionState crrState = InstructionState.OUTSIDE;
+    private  Structure structure = null;
 
-    public static synchronized void executeInstruction(String instruction) {
+    public  synchronized void executeInstruction(String instruction) {
 
-        instruction = instruction.toLowerCase();
+
 
 
         //GROß Instructions
         if (instruction.startsWith(";")) {
-
+            instruction = instruction.toLowerCase();
             if (crrState == InstructionState.OUTSIDE) {
                 switch (instruction) {
                     case ";structure":
                         crrState = InstructionState.STRUCTURE;
-                        break;
+                        return;
                     case ";pre":
                         crrState = InstructionState.PRE;
-                        break;
+                        return;
                     case ";final":
                         crrState = InstructionState.PAST;
-                        break;
+                        return;
                     case ";loot":
                         crrState = InstructionState.LOOTTABLES;
-                        break;
+                        return;
 
                 }
             } else if (instruction.equalsIgnoreCase(";out")) {
                 crrState = InstructionState.OUTSIDE;
+                return;
             } else {
                 handleOutside(instruction);
+                return;
             }
 
         }
@@ -53,25 +55,29 @@ public class StaticStructureBuilder {
         //Klein instructions
         switch (crrState) {
             case OUTSIDE -> {
-                Logger.getGlobal().warning("StaticStructureBuilder: Outside of Instruction State! Instruction: " + instruction);
+                Logger.getGlobal().warning("StructureBuilder: Outside of Instruction State! Instruction: " + instruction);
             }
             case STRUCTURE -> {
                 handleStructure(instruction);
+                return;
             }
             case PRE -> {
                 handlePre(instruction);
+                return;
             }
             case PAST -> {
                 handlePast(instruction);
+                return;
             }
             case LOOTTABLES -> {
                 handleLoottables(instruction);
+                return;
             }
         }
 
     }
 
-    private static void handleOutside(String instruction) {
+    private  void handleOutside(String instruction) {
         /// Not jet
     }
 
@@ -81,11 +87,11 @@ public class StaticStructureBuilder {
      *
      * @return Previously generated Structure
      */
-    public static Structure getStructure() {
+    public Structure getStructure() {
         return structure;
     }
 
-    private static void handleStructure(String instruction) {
+    private void handleStructure(String instruction) {
 
         String[] parts = instruction.split("=");
 
@@ -95,15 +101,18 @@ public class StaticStructureBuilder {
 
     }
 
-    private static void handlePast(String instruction) {
+    private void handlePast(String instruction) {
         /// Not jet
     }
 
-    private static void handleLoottables(String instruction) {
+    private void handleLoottables(String instruction) {
         /// Not jet
     }
 
-    private static void handlePre(String instruction) {
+    private void handlePre(String instruction) {
+
+        instruction = instruction.toLowerCase();
+
         if (instruction.equalsIgnoreCase("innit()")) {
             structure = new Structure(0, 0, 0);
         } else if (instruction.startsWith("x=")) {

@@ -2,6 +2,7 @@ package dimensions.common.structure;
 
 import dimensions.common.structure.object.SimpleBlock;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Structure {
@@ -24,6 +25,7 @@ public class Structure {
         this.x = x;
         this.y = y;
         this.z = z;
+        blocks = new ArrayList<>();
     }
 
     public int getX() {

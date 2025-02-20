@@ -28,12 +28,19 @@ public class StructureParser {
             return null;
         }
 
+        StructureBuilder sb = new StructureBuilder();
+
         String line;
 
         try {
             while ((line = reader.readLine()) != null) {
 
-                StaticStructureBuilder.executeInstruction(line);
+                if(line.equalsIgnoreCase("return()"))
+                    break;
+
+
+                if(!(line.isEmpty() || line.startsWith("#")))
+                    sb.executeInstruction(line);
 
             }
         }catch (RuntimeException | IOException e){
@@ -41,28 +48,20 @@ public class StructureParser {
         }
 
 
-        return StaticStructureBuilder.getStructure();
+        return sb.getStructure();
     }
 
 
     public static BufferedReader readInternal(String resourcePath) {
+        InputStream inputStream = Main.class.getClassLoader().getResourceAsStream(resourcePath);
 
-        try (InputStream inputStream = Main.class.getClassLoader().getResourceAsStream(resourcePath);
-
-             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
-
-            if (inputStream == null) {
-                System.err.println("Datei nicht gefunden: " + resourcePath);
-                return null;
-            }
-
-            return reader;
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (inputStream == null) {
+            System.err.println("File not found: " + resourcePath);
+            return null;
         }
 
-        return null;
+        return new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
     }
+
 
 }

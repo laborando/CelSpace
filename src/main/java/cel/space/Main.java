@@ -8,6 +8,7 @@ import actions.RocketPlacer;
 import cmd.TabComp;
 import cmd.Exe;
 import craft.AddRecipes;
+import enviroment.Mobs;
 import enviroment.Weater;
 import manage.DimChecker;
 import manage.DimRestartSaver;
@@ -33,6 +34,8 @@ public final class Main extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
 
+        //Should be called rather early:
+        //Mobs.innitAntiMob();
 
         double now = System.currentTimeMillis();
 
@@ -89,6 +92,7 @@ public final class Main extends JavaPlugin implements Listener {
         this.getServer().getPluginManager().registerEvents(new DimRestartSaver(), this);
         this.getServer().getPluginManager().registerEvents(new RocketPlacer(), this);
         this.getServer().getPluginManager().registerEvents(new RocketDestroyer(), this);
+        //this.getServer().getPluginManager().registerEvents(new Mobs(), this);
 
 
         //ConfigReact
@@ -160,7 +164,6 @@ public final class Main extends JavaPlugin implements Listener {
         try {
             if (blockedWorlds.contains(e.getLocation().getWorld().getName())) {
                 if(e.getSpawnReason()==CreatureSpawnEvent.SpawnReason.NATURAL || e.getSpawnReason()== CreatureSpawnEvent.SpawnReason.NETHER_PORTAL || e.getSpawnReason()== CreatureSpawnEvent.SpawnReason.PATROL){
-
 
                     e.setCancelled(true);
 
