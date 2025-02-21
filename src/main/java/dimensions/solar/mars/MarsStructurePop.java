@@ -16,7 +16,9 @@ public class MarsStructurePop extends BlockPopulator {
     @Override
     public void populate(World world, Random random, Chunk chunk) {
 
-        if(randomrange(0, 1000) == 0){
+        int rInt = randomrange(0, 2000);
+
+        if(rInt < 10){
             Location l = new Location(null, chunk.getX()*16 + randomrange(0, 15), 0, chunk.getZ()*16 +  randomrange(0, 15));
 
             int dy = world.getHighestBlockAt(l.getBlockX(), l.getBlockZ()).getY();
@@ -25,7 +27,7 @@ public class MarsStructurePop extends BlockPopulator {
                 world.getBlockAt(l.getBlockX() + b.getX(), dy + b.getY(), l.getBlockZ() + b.getZ()).setType(b.getMaterial());
             });
 
-        }else if(randomrange(0, 10000) == 0){
+        }else if(rInt < 15 ){
             Location l = new Location(null, chunk.getX()*16 + randomrange(0, 15), 0, chunk.getZ()*16 +  randomrange(0, 15));
 
             int dy = world.getHighestBlockAt(l.getBlockX(), l.getBlockZ()).getY();
@@ -34,7 +36,7 @@ public class MarsStructurePop extends BlockPopulator {
                 world.getBlockAt(l.getBlockX() + b.getX(), dy + b.getY(), l.getBlockZ() + b.getZ()).setType(b.getMaterial());
             });
 
-        }else if(randomrange(0, 20) == 0){
+        }else if(rInt < 17){
             Location l = new Location(null, chunk.getX()*16 + randomrange(0, 15), 0, chunk.getZ()*16 +  randomrange(0, 15));
 
             int dy = world.getHighestBlockAt(l.getBlockX(), l.getBlockZ()).getY();
@@ -43,7 +45,7 @@ public class MarsStructurePop extends BlockPopulator {
                 world.getBlockAt(l.getBlockX() + b.getX(), dy + b.getY(), l.getBlockZ() + b.getZ()).setType(b.getMaterial());
             });
 
-        }else if(randomrange(0, 20) == 0){
+        }else if(rInt < 20){
             Location l = new Location(null, chunk.getX()*16 + randomrange(0, 15), 0, chunk.getZ()*16 +  randomrange(0, 15));
 
             int dy = world.getHighestBlockAt(l.getBlockX(), l.getBlockZ()).getY();
@@ -52,12 +54,21 @@ public class MarsStructurePop extends BlockPopulator {
                 world.getBlockAt(l.getBlockX() + b.getX(), dy + b.getY(), l.getBlockZ() + b.getZ()).setType(b.getMaterial());
             });
 
-        }else if(randomrange(0, 20) == 0){
+        }else if(rInt < 21){
             Location l = new Location(null, chunk.getX()*16 + randomrange(0, 15), 0, chunk.getZ()*16 +  randomrange(0, 15));
 
             int dy = world.getHighestBlockAt(l.getBlockX(), l.getBlockZ()).getY();
 
             StructureParser.parse("source/structure/mars/research.cst", true).getBlocks().forEach(b ->{
+                world.getBlockAt(l.getBlockX() + b.getX(), dy + b.getY(), l.getBlockZ() + b.getZ()).setType(b.getMaterial());
+            });
+
+        }else if(rInt < 100){
+            Location l = new Location(null, chunk.getX()*16 + randomrange(0, 15), 0, chunk.getZ()*16 +  randomrange(0, 15));
+
+            int dy = world.getHighestBlockAt(l.getBlockX(), l.getBlockZ()).getY();
+
+            StructureParser.parse("source/structure/mars/undergroundRuins.cst", true).getBlocks().forEach(b ->{
                 world.getBlockAt(l.getBlockX() + b.getX(), dy + b.getY(), l.getBlockZ() + b.getZ()).setType(b.getMaterial());
             });
 

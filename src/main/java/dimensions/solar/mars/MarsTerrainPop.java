@@ -15,6 +15,8 @@ public class MarsTerrainPop extends BlockPopulator {
     @Override
     public void populate(World world, Random random, Chunk chunk) {
 
+
+        /*
         int amount = random.nextInt(5) + 1;
         for (int i = 1; i < amount; i++) {
             int X = random.nextInt(15);
@@ -51,7 +53,7 @@ public class MarsTerrainPop extends BlockPopulator {
                 }
             }
         }
-
+        */
 
         //Einschläge
 

@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 public class StructureParser {
 
 
-    public static Structure parse(String path, boolean isInternal) {
+    public synchronized static Structure parse(String path, boolean isInternal) {
 
         BufferedReader reader = null;
 
@@ -52,7 +52,7 @@ public class StructureParser {
     }
 
 
-    public static BufferedReader readInternal(String resourcePath) {
+    private static BufferedReader readInternal(String resourcePath) {
         InputStream inputStream = Main.class.getClassLoader().getResourceAsStream(resourcePath);
 
         if (inputStream == null) {

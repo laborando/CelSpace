@@ -1,4 +1,4 @@
-package dimensions.shared.populators;
+package dimensions.solar.mars;
 
 
 import cel.space.celutis;
@@ -10,7 +10,7 @@ import org.bukkit.generator.BlockPopulator;
 
 import java.util.Random;
 
-public class SimpleCavePopulator extends BlockPopulator {
+public class MarsCavePopulator extends BlockPopulator {
 
     static FastNoiseLite noiseGen;
     static boolean innited = false;
@@ -65,7 +65,7 @@ public class SimpleCavePopulator extends BlockPopulator {
                         }
                     } else if (celutis.randomrange(0, 2) == 0) {
 
-                        chunk.getBlock(x, y, z).setType(Material.AIR, false); // Super Wichtig: false = Verhindert Block-Updates! Sonst -> Too many neighbouring chain updates -> Crash /!\
+                        chunk.getBlock(x, y, z).setType(Material.ICE, false); // Super Wichtig: false = Verhindert Block-Updates! Sonst -> Too many neighbouring chain updates -> Crash /!\
                     }
 
                 }

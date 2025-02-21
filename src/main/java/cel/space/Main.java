@@ -14,11 +14,14 @@ import manage.DimChecker;
 import manage.DimRestartSaver;
 import manage.RpChecker;
 import org.bukkit.Bukkit;
+import org.bukkit.GameRule;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
+import org.bukkit.event.entity.EntitySpawnEvent;
+import org.bukkit.event.world.WorldLoadEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import packs.Load;
 import packs.RpConnected;
@@ -69,7 +72,7 @@ public final class Main extends JavaPlugin implements Listener {
 
         //Add Worlds, where mob spawning is blocked
         blockedWorlds.add("moon");
-        blockedWorlds.add("ars");
+        blockedWorlds.add("mars");
         blockedWorlds.add("mercury");
         blockedWorlds.add("venus");
 
@@ -92,7 +95,6 @@ public final class Main extends JavaPlugin implements Listener {
         this.getServer().getPluginManager().registerEvents(new DimRestartSaver(), this);
         this.getServer().getPluginManager().registerEvents(new RocketPlacer(), this);
         this.getServer().getPluginManager().registerEvents(new RocketDestroyer(), this);
-        //this.getServer().getPluginManager().registerEvents(new Mobs(), this);
 
 
         //ConfigReact
@@ -159,15 +161,19 @@ public final class Main extends JavaPlugin implements Listener {
 
 
     @EventHandler(priority = EventPriority.HIGH)
-    public void event(final CreatureSpawnEvent e) {
+    public void event(final WorldLoadEvent e) {
 
         try {
-            if (blockedWorlds.contains(e.getLocation().getWorld().getName())) {
-                if(e.getSpawnReason()==CreatureSpawnEvent.SpawnReason.NATURAL || e.getSpawnReason()== CreatureSpawnEvent.SpawnReason.NETHER_PORTAL || e.getSpawnReason()== CreatureSpawnEvent.SpawnReason.PATROL){
+            if (blockedWorlds.contains(e.getWorld().getName())){
+                //if(e.==CreatureSpawnEvent.SpawnReason.NATURAL || e.getSpawnReason()== CreatureSpawnEvent.SpawnReason.NETHER_PORTAL || e.getSpawnReason()== CreatureSpawnEvent.SpawnReason.PATROL){
 
-                    e.setCancelled(true);
+                e.getWorld().setGameRule(GameRule.DO_MOB_SPAWNING, false);
+                e.getWorld().setGameRule(GameRule.DO_WEATHER_CYCLE, false);
 
-                }
+                Bukkit.broadcastMessage(e.getEventName());
+
+
+
             }
         }catch (NullPointerException ignored){}
 

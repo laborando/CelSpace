@@ -26,12 +26,13 @@ public class MarsGen extends ChunkGenerator {
 
     public MarsGen() {
         this.currentHeight = 50;
+
     }
 
     @Override
     public List<BlockPopulator> getDefaultPopulators(World world) {
 
-        return Arrays.asList(new MarsTerrainPop(), new SimpleCavePopulator(), new MarsStructurePop());
+        return Arrays.asList(new MarsTerrainPop(), new MarsCavePopulator(), new MarsStructurePop());
 
     }
 
