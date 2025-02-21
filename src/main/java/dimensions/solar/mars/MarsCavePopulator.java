@@ -62,12 +62,12 @@ public class MarsCavePopulator extends BlockPopulator {
 
 
                             chunk.getBlock(x, y, z).setType(Material.AIR, false); // Super Wichtig: false = Verhindert Block-Updates! Sonst -> Too many neighbouring chain updates -> Crash /!\
+                        } else if (celutis.randomrange(0, 2) == 0) {
+
+                            chunk.getBlock(x, y, z).setType(Material.ICE, false); // Super Wichtig: false = Verhindert Block-Updates! Sonst -> Too many neighbouring chain updates -> Crash /!\
                         }
-                    } else if (celutis.randomrange(0, 2) == 0) {
 
-                        chunk.getBlock(x, y, z).setType(Material.ICE, false); // Super Wichtig: false = Verhindert Block-Updates! Sonst -> Too many neighbouring chain updates -> Crash /!\
                     }
-
                 }
             }
         }
