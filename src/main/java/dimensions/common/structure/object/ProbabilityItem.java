@@ -5,12 +5,12 @@ import org.bukkit.Material;
 public class ProbabilityItem {
 
     private int maxCount = 2;
-    private float popability = 0.5f;
+    private float probability = 0.5f;
     private Material item = Material.AIR;
 
-    public ProbabilityItem(int maxCount, float popability, Material item) {
+    public ProbabilityItem(int maxCount, float probability, Material item) {
         this.maxCount = maxCount;
-        this.popability = popability;
+        this.probability = probability;
         this.item = item;
     }
 
@@ -22,12 +22,12 @@ public class ProbabilityItem {
         this.maxCount = maxCount;
     }
 
-    public float getPopability() {
-        return popability;
+    public float getPropability() {
+        return probability;
     }
 
-    public void setPopability(float popability) {
-        this.popability = popability;
+    public void setPropability(float popability) {
+        this.probability = popability;
     }
 
     public Material getItem() {

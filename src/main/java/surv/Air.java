@@ -14,7 +14,7 @@ import java.util.HashMap;
 
 public class Air {
 
-    private static HashMap<String, Boolean> hasAir = new HashMap<>();
+    private static final HashMap<String, Boolean> hasAir = new HashMap<>();
 
 
     public static void startAirHandler(Main p){

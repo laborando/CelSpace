@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 public class GravityHandler{
 
-    private static HashMap<String, Integer> grav = new HashMap<>();
+    private static final HashMap<String, Integer> grav = new HashMap<>();
 
     public static void innitGravity(){
 

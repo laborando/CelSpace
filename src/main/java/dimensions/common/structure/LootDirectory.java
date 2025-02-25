@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 public class LootDirectory {
 
-    private static HashMap<String, CustomLoottable> clt = preInnit();
+    private static final HashMap<String, CustomLoottable> clt = preInnit();
 
     public static void innitLoottables(){
 

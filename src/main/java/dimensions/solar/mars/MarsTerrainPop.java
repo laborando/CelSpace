@@ -1,6 +1,10 @@
 package dimensions.solar.mars;
+
 import cel.space.celutis;
-import org.bukkit.*;
+import org.bukkit.Bukkit;
+import org.bukkit.Chunk;
+import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.generator.BlockPopulator;
 import utis.TripleInt;
 
@@ -16,7 +20,7 @@ public class MarsTerrainPop extends BlockPopulator {
     public void populate(World world, Random random, Chunk chunk) {
 
 
-        /*
+
         int amount = random.nextInt(5) + 1;
         for (int i = 1; i < amount; i++) {
             int X = random.nextInt(15);
@@ -53,7 +57,7 @@ public class MarsTerrainPop extends BlockPopulator {
                 }
             }
         }
-        */
+
 
         //Einschläge
 

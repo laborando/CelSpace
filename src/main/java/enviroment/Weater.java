@@ -25,7 +25,13 @@ public class Weater  implements Listener {
 
         if(nwwl.contains(e.getWorld().getName().toLowerCase())){
 
+
             e.setCancelled(true);
+
+            if(e.getWorld().getName().toLowerCase().equalsIgnoreCase("venus")){
+                e.getWorld().setStorm(true);
+                return;
+            }
 
             if(e.getWorld().hasStorm()){
                 e.setCancelled(false);

@@ -1,5 +1,6 @@
 package dimensions.common.structure;
 
+import dimensions.common.structure.object.CustomLoottable;
 import dimensions.common.structure.object.SimpleBlock;
 
 import java.util.ArrayList;
@@ -10,6 +11,10 @@ public class Structure {
     private int x,y,z;
 
     private List<SimpleBlock> blocks;
+
+    private String lootDir = null;
+
+    private CustomLoottable clt = null;
 
     public List<SimpleBlock> getBlocks() {
         return blocks;
@@ -62,5 +67,21 @@ public class Structure {
 
     public void addBlock(SimpleBlock sb){
         blocks.add(sb);
+    }
+
+    public String getLootDir() {
+        return lootDir;
+    }
+
+    public void setLootDir(String lootDir) {
+        this.lootDir = lootDir;
+    }
+
+    public CustomLoottable getClt() {
+        return clt;
+    }
+
+    public void setClt(CustomLoottable clt) {
+        this.clt = clt;
     }
 }

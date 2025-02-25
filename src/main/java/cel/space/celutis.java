@@ -90,7 +90,7 @@ public class celutis
                 return block.getLocation();
             }
         }
-        return new Location(world, (double)x, (double)world.getMaxHeight(), (double)y);
+        return new Location(world, x, world.getMaxHeight(), y);
     }
     
     public static double randomRangeDouble(final double min, final double max) {
@@ -136,8 +136,7 @@ public class celutis
     }
     public Color getRandomColor() {
         ArrayList<Color> colors = new ArrayList<>();
-        colors.addAll(Arrays.asList(new Color[] {
-                Color.WHITE,
+        colors.addAll(Arrays.asList(Color.WHITE,
                 Color.LIME,
                 Color.SILVER,
                 Color.RED,
@@ -153,7 +152,7 @@ public class celutis
                 Color.OLIVE,
                 Color.NAVY,
                 Color.GREEN,
-                Color.PURPLE, }));
+                Color.PURPLE));
         int size = colors.size();
         Random ran = new Random();
         return colors.get(ran.nextInt(size));
@@ -195,10 +194,7 @@ public class celutis
         if (b.getRelative(BlockFace.NORTH).getType()==Material.AIR){
             return true;
         }
-        if (b.getRelative(BlockFace.SOUTH).getType()==Material.AIR){
-            return true;
-        }
-        return false;
+        return b.getRelative(BlockFace.SOUTH).getType() == Material.AIR;
     }
 
     public static ArrayList<Location> getCircleLocationsList(Location center, double radius, int amount){

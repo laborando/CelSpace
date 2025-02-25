@@ -14,7 +14,7 @@ import java.util.HashMap;
 
 public class Thermo {
 
-    private static HashMap<String, Boolean> hasAir = new HashMap<>();
+    private static final HashMap<String, Boolean> hasAir = new HashMap<>();
 
 
     public static void startThermoHandler(Main p){

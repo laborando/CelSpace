@@ -1,10 +1,9 @@
 package sec;
 
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 
-import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 
 public class PlayerClientChecker implements PluginMessageListener {
     @Override
@@ -12,10 +11,6 @@ public class PlayerClientChecker implements PluginMessageListener {
 
         //Future: Check for Optifine?!
 
-        try {
-            p.sendMessage("Your client brand seems to be: " + new String(msg, "UTF-8").substring(1));
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+        p.sendMessage("Your client brand seems to be: " + new String(msg, StandardCharsets.UTF_8).substring(1));
     }
 }

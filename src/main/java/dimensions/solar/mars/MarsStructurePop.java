@@ -1,10 +1,13 @@
 package dimensions.solar.mars;
 
+import dimensions.common.structure.Structure;
 import dimensions.common.structure.StructureParser;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.block.Block;
+import org.bukkit.block.Chest;
 import org.bukkit.generator.BlockPopulator;
 
 import java.util.Random;
@@ -23,7 +26,7 @@ public class MarsStructurePop extends BlockPopulator {
 
             int dy = world.getHighestBlockAt(l.getBlockX(), l.getBlockZ()).getY();
 
-            StructureParser.parse("source/structure/mars/smallRuin.cst", true).getBlocks().forEach(b ->{
+            StructureParser.parse("source/structure/solar/mars/smallRuin.cst", true).getBlocks().forEach(b ->{
                 world.getBlockAt(l.getBlockX() + b.getX(), dy + b.getY(), l.getBlockZ() + b.getZ()).setType(b.getMaterial());
             });
 
@@ -32,7 +35,7 @@ public class MarsStructurePop extends BlockPopulator {
 
             int dy = world.getHighestBlockAt(l.getBlockX(), l.getBlockZ()).getY();
 
-            StructureParser.parse("source/structure/mars/bigRuin.cst", true).getBlocks().forEach(b ->{
+            StructureParser.parse("source/structure/solar/mars/bigRuin.cst", true).getBlocks().forEach(b ->{
                 world.getBlockAt(l.getBlockX() + b.getX(), dy + b.getY(), l.getBlockZ() + b.getZ()).setType(b.getMaterial());
             });
 
@@ -41,7 +44,7 @@ public class MarsStructurePop extends BlockPopulator {
 
             int dy = world.getHighestBlockAt(l.getBlockX(), l.getBlockZ()).getY();
 
-            StructureParser.parse("source/structure/mars/brokenBridge.cst", true).getBlocks().forEach(b ->{
+            StructureParser.parse("source/structure/solar/mars/brokenBridge.cst", true).getBlocks().forEach(b ->{
                 world.getBlockAt(l.getBlockX() + b.getX(), dy + b.getY(), l.getBlockZ() + b.getZ()).setType(b.getMaterial());
             });
 
@@ -50,7 +53,7 @@ public class MarsStructurePop extends BlockPopulator {
 
             int dy = world.getHighestBlockAt(l.getBlockX(), l.getBlockZ()).getY();
 
-            StructureParser.parse("source/structure/mars/smallHouse.cst", true).getBlocks().forEach(b ->{
+            StructureParser.parse("source/structure/solar/mars/smallHouse.cst", true).getBlocks().forEach(b ->{
                 world.getBlockAt(l.getBlockX() + b.getX(), dy + b.getY(), l.getBlockZ() + b.getZ()).setType(b.getMaterial());
             });
 
@@ -59,7 +62,7 @@ public class MarsStructurePop extends BlockPopulator {
 
             int dy = world.getHighestBlockAt(l.getBlockX(), l.getBlockZ()).getY();
 
-            StructureParser.parse("source/structure/mars/research.cst", true).getBlocks().forEach(b ->{
+            StructureParser.parse("source/structure/solar/mars/research.cst", true).getBlocks().forEach(b ->{
                 world.getBlockAt(l.getBlockX() + b.getX(), dy + b.getY(), l.getBlockZ() + b.getZ()).setType(b.getMaterial());
             });
 
@@ -68,8 +71,24 @@ public class MarsStructurePop extends BlockPopulator {
 
             int dy = world.getHighestBlockAt(l.getBlockX(), l.getBlockZ()).getY();
 
-            StructureParser.parse("source/structure/mars/undergroundRuins.cst", true).getBlocks().forEach(b ->{
+            Structure s = StructureParser.parse("source/structure/solar/mars/undergroundRuins.cst", true);
+
+            s.getBlocks().forEach(b ->{
+
                 world.getBlockAt(l.getBlockX() + b.getX(), dy + b.getY(), l.getBlockZ() + b.getZ()).setType(b.getMaterial());
+
+                if(b.getMaterial().equals(Material.CHEST)){
+                    Block block = world.getBlockAt(l.getBlockX() + b.getX(), dy + b.getY(), l.getBlockZ() + b.getZ());
+
+                    Chest chest = (Chest) block.getState();
+
+
+
+                    chest.getBlockInventory().setContents(s.getClt().getNextInv());
+
+                }
+
+
             });
 
         }

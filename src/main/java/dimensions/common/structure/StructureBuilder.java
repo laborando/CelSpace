@@ -1,5 +1,6 @@
 package dimensions.common.structure;
 
+import dimensions.common.structure.object.CustomLoottable;
 import dimensions.common.structure.object.SimpleBlock;
 import org.bukkit.Material;
 
@@ -17,6 +18,7 @@ public class StructureBuilder {
 
     private  InstructionState crrState = InstructionState.OUTSIDE;
     private  Structure structure = null;
+    private final String lootdir = null;
 
     public  synchronized void executeInstruction(String instruction) {
 
@@ -59,19 +61,15 @@ public class StructureBuilder {
             }
             case STRUCTURE -> {
                 handleStructure(instruction);
-                return;
             }
             case PRE -> {
                 handlePre(instruction);
-                return;
             }
             case PAST -> {
                 handlePast(instruction);
-                return;
             }
             case LOOTTABLES -> {
                 handleLoottables(instruction);
-                return;
             }
         }
 
@@ -85,10 +83,20 @@ public class StructureBuilder {
      * Gets the generated Structure,
      * ONLY call when the instruction return() is called!
      *
+     * If Clt-Dir ist set, parses the Clt from the Dir
+     *
      * @return Previously generated Structure
      */
     public Structure getStructure() {
-        return structure;
+
+        if(structure.getLootDir() == null || structure.getLootDir().equalsIgnoreCase("")){
+            return structure;
+        }else{
+            CustomLoottable clt = LoottableParser.parse(structure.getLootDir(), true);
+            structure.setClt(clt);
+            return structure;
+        }
+
     }
 
     private void handleStructure(String instruction) {
@@ -128,6 +136,8 @@ public class StructureBuilder {
             structure.setRelative(false);
         } else if (instruction.startsWith("rel=true")) {
             structure.setRelative(true);
+        }else if (instruction.startsWith("loot=")) {
+            structure.setLootDir(instruction.substring(5));
         }
 
         /// Here possible space for future

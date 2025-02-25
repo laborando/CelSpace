@@ -4,14 +4,12 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
-import org.bukkit.event.weather.WeatherChangeEvent;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Mobs implements Listener {
 
-    private static HashMap<String, Boolean> wld = new HashMap<>();
+    private static final HashMap<String, Boolean> wld = new HashMap<>();
 
     public static void innitAntiMob(){
         wld.put("world", false);

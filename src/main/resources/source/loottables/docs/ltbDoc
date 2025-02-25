@@ -1,0 +1,6 @@
+Item Material, Probability per Item (Recursive), Max Count
+
+Example:
+GOLD_INGOT,0.5,3
+GOLD_INGOT,0.8,2
+IRON_INGOT,1,1

@@ -1,17 +1,11 @@
 package manage;
 
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Vehicle;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import packs.Load;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class RpChecker implements Listener {
 

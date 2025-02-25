@@ -6,7 +6,7 @@ public class SimpleBlock {
 
     private int x,y,z;
 
-    private boolean relativeY;
+    private final boolean relativeY;
 
     private Material material;
 

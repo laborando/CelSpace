@@ -4,6 +4,7 @@ x=0
 y=0
 z=0
 rel=true
+loot=source/loottables/solar/mars/undergroundRuins.ltb
 ;out
 
 ;structure

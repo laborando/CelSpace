@@ -7,7 +7,6 @@ import org.bukkit.generator.BlockPopulator;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.util.noise.SimplexOctaveGenerator;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -24,7 +23,7 @@ public class MercuryGen extends ChunkGenerator {
     @Override
     public List<BlockPopulator> getDefaultPopulators(World world) {
 
-        return Arrays.asList(new MercuryPop());
+        return List.of(new MercuryPop());
 
     }
 

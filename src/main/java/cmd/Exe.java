@@ -3,6 +3,7 @@ package cmd;
 import cel.space.Celspace;
 import cel.space.celutis;
 import dimensions.solar.mars.MarsGen;
+import dimensions.solar.venus.VenusGen;
 import manage.DimChanger;
 import org.bukkit.*;
 import org.bukkit.command.Command;
@@ -150,7 +151,9 @@ public class Exe implements CommandExecutor {
 
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "give cel20 minecraft:minecart[ minecraft:custom_name=Rocket]");
 
-            }else if (arg.equalsIgnoreCase("tw")) {
+
+                //Now only testworld cmds
+            }else if (arg.equalsIgnoreCase("twm")) {
 
                 final String wn = System.currentTimeMillis() + "";
                 if (!celutis.doesWorldExist(wn)) {
@@ -165,6 +168,29 @@ public class Exe implements CommandExecutor {
 
                     final WorldCreator worldCreator2 = new WorldCreator(wn);
                     worldCreator2.generator(new MarsGen());
+                    worldCreator2.seed(Bukkit.getWorld("world").getSeed());
+                    Bukkit.createWorld(worldCreator2);
+
+                }
+                targetWorld = Bukkit.getWorld(wn);
+                Location l = targetWorld.getHighestBlockAt(p.getLocation().getBlockX(), p.getLocation().getBlockZ()).getLocation();
+                p.teleport(l);
+
+            }else if (arg.equalsIgnoreCase("twv")) {
+
+                final String wn = System.currentTimeMillis() + "";
+                if (!celutis.doesWorldExist(wn)) {
+                    p.sendMessage(ChatColor.RED + "Generation of Test World started...");
+                    final WorldCreator worldCreator = new WorldCreator(wn);
+                    worldCreator.generator(new VenusGen());
+                    worldCreator.seed(Bukkit.getWorld("world").getSeed());
+                    Bukkit.createWorld(worldCreator);
+                }
+                World targetWorld = Bukkit.getWorld(wn);
+                if(targetWorld == null){
+
+                    final WorldCreator worldCreator2 = new WorldCreator(wn);
+                    worldCreator2.generator(new VenusGen());
                     worldCreator2.seed(Bukkit.getWorld("world").getSeed());
                     Bukkit.createWorld(worldCreator2);
 

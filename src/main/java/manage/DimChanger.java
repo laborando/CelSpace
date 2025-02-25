@@ -1,8 +1,8 @@
 package manage;
 
-import dimensions.solar.mars.MarsGen;
 import cel.space.celutis;
 import dimensions.solar.earth.MoonGen;
+import dimensions.solar.mars.MarsGen;
 import dimensions.solar.mercury.MercuryGen;
 import dimensions.solar.venus.VenusGen;
 import org.bukkit.*;
@@ -26,8 +26,6 @@ public class DimChanger {
         ORBIT_OVERWORLD,
         ORBIT_MARS,
         ORBIT_MERCUR
-
-        ;
 
     }
 
@@ -57,7 +55,7 @@ public class DimChanger {
 
             //RESOURCE PACK
 
-            p.sendMessage("Loading Ressource Pack for 'Mars'. Some features will only work if you are using Optifine!");;
+            p.sendMessage("Loading Ressource Pack for 'Mars'. Some features will only work if you are using Optifine!");
             Load.loadResourceoack(p, TargetDimension.MARS);
         }else if(t == TargetDimension.OVERWORLD){
 
@@ -98,7 +96,7 @@ public class DimChanger {
 
             //RESOURCE PACK
 
-            p.sendMessage("Loading Ressource Pack for 'Moon'. Some features will only work if you are using Optifine!");;
+            p.sendMessage("Loading Ressource Pack for 'Moon'. Some features will only work if you are using Optifine!");
             Load.loadResourceoack(p, TargetDimension.MOON);
 
         }else if(t == TargetDimension.MERKUR){
@@ -126,7 +124,7 @@ public class DimChanger {
 
             //RESOURCE PACK
 
-            p.sendMessage("Loading Ressource Pack for 'Mercury'. Some features will only work if you are using Optifine!");;
+            p.sendMessage("Loading Ressource Pack for 'Mercury'. Some features will only work if you are using Optifine!");
             Load.loadResourceoack(p, TargetDimension.MERKUR);
         }else if(t == TargetDimension.VENUS){
 
@@ -153,7 +151,7 @@ public class DimChanger {
 
             //RESOURCE PACK
 
-            p.sendMessage("Loading Ressource Pack for 'Venus'. Some features will only work if you are using Optifine!");;
+            p.sendMessage("Loading Ressource Pack for 'Venus'. Some features will only work if you are using Optifine!");
             Load.loadResourceoack(p, TargetDimension.VENUS);
         }
 

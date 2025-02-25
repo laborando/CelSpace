@@ -1,15 +1,14 @@
 
 package dimensions.nonUsed;
 
-import libs.FastNoiseLite;
 import cel.space.celutis;
+import libs.FastNoiseLite;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.generator.BlockPopulator;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.util.noise.SimplexOctaveGenerator;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -24,7 +23,7 @@ public class NotVenusGen extends ChunkGenerator {
 
     @Override
     public List<BlockPopulator> getDefaultPopulators(World world) {
-        return Arrays.asList(new NotVenusPop());
+        return List.of(new NotVenusPop());
     }
 
 
