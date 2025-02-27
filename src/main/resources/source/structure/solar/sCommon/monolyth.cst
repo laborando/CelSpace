@@ -1,0 +1,12 @@
+;pre
+innit()
+;out
+;structure
+0,1,0=IRON_BLOCK
+0,0,0=IRON_BLOCK
+0,-1,0=IRON_BLOCK
+0,1,0=IRON_BLOCK
+0,2,0=IRON_BLOCK
+0,3,0=IRON_BLOCK
+;out
+return()

@@ -2,6 +2,8 @@
 package dimensions.solar.venus;
 
 import cel.space.celutis;
+import dimensions.shared.populators.SimpleCavePopulator;
+import dimensions.solar.common.CommonSolarStructurePop;
 import libs.FastNoiseLite;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -24,7 +26,7 @@ public class VenusGen extends ChunkGenerator {
     @Override
     public List<BlockPopulator> getDefaultPopulators(World world) {
 
-        return List.of(new VenusPop());
+        return List.of(new VenusPop(), new CommonSolarStructurePop(), new SimpleCavePopulator());
 
     }
 
@@ -55,14 +57,14 @@ public class VenusGen extends ChunkGenerator {
                     currentHeight -= 1;
                 }
 
-                /*
+
                 float chdiff = ((int) Math.pow(50, -1f * fnl.GetNoise(chunkX * 16 + X, chunkZ * 16 + Z))) / 10f;
                 currentHeight += Math.max(-25, Math.min(25, (int) Math.pow(chdiff, 5) / 5000));
 
                 if (currentHeight > world.getMaxHeight() || currentHeight < 0) {
                     currentHeight = world.getMaxHeight() - 1;
                 }
-                */
+
 
                 if(celutis.randomrange(0, 3) == 0){
                     chunk.setBlock(X, currentHeight, Z, Material.COBBLESTONE);

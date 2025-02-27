@@ -2,6 +2,7 @@
 package dimensions.solar.earth;
 
 import cel.space.celutis;
+import dimensions.solar.common.CommonSolarStructurePop;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.generator.BlockPopulator;
@@ -21,7 +22,7 @@ public class MoonGen extends ChunkGenerator {
     @Override
     public List<BlockPopulator> getDefaultPopulators(World world) {
 
-        return List.of(new MoonPop());
+        return List.of(new MoonPop(), new CommonSolarStructurePop());
 
     }
 

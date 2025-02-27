@@ -4,9 +4,9 @@ import org.bukkit.Material;
 
 public class ProbabilityItem {
 
-    private int maxCount = 2;
-    private float probability = 0.5f;
-    private Material item = Material.AIR;
+    private int maxCount;
+    private float probability;
+    private Material item;
 
     public ProbabilityItem(int maxCount, float probability, Material item) {
         this.maxCount = maxCount;

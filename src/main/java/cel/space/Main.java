@@ -8,6 +8,7 @@ import actions.RocketPlacer;
 import cmd.Exe;
 import cmd.TabComp;
 import craft.AddRecipes;
+import dimensions.solar.earth.WorldGenEvents;
 import enviroment.Weater;
 import manage.DimChecker;
 import manage.DimRestartSaver;
@@ -92,6 +93,7 @@ public final class Main extends JavaPlugin implements Listener {
         this.getServer().getPluginManager().registerEvents(new DimRestartSaver(), this);
         this.getServer().getPluginManager().registerEvents(new RocketPlacer(), this);
         this.getServer().getPluginManager().registerEvents(new RocketDestroyer(), this);
+        this.getServer().getPluginManager().registerEvents(new WorldGenEvents(), this);
 
 
         //ConfigReact

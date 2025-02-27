@@ -6,7 +6,7 @@ public class SimpleBlock {
 
     private int x,y,z;
 
-    private final boolean relativeY;
+    private boolean relativeY;
 
     private Material material;
 
@@ -47,6 +47,14 @@ public class SimpleBlock {
 
     public Material getMaterial() {
         return material;
+    }
+
+    public void setRelativeY(boolean relativeY) {
+        this.relativeY = relativeY;
+    }
+
+    public boolean isRelativeY() {
+        return relativeY;
     }
 
     public void setMaterial(Material material) {

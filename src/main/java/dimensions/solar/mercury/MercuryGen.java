@@ -1,6 +1,7 @@
 
 package dimensions.solar.mercury;
 
+import dimensions.solar.common.CommonSolarStructurePop;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.generator.BlockPopulator;
@@ -23,7 +24,7 @@ public class MercuryGen extends ChunkGenerator {
     @Override
     public List<BlockPopulator> getDefaultPopulators(World world) {
 
-        return List.of(new MercuryPop());
+        return List.of(new MercuryPop(), new CommonSolarStructurePop());
 
     }
 
