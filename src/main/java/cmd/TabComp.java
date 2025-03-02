@@ -45,6 +45,7 @@ public class TabComp implements TabCompleter {
                 completions.add("moon");
                 completions.add("mercury");
                 completions.add("venus");
+                completions.add("pluto");
                 return completions;
 
             }

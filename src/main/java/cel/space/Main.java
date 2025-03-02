@@ -8,11 +8,12 @@ import actions.RocketPlacer;
 import cmd.Exe;
 import cmd.TabComp;
 import craft.AddRecipes;
-import dimensions.solar.earth.WorldGenEvents;
+import dimensions.systems.solar.earth.WorldGenEvents;
 import enviroment.Weater;
 import manage.DimChecker;
 import manage.DimRestartSaver;
 import manage.RpChecker;
+import manage.WorldUnloader;
 import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -59,6 +60,7 @@ public final class Main extends JavaPlugin implements Listener {
         config.addDefault("enableFalseWeather", false);
         config.addDefault("enableThermoDamage", false);
         config.addDefault("AllowPortables", false);
+        config.addDefault("AutoUnloadEmptyWorlds", false);
         config.addDefault("rocketEntryYDistanceToGround", 50);
         config.addDefault("rocketParticlesYDistanceFromMinecartEntitiy", 1.5);
 
@@ -95,6 +97,10 @@ public final class Main extends JavaPlugin implements Listener {
         this.getServer().getPluginManager().registerEvents(new RocketDestroyer(), this);
         this.getServer().getPluginManager().registerEvents(new WorldGenEvents(), this);
 
+        //Auto unloader
+        if(config.getBoolean("AutoUnloadEmptyWorlds")){
+            this.getServer().getPluginManager().registerEvents(new WorldUnloader(), this);
+        }
 
         //ConfigReact
         if(!config.getBoolean("DisableReconnectResourcePackEnforce")) {

@@ -1,10 +1,12 @@
 package manage;
 
 import cel.space.celutis;
-import dimensions.solar.earth.MoonGen;
-import dimensions.solar.mars.MarsGen;
-import dimensions.solar.mercury.MercuryGen;
-import dimensions.solar.venus.VenusGen;
+import dimensions.systems.sanguinis.ignis.IgnisGen;
+import dimensions.systems.sanguinis.rocky.RockyGen;
+import dimensions.systems.solar.earth.MoonGen;
+import dimensions.systems.solar.mars.MarsGen;
+import dimensions.systems.solar.mercury.MercuryGen;
+import dimensions.systems.solar.venus.VenusGen;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import packs.Load;
@@ -22,6 +24,9 @@ public class DimChanger {
         NEPTUN,
         PLUTO,
         MOON, //THE moon
+
+        IGNIS,
+        ROCKY,
 
         ORBIT_OVERWORLD,
         ORBIT_MARS,
@@ -153,6 +158,64 @@ public class DimChanger {
 
             p.sendMessage("Loading Ressource Pack for 'Venus'. Some features will only work if you are using Optifine!");
             Load.loadResourceoack(p, TargetDimension.VENUS);
+        }
+
+        //SANGUINIS SYSTEM
+
+        else if(t == TargetDimension.ROCKY){
+
+            final String wn = "rocky";
+            if (!celutis.doesWorldExist(wn)) {
+                p.sendMessage(ChatColor.RED + "Generation of Rocky started...");
+                final WorldCreator worldCreator = new WorldCreator(wn);
+                worldCreator.generator(new RockyGen());
+                worldCreator.seed(Bukkit.getWorld("world").getSeed());
+                Bukkit.createWorld(worldCreator);
+            }
+            World targetWorld = Bukkit.getWorld(wn);
+            if(targetWorld == null){
+
+                final WorldCreator worldCreator2 = new WorldCreator(wn);
+                worldCreator2.generator(new RockyGen());
+                worldCreator2.seed(Bukkit.getWorld("world").getSeed());
+                Bukkit.createWorld(worldCreator2);
+
+            }
+            targetWorld = Bukkit.getWorld(wn);
+            Location l = targetWorld.getHighestBlockAt(p.getLocation().getBlockX(), p.getLocation().getBlockZ()).getLocation();
+            p.teleport(l);
+
+            //RESOURCE PACK
+
+            p.sendMessage("Loading Ressource Pack for 'Rocky'. Some features will only work if you are using Optifine!");
+            Load.loadResourceoack(p, TargetDimension.OVERWORLD);
+        }else if(t == TargetDimension.IGNIS){
+
+            final String wn = "ignis";
+            if (!celutis.doesWorldExist(wn)) {
+                p.sendMessage(ChatColor.RED + "Generation of Ignis started...");
+                final WorldCreator worldCreator = new WorldCreator(wn);
+                worldCreator.generator(new IgnisGen());
+                worldCreator.seed(Bukkit.getWorld("world").getSeed());
+                Bukkit.createWorld(worldCreator);
+            }
+            World targetWorld = Bukkit.getWorld(wn);
+            if(targetWorld == null){
+
+                final WorldCreator worldCreator2 = new WorldCreator(wn);
+                worldCreator2.generator(new IgnisGen());
+                worldCreator2.seed(Bukkit.getWorld("world").getSeed());
+                Bukkit.createWorld(worldCreator2);
+
+            }
+            targetWorld = Bukkit.getWorld(wn);
+            Location l = targetWorld.getHighestBlockAt(p.getLocation().getBlockX(), p.getLocation().getBlockZ()).getLocation();
+            p.teleport(l);
+
+            //RESOURCE PACK
+
+            p.sendMessage("Loading Ressource Pack for 'Ignis'. Some features will only work if you are using Optifine!");
+            Load.loadResourceoack(p, TargetDimension.OVERWORLD);
         }
 
 

@@ -39,14 +39,14 @@ public class SimpleCavePopulator extends BlockPopulator {
         noiseGen.SetSeed((int) world.getSeed());
 
 
-        boolean[][][] caveMap = new boolean[16][world.getMaxHeight()][16];
+        boolean[][][] caveMap = new boolean[16][world.getMaxHeight() + 61][16];
 
         for (int x = 0; x < 16; x++) {
             for (int z = 0; z < 16; z++) {
-                for (int y = 5; y < world.getMaxHeight() - 10; y++) {
+                for (int y = -60 ; y < world.getMaxHeight() - 10; y++) {
                     double noise = noiseGen.GetNoise(chunk.getX() * 16 + x, y, chunk.getZ() * 16 + z);
                     if (noise > 0.9) {
-                        caveMap[x][y][z] = true;
+                        caveMap[x][60 + y][z] = true;
                     }
                 }
             }
@@ -54,20 +54,20 @@ public class SimpleCavePopulator extends BlockPopulator {
 
         for (int x = 0; x < 16; x++) {
             for (int z = 0; z < 16; z++) {
-                for (int y = 5; y < world.getMaxHeight() - 10; y++) {
-                    if (caveMap[x][y][z]) {
+                for (int y = -60; y < world.getMaxHeight() - 10; y++) {
+                    if (caveMap[x][60 + y][z]) {
 
 
-                        if (y > 10) {
+                        if (y > - 50) {
 
 
                             chunk.getBlock(x, y, z).setType(Material.AIR, false); // Super Wichtig: false = Verhindert Block-Updates! Sonst -> Too many neighbouring chain updates -> Crash /!\
+                        } else if (celutis.randomrange(0, 2) == 0) {
+
+                            chunk.getBlock(x, y, z).setType(Material.AIR, false); // Super Wichtig: false = Verhindert Block-Updates! Sonst -> Too many neighbouring chain updates -> Crash /!\
                         }
-                    } else if (celutis.randomrange(0, 2) == 0) {
 
-                        chunk.getBlock(x, y, z).setType(Material.AIR, false); // Super Wichtig: false = Verhindert Block-Updates! Sonst -> Too many neighbouring chain updates -> Crash /!\
                     }
-
                 }
             }
         }

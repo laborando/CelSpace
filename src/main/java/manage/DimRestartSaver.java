@@ -1,9 +1,9 @@
 package manage;
 
-import dimensions.solar.earth.MoonGen;
-import dimensions.solar.mars.MarsGen;
-import dimensions.solar.mercury.MercuryGen;
-import dimensions.solar.venus.VenusGen;
+import dimensions.systems.solar.earth.MoonGen;
+import dimensions.systems.solar.mars.MarsGen;
+import dimensions.systems.solar.mercury.MercuryGen;
+import dimensions.systems.solar.venus.VenusGen;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
