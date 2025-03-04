@@ -8,5 +8,6 @@ innit()
 0,1,0=IRON_BLOCK
 0,2,0=IRON_BLOCK
 0,3,0=IRON_BLOCK
+0,4,0=GOLD_BLOCK
 ;out
 return()

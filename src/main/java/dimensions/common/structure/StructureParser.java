@@ -25,7 +25,11 @@ public class StructureParser {
 
         if(reader == null){
             Logger.getGlobal().warning("Did not found source for Structure: " + path + "; isInternal: " + isInternal);
-            return null;
+            System.err.println("Falling back to empty structure to prevent crash! Please restart your server and contact the dev of CelSpace if this error keeps happening!");
+
+            System.err.println("Was not able to place feature!");
+
+            return new Structure(0,0,0);
         }
 
         StructureBuilder sb = new StructureBuilder();

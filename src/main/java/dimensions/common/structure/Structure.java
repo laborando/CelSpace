@@ -2,26 +2,32 @@ package dimensions.common.structure;
 
 import dimensions.common.structure.object.CustomLoottable;
 import dimensions.common.structure.object.SimpleBlock;
+import dimensions.common.structure.object.SimpleEntity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Structure {
 
+    private float spawnChance = 0.0f;
+
     private int x,y,z;
 
     private List<SimpleBlock> blocks;
+    private List<SimpleEntity> entities;
 
     private String lootDir = null;
 
     private CustomLoottable clt = null;
 
-    public List<SimpleBlock> getBlocks() {
-        return blocks;
-    }
+    public List<String> worlds;
 
     public void setBlocks(List<SimpleBlock> blocks) {
         this.blocks = blocks;
+    }
+
+    public List<SimpleBlock> getBlocks() {
+        return blocks;
     }
 
     private boolean isRelative = false;
@@ -31,6 +37,8 @@ public class Structure {
         this.y = y;
         this.z = z;
         blocks = new ArrayList<>();
+        entities = new ArrayList<>();
+        worlds = new ArrayList<>();
     }
 
     public int getX() {
@@ -83,5 +91,37 @@ public class Structure {
 
     public void setClt(CustomLoottable clt) {
         this.clt = clt;
+    }
+
+    public float getSpawnChance() {
+        return spawnChance;
+    }
+
+    public void setSpawnChance(float spawnChance) {
+        this.spawnChance = spawnChance;
+    }
+
+    public List<SimpleEntity> getEntities() {
+        return entities;
+    }
+
+    public void setEntities(List<SimpleEntity> entities) {
+        this.entities = entities;
+    }
+
+    public void addEntity(SimpleEntity entity){
+        entities.add(entity);
+    }
+
+    public List<String> getWorlds() {
+        return worlds;
+    }
+
+    public void setWorlds(List<String> worlds) {
+        this.worlds = worlds;
+    }
+
+    public void addWorld(String world){
+        worlds.add(world);
     }
 }

@@ -111,7 +111,7 @@ public class DestinyChooser implements Listener {
         final ItemStack Uranus = new ItemStack(Material.ENDER_EYE, 1);
         final ItemMeta Uranusm = Uranus.getItemMeta();
         Uranusm.setDisplayName(String.valueOf(ChatColor.GOLD) + ChatColor.BOLD + "Uranus | Not viable");
-        Uranusm.setLore(new ArrayList<String>(List.of("Is a gas giant!")));
+        Uranusm.setLore(new ArrayList<String>(List.of("Is an ice giant!")));
         Uranusm.addEnchant(Enchantment.SILK_TOUCH, 1, true);
         Uranusm.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         Uranus.setItemMeta(Uranusm);
@@ -121,7 +121,7 @@ public class DestinyChooser implements Listener {
         final ItemStack Neptune = new ItemStack(Material.ENDER_EYE, 1);
         final ItemMeta Neptunem = Neptune.getItemMeta();
         Neptunem.setDisplayName(String.valueOf(ChatColor.GOLD) + ChatColor.BOLD + "Neptune | Not viable");
-        Neptunem.setLore(new ArrayList<String>(List.of("Is a gas giant!")));
+        Neptunem.setLore(new ArrayList<String>(List.of("Is an ice giant!")));
         Neptunem.addEnchant(Enchantment.SILK_TOUCH, 1, true);
         Neptunem.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         Neptune.setItemMeta(Neptunem);

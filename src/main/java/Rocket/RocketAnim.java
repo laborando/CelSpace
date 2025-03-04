@@ -45,8 +45,10 @@ public class RocketAnim {
             @Override
             public void run() {
                 p.getWorld().spawnParticle(Particle.FLAME, p.getLocation().add(0, -1 * Celspace.rocketParticlesYDistanceFromMinecartEntitiy, 0), 20, 0.3, 0.2, 0.3);
-                p.spawnParticle(Particle.FLAME, p.getLocation().add(0, -1.5, 0),  50, 0, 0,0);
-                m.setVelocity(m.getVelocity().add(new Vector(0, 0.5, 0)));
+                p.spawnParticle(Particle.FLAME, p.getLocation().add(0, -1 * Celspace.rocketParticlesYDistanceFromMinecartEntitiy, 0),  50, 0, 0,0);
+                m.setVelocity(m.getVelocity().add(new Vector(0, 0.05, 0)));
+                m.setVelocity(m.getVelocity().multiply(1.2));
+
 
                 durch++;
                 if(durch > 40){

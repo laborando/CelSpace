@@ -26,7 +26,11 @@ public class LoottableParser {
 
         if(reader == null){
             Logger.getGlobal().warning("Did not found source for Loottable: " + path + "; isInternal: " + isInternal);
-            return null;
+            System.err.println("Falling back to empty loottable to prevent crash! Please restart your server and contact the dev of CelSpace if this error keeps happening!");
+
+            System.err.println("Was not able to place feature!");
+
+            return new CustomLoottable();
         }
 
         LoottableBuilder sb = new LoottableBuilder();
@@ -58,6 +62,7 @@ public class LoottableParser {
 
         if (inputStream == null) {
             System.err.println("File not found: " + resourcePath);
+
             return null;
         }
 

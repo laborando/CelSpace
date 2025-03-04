@@ -2,7 +2,9 @@ package dimensions.common.structure;
 
 import dimensions.common.structure.object.CustomLoottable;
 import dimensions.common.structure.object.SimpleBlock;
+import dimensions.common.structure.object.SimpleEntity;
 import org.bukkit.Material;
+import org.bukkit.entity.EntityType;
 
 import java.util.logging.Logger;
 
@@ -11,6 +13,7 @@ public class StructureBuilder {
     private enum InstructionState {
         OUTSIDE,
         STRUCTURE,
+        ENTITIES,
         PRE,
         PAST,
         LOOTTABLES
@@ -42,6 +45,10 @@ public class StructureBuilder {
                     case ";loot":
                         crrState = InstructionState.LOOTTABLES;
                         return;
+                    case ";entities":
+                    case ";entity":
+                        crrState = InstructionState.ENTITIES;
+                        return;
 
                 }
             } else if (instruction.equalsIgnoreCase(";out")) {
@@ -71,9 +78,14 @@ public class StructureBuilder {
             case LOOTTABLES -> {
                 handleLoottables(instruction);
             }
+            case ENTITIES -> {
+                handleEntities(instruction);
+            }
         }
 
     }
+
+
 
     private  void handleOutside(String instruction) {
         /// Not jet
@@ -109,6 +121,15 @@ public class StructureBuilder {
 
     }
 
+    private void handleEntities(String instruction) {
+        String[] parts = instruction.split("=");
+
+        String[] coords = parts[0].split(",");
+        String[] ent = parts[0].split(",");
+
+        structure.addEntity(new SimpleEntity(Integer.parseInt(coords[0]), Integer.parseInt(coords[1]), Integer.parseInt(coords[2]), false, EntityType.valueOf(ent[0]), ent[1]));
+    }
+
     private void handlePast(String instruction) {
         /// Not jet
     }
@@ -138,6 +159,10 @@ public class StructureBuilder {
             structure.setRelative(true);
         }else if (instruction.startsWith("loot=")) {
             structure.setLootDir(instruction.substring(5));
+        }else if (instruction.startsWith("chance=")) {
+            structure.setSpawnChance(Float.parseFloat(instruction.substring(7)));
+        }else if (instruction.startsWith("")) {
+            structure.setSpawnChance(Float.parseFloat(instruction.substring(7)));
         }
 
         /// Here possible space for future

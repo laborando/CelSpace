@@ -5,6 +5,7 @@ import dimensions.common.structure.StructureParser;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.block.Biome;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.world.ChunkPopulateEvent;
@@ -16,9 +17,9 @@ public class WorldGenEvents implements Listener {
     @EventHandler
     public void event(ChunkPopulateEvent e) {
 
-        if(e.getWorld().getName().equalsIgnoreCase("world")){
+        if (e.getWorld().getName().equalsIgnoreCase("world")) {
 
-            if(celutis.randomrange(0, 2000) == 0){
+            if (celutis.randomrange(0, 3000) == 0) {
                 Chunk chunk = e.getChunk();
                 World world = e.getWorld();
                 Location l = new Location(null, chunk.getX() * 16 + randomrange(0, 15), 0, chunk.getZ() * 16 + randomrange(0, 15));
@@ -29,10 +30,8 @@ public class WorldGenEvents implements Listener {
                     world.getBlockAt(l.getBlockX() + b.getX(), dy + b.getY(), l.getBlockZ() + b.getZ()).setType(b.getMaterial());
                 });
             }
-
-        }else{
-            return;
         }
-
     }
+
 }
+
