@@ -26,6 +26,9 @@ public class Air {
         hasAir.put("mars", false);
         hasAir.put("mercury", false);
         hasAir.put("venus", false);
+        hasAir.put("pluto", false);
+        hasAir.put("ignis", false);
+        hasAir.put("rocky", false);
 
         new BukkitRunnable() {
             @Override

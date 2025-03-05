@@ -22,6 +22,7 @@ public class GravityHandler{
         grav.put("mars", 2);
         grav.put("venus", 0);
         grav.put("mercury", 3);
+        grav.put("pluto", 5);
 
         new BukkitRunnable() {
             @Override

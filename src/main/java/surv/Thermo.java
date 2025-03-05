@@ -14,18 +14,21 @@ import java.util.HashMap;
 
 public class Thermo {
 
-    private static final HashMap<String, Boolean> hasAir = new HashMap<>();
+    private static final HashMap<String, Boolean> needsThermo = new HashMap<>();
 
 
     public static void startThermoHandler(Main p){
 
-        hasAir.put("world", true);
-        hasAir.put("world_the_end", true);
-        hasAir.put("world_nether", true);
-        hasAir.put("moon", false);
-        hasAir.put("mars", false);
-        hasAir.put("mercury", false);
-        hasAir.put("venus", false);
+        needsThermo.put("world", true);
+        needsThermo.put("world_the_end", true);
+        needsThermo.put("world_nether", true);
+        needsThermo.put("moon", false);
+        needsThermo.put("mars", false);
+        needsThermo.put("mercury", false);
+        needsThermo.put("venus", false);
+        needsThermo.put("pluto", false);
+        needsThermo.put("ignis", false);
+        needsThermo.put("rocky", false);
 
         new BukkitRunnable() {
             @Override
@@ -34,7 +37,7 @@ public class Thermo {
 
                     boolean amp = true;
                     try {
-                        amp = hasAir.get(player.getWorld().getName());
+                        amp = needsThermo.get(player.getWorld().getName());
                     }catch (NullPointerException ignored){}
                     if(!amp){
 

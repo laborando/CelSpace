@@ -123,7 +123,7 @@ public class MercuryPop extends BlockPopulator {
             int lz = 8;
             int ly = 200;
             try {
-                ly = (celutis.getHighestNonAirBlockLocation(Bukkit.getWorld("mercury"), chunk.getX() * 8 + lx, chunk.getZ() * 8 + lz).getBlockY()) / 2;
+                ly = (celutis.getHighestNonAirBlockLocation(world, chunk.getX() * 8 + lx, chunk.getZ() * 8 + lz).getBlockY()) / 2;
             }catch (NullPointerException ignored){
             }
 

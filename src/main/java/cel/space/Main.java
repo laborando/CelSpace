@@ -1,6 +1,5 @@
 package cel.space;
 
-import Rocket.DestinyChooser;
 import Rocket.EntryListener;
 import Rocket.RocketSavety;
 import actions.RocketDestroyer;
@@ -9,6 +8,7 @@ import cmd.Exe;
 import cmd.TabComp;
 import craft.AddRecipes;
 import dimensions.systems.solar.earth.WorldGenEvents;
+import dimensions.systems.solar.pluto.AntiMelter;
 import enviroment.Weater;
 import manage.DimChecker;
 import manage.DimRestartSaver;
@@ -90,12 +90,13 @@ public final class Main extends JavaPlugin implements Listener {
         this.getServer().getPluginManager().registerEvents(new DimChecker(), this);
         this.getServer().getPluginManager().registerEvents(new RenameListener(), this);
         this.getServer().getPluginManager().registerEvents(new EntryListener(), this);
-        this.getServer().getPluginManager().registerEvents(new DestinyChooser(), this);
+        this.getServer().getPluginManager().registerEvents(new gui.rocket.SolarChooser(), this);
         this.getServer().getPluginManager().registerEvents(new RocketSavety(), this);
         this.getServer().getPluginManager().registerEvents(new DimRestartSaver(), this);
         this.getServer().getPluginManager().registerEvents(new RocketPlacer(), this);
         this.getServer().getPluginManager().registerEvents(new RocketDestroyer(), this);
         this.getServer().getPluginManager().registerEvents(new WorldGenEvents(), this);
+        this.getServer().getPluginManager().registerEvents(new AntiMelter(), this);
 
         //Auto unloader
         if(config.getBoolean("AutoUnloadEmptyWorlds")){

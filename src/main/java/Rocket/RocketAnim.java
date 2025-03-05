@@ -6,6 +6,7 @@ import cel.space.celutis;
 import dimensions.systems.solar.earth.MoonGen;
 import dimensions.systems.solar.mars.MarsGen;
 import dimensions.systems.solar.mercury.MercuryGen;
+import dimensions.systems.solar.pluto.PlutoGen;
 import dimensions.systems.solar.venus.VenusGen;
 import manage.DimChanger;
 import org.bukkit.*;
@@ -46,12 +47,12 @@ public class RocketAnim {
             public void run() {
                 p.getWorld().spawnParticle(Particle.FLAME, p.getLocation().add(0, -1 * Celspace.rocketParticlesYDistanceFromMinecartEntitiy, 0), 20, 0.3, 0.2, 0.3);
                 p.spawnParticle(Particle.FLAME, p.getLocation().add(0, -1 * Celspace.rocketParticlesYDistanceFromMinecartEntitiy, 0),  50, 0, 0,0);
-                m.setVelocity(m.getVelocity().add(new Vector(0, 0.05, 0)));
-                m.setVelocity(m.getVelocity().multiply(1.2));
+                m.setVelocity(m.getVelocity().add(new Vector(0, 0.04, 0)));
+                m.setVelocity(m.getVelocity().multiply(1.17));
 
 
                 durch++;
-                if(durch > 40){
+                if(durch > 80){
 
                     executeDimChange(m, p, td);
 
@@ -84,7 +85,7 @@ public class RocketAnim {
                 Bukkit.createWorld(worldCreator2);
 
             }
-            p.sendMessage("Loading Ressource Pack for 'Mars'. Some features will only work if you are using Optifine!");
+            p.sendMessage("Loading Ressource Pack for 'Mars'.");
             Load.loadResourceoack(p, DimChanger.TargetDimension.MARS);
             targetWorld = Bukkit.getWorld(wn);
             Location l = targetWorld.getHighestBlockAt(p.getLocation().getBlockX(), p.getLocation().getBlockZ()).getLocation().add(0, Celspace.rocketEntryYDistanceToGround, 0);
@@ -103,7 +104,7 @@ public class RocketAnim {
             if(targetWorld == null){
                 Bukkit.getLogger().info("World 'world' was not found!");
             }
-            p.sendMessage("Loading Ressource Pack for 'Earth'. Some features will only work if you are using Optifine!");
+            p.sendMessage("Loading Ressource Pack for 'Earth'.");
             Load.loadResourceoack(p, DimChanger.TargetDimension.OVERWORLD);
             targetWorld = Bukkit.getWorld(wn);
             Location l = targetWorld.getHighestBlockAt(p.getLocation().getBlockX(), p.getLocation().getBlockZ()).getLocation().add(0, Celspace.rocketEntryYDistanceToGround, 0);
@@ -132,7 +133,7 @@ public class RocketAnim {
                 Bukkit.createWorld(worldCreator2);
 
             }
-            p.sendMessage("Loading Ressource Pack for 'Moon'. Some features will only work if you are using Optifine!");
+            p.sendMessage("Loading Ressource Pack for 'Moon'.");
             Load.loadResourceoack(p, DimChanger.TargetDimension.MOON);
             targetWorld = Bukkit.getWorld(wn);
             Location l = targetWorld.getHighestBlockAt(p.getLocation().getBlockX(), p.getLocation().getBlockZ()).getLocation().add(0, Celspace.rocketEntryYDistanceToGround, 0);
@@ -161,7 +162,7 @@ public class RocketAnim {
                 Bukkit.createWorld(worldCreator2);
 
             }
-            p.sendMessage("Loading Ressource Pack for 'Mercuy'. Some features will only work if you are using Optifine!");
+            p.sendMessage("Loading Ressource Pack for 'Mercuy'.");
             Load.loadResourceoack(p, DimChanger.TargetDimension.MERKUR);
             targetWorld = Bukkit.getWorld(wn);
             Location l = targetWorld.getHighestBlockAt(p.getLocation().getBlockX(), p.getLocation().getBlockZ()).getLocation().add(0, Celspace.rocketEntryYDistanceToGround, 0);
@@ -189,8 +190,36 @@ public class RocketAnim {
                 Bukkit.createWorld(worldCreator2);
 
             }
-            p.sendMessage("Loading Ressource Pack for 'Venus'. Some features will only work if you are using Optifine!");
+            p.sendMessage("Loading Ressource Pack for 'Venus'.");
             Load.loadResourceoack(p, DimChanger.TargetDimension.VENUS);
+            targetWorld = Bukkit.getWorld(wn);
+            Location l = targetWorld.getHighestBlockAt(p.getLocation().getBlockX(), p.getLocation().getBlockZ()).getLocation().add(0, Celspace.rocketEntryYDistanceToGround, 0);
+            m.eject();
+            m.teleport(l);
+            p.teleport(l);
+            m.addPassenger(p);
+            p.closeInventory();
+
+        }else if(td.equals(DimChanger.TargetDimension.PLUTO)){
+            final String wn = "pluto";
+            if (!celutis.doesWorldExist(wn)) {
+                p.sendMessage(ChatColor.RED + "Generation of Pluto started...");
+                final WorldCreator worldCreator = new WorldCreator(wn);
+                worldCreator.generator(new PlutoGen());
+                worldCreator.seed(Bukkit.getWorld("world").getSeed());
+                Bukkit.createWorld(worldCreator);
+            }
+            World targetWorld = Bukkit.getWorld(wn);
+            if(targetWorld == null){
+
+                final WorldCreator worldCreator2 = new WorldCreator(wn);
+                worldCreator2.generator(new PlutoGen());
+                worldCreator2.seed(Bukkit.getWorld("world").getSeed());
+                Bukkit.createWorld(worldCreator2);
+
+            }
+            p.sendMessage("Loading Ressource Pack for 'Pluto'.");
+            Load.loadResourceoack(p, DimChanger.TargetDimension.PLUTO);
             targetWorld = Bukkit.getWorld(wn);
             Location l = targetWorld.getHighestBlockAt(p.getLocation().getBlockX(), p.getLocation().getBlockZ()).getLocation().add(0, Celspace.rocketEntryYDistanceToGround, 0);
             m.eject();

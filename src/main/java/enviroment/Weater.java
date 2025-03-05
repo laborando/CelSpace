@@ -52,7 +52,9 @@ public class Weater  implements Listener {
         nwwl.add("mars");
         nwwl.add("venus");
         nwwl.add("mercury");
-
+        nwwl.add("pluto");
+        nwwl.add("ignis");
+        nwwl.add("rocky");
 
         new BukkitRunnable() {
             @Override

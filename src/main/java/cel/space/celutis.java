@@ -2,6 +2,7 @@
 
 package cel.space;
 
+import jdk.jfr.Description;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -82,12 +83,12 @@ public class celutis
         final File worldFolder = new File(Bukkit.getServer().getWorldContainer(), worldName);
         return worldFolder.exists();
     }
-    
+
     public static Location getHighestNonAirBlockLocation(final World world, final int x, final int y) {
-        for (int currentY = 0; currentY >= world.getMinHeight(); --currentY) {
-            final Block block = world.getBlockAt(x, currentY, y);
-            if (block.getType() != Material.AIR) {
-                return block.getLocation();
+        for (int currentY = world.getMaxHeight()-1; currentY > world.getMinHeight(); --currentY) {
+            if (!world.getBlockAt(x, currentY, y).getType().equals(Material.AIR)) {
+
+                return world.getBlockAt(x, currentY, y).getLocation();
             }
         }
         return new Location(world, x, world.getMaxHeight(), y);

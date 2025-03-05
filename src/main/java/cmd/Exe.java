@@ -3,6 +3,8 @@ package cmd;
 import cel.space.Celspace;
 import cel.space.celutis;
 import dimensions.systems.solar.mars.MarsGen;
+import dimensions.systems.solar.mercury.MercuryGen;
+import dimensions.systems.solar.pluto.PlutoGen;
 import dimensions.systems.solar.venus.VenusGen;
 import manage.DimChanger;
 import org.bukkit.*;
@@ -111,6 +113,8 @@ public class Exe implements CommandExecutor {
                 sender.sendMessage(ChatColor.YELLOW + "   --> cw      | Clears the weather");
                 sender.sendMessage(ChatColor.YELLOW + "   --> twm     | Creats a testworld with Mars Generator");
                 sender.sendMessage(ChatColor.YELLOW + "   --> twv     | Creats a testworld with Venus Generator");
+                sender.sendMessage(ChatColor.YELLOW + "   --> tw1     | Creats a testworld with Mercury Generator");
+                sender.sendMessage(ChatColor.YELLOW + "   --> twp     | Creats a testworld with Pluto Generator");
                 return false;
             }
 
@@ -170,8 +174,7 @@ public class Exe implements CommandExecutor {
 
                 } else if (arg2.equalsIgnoreCase("pluto")) {
 
-                    p.sendMessage("Not implemented yet!");
-                    //DimChanger.sendPlayer(p, DimChanger.TargetDimension.VENUS);
+                    DimChanger.sendPlayer(p, DimChanger.TargetDimension.PLUTO);
 
                 }
 
@@ -237,6 +240,52 @@ public class Exe implements CommandExecutor {
 
                     final WorldCreator worldCreator2 = new WorldCreator(wn);
                     worldCreator2.generator(new VenusGen());
+                    worldCreator2.seed(Bukkit.getWorld("world").getSeed());
+                    Bukkit.createWorld(worldCreator2);
+
+                }
+                targetWorld = Bukkit.getWorld(wn);
+                Location l = targetWorld.getHighestBlockAt(p.getLocation().getBlockX(), p.getLocation().getBlockZ()).getLocation();
+                p.teleport(l);
+
+            }else if (arg.equalsIgnoreCase("tw1")) {
+
+                final String wn = System.currentTimeMillis() + "";
+                if (!celutis.doesWorldExist(wn)) {
+                    p.sendMessage(ChatColor.RED + "Generation of Test World started...");
+                    final WorldCreator worldCreator = new WorldCreator(wn);
+                    worldCreator.generator(new MercuryGen());
+                    worldCreator.seed(Bukkit.getWorld("world").getSeed());
+                    Bukkit.createWorld(worldCreator);
+                }
+                World targetWorld = Bukkit.getWorld(wn);
+                if(targetWorld == null){
+
+                    final WorldCreator worldCreator2 = new WorldCreator(wn);
+                    worldCreator2.generator(new MercuryGen());
+                    worldCreator2.seed(Bukkit.getWorld("world").getSeed());
+                    Bukkit.createWorld(worldCreator2);
+
+                }
+                targetWorld = Bukkit.getWorld(wn);
+                Location l = targetWorld.getHighestBlockAt(p.getLocation().getBlockX(), p.getLocation().getBlockZ()).getLocation();
+                p.teleport(l);
+
+            }else if (arg.equalsIgnoreCase("twp")) {
+
+                final String wn = System.currentTimeMillis() + "";
+                if (!celutis.doesWorldExist(wn)) {
+                    p.sendMessage(ChatColor.RED + "Generation of Test World started...");
+                    final WorldCreator worldCreator = new WorldCreator(wn);
+                    worldCreator.generator(new PlutoGen());
+                    worldCreator.seed(Bukkit.getWorld("world").getSeed());
+                    Bukkit.createWorld(worldCreator);
+                }
+                World targetWorld = Bukkit.getWorld(wn);
+                if(targetWorld == null){
+
+                    final WorldCreator worldCreator2 = new WorldCreator(wn);
+                    worldCreator2.generator(new PlutoGen());
                     worldCreator2.seed(Bukkit.getWorld("world").getSeed());
                     Bukkit.createWorld(worldCreator2);
 

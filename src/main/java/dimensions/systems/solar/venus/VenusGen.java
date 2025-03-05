@@ -18,7 +18,6 @@ public class VenusGen extends ChunkGenerator {
     int currentHeight;
 
 
-
     public VenusGen() {
         this.currentHeight = 50;
     }
@@ -31,16 +30,28 @@ public class VenusGen extends ChunkGenerator {
     }
 
 
-    public ChunkData generateChunkData(final World world, final Random random, final int chunkX, final int chunkZ, final BiomeGrid biome) {
+    private boolean isInnited = false;
+    SimplexOctaveGenerator generator;
+    SimplexOctaveGenerator gen2;
+    FastNoiseLite fnl;
 
+    private void innit(World world){
+        generator = new SimplexOctaveGenerator(new Random(world.getSeed()), 8);
+        gen2 = new SimplexOctaveGenerator(new Random(world.getSeed() * -1), 8);
 
-        final SimplexOctaveGenerator generator = new SimplexOctaveGenerator(new Random(world.getSeed()), 8);
-        final SimplexOctaveGenerator gen2 = new SimplexOctaveGenerator(new Random(world.getSeed() * -1), 8);
-
-        final FastNoiseLite fnl = new FastNoiseLite();
+        fnl = new FastNoiseLite();
         fnl.SetSeed((int) world.getSeed());
         fnl.SetNoiseType(FastNoiseLite.NoiseType.OpenSimplex2);
         fnl.SetFrequency(0.004f);
+    }
+
+    public ChunkData generateChunkData(final World world, final Random random, final int chunkX, final int chunkZ, final BiomeGrid biome) {
+
+        if(!isInnited){
+            innit(world);
+        }
+
+
 
         final ChunkData chunk = this.createChunkData(world);
 

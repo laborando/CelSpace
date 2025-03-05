@@ -1,7 +1,9 @@
 
 package dimensions.systems.solar.mercury;
 
+import dimensions.shared.populators.SimpleCavePopulator;
 import dimensions.systems.solar.common.CommonSolarStructurePop;
+import libs.FastNoiseLite;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.generator.BlockPopulator;
@@ -24,14 +26,31 @@ public class MercuryGen extends ChunkGenerator {
     @Override
     public List<BlockPopulator> getDefaultPopulators(World world) {
 
-        return List.of(new MercuryPop(), new CommonSolarStructurePop());
+        return List.of(new MercuryPop(), new CommonSolarStructurePop(), new SimpleCavePopulator());
 
     }
 
+    private boolean isInnited = false;
+    SimplexOctaveGenerator generator;
+    SimplexOctaveGenerator gen2;
+    FastNoiseLite fnl;
+
+    private void innit(World world){
+        generator = new SimplexOctaveGenerator(new Random(world.getSeed()), 8);
+        final SimplexOctaveGenerator gen2 = new SimplexOctaveGenerator(new Random(world.getSeed() * -1), 8);
+
+        fnl = new FastNoiseLite();
+        fnl.SetSeed((int) world.getSeed());
+        fnl.SetNoiseType(FastNoiseLite.NoiseType.OpenSimplex2);
+        fnl.SetFrequency(0.004f);
+    }
 
     public ChunkData generateChunkData(final World world, final Random random, final int chunkX, final int chunkZ, final BiomeGrid biome) {
-        final SimplexOctaveGenerator generator = new SimplexOctaveGenerator(new Random(world.getSeed()), 8);
-        final SimplexOctaveGenerator gen2 = new SimplexOctaveGenerator(new Random(world.getSeed() * -1), 8);
+
+        if(!isInnited){
+            innit(world);
+        }
+
         final ChunkData chunk = this.createChunkData(world);
 
         int[][] currH = new int[16][16];
@@ -39,9 +58,12 @@ public class MercuryGen extends ChunkGenerator {
         generator.setScale(0.0015);
         for (int X = 0; X < 16; ++X) {
             for (int Z = 0; Z < 16; ++Z) {
-                this.currentHeight = (int) (generator.noise(chunkX * 16 + X, chunkZ * 16 + Z, 0.1, 0.1) * 7.0 + 50.0);
+                this.currentHeight = (int) (generator.noise(chunkX * 16 + X, chunkZ * 16 + Z, 0.1, 0.1) * 7.5 + 50.0);
+
+                currentHeight += (int) (Math.tanh(fnl.GetNoise(chunkX * 16 + X, chunkZ * 16 + Z) * 1.7f) * 9);
 
                 currH[X][Z] = currentHeight;
+
 
                 if (currentHeight > world.getMaxHeight() || currentHeight < 0) {
                     currentHeight = world.getMaxHeight() - 1;

@@ -6,6 +6,7 @@ import dimensions.systems.sanguinis.rocky.RockyGen;
 import dimensions.systems.solar.earth.MoonGen;
 import dimensions.systems.solar.mars.MarsGen;
 import dimensions.systems.solar.mercury.MercuryGen;
+import dimensions.systems.solar.pluto.PlutoGen;
 import dimensions.systems.solar.venus.VenusGen;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
@@ -60,7 +61,7 @@ public class DimChanger {
 
             //RESOURCE PACK
 
-            p.sendMessage("Loading Ressource Pack for 'Mars'. Some features will only work if you are using Optifine!");
+            p.sendMessage("Loading Ressource Pack for 'Mars'.");
             Load.loadResourceoack(p, TargetDimension.MARS);
         }else if(t == TargetDimension.OVERWORLD){
 
@@ -71,7 +72,7 @@ public class DimChanger {
 
             //RESOURCE PACK
 
-            p.sendMessage("Loading Ressource Pack for 'Earth'. Some features will only work if you are using Optifine!");
+            p.sendMessage("Loading Ressource Pack for 'Earth'.");
             Load.loadResourceoack(p, TargetDimension.OVERWORLD);
 
 
@@ -101,7 +102,7 @@ public class DimChanger {
 
             //RESOURCE PACK
 
-            p.sendMessage("Loading Ressource Pack for 'Moon'. Some features will only work if you are using Optifine!");
+            p.sendMessage("Loading Ressource Pack for 'Moon'.");
             Load.loadResourceoack(p, TargetDimension.MOON);
 
         }else if(t == TargetDimension.MERKUR){
@@ -129,7 +130,7 @@ public class DimChanger {
 
             //RESOURCE PACK
 
-            p.sendMessage("Loading Ressource Pack for 'Mercury'. Some features will only work if you are using Optifine!");
+            p.sendMessage("Loading Ressource Pack for 'Mercury'.");
             Load.loadResourceoack(p, TargetDimension.MERKUR);
         }else if(t == TargetDimension.VENUS){
 
@@ -156,9 +157,38 @@ public class DimChanger {
 
             //RESOURCE PACK
 
-            p.sendMessage("Loading Ressource Pack for 'Venus'. Some features will only work if you are using Optifine!");
+            p.sendMessage("Loading Ressource Pack for 'Venus'.");
             Load.loadResourceoack(p, TargetDimension.VENUS);
+        }else if(t == TargetDimension.PLUTO){
+
+            final String wn = "pluto";
+            if (!celutis.doesWorldExist(wn)) {
+                p.sendMessage(ChatColor.RED + "Generation of Pluto started...");
+                final WorldCreator worldCreator = new WorldCreator(wn);
+                worldCreator.generator(new PlutoGen());
+                worldCreator.seed(Bukkit.getWorld("world").getSeed());
+                Bukkit.createWorld(worldCreator);
+            }
+            World targetWorld = Bukkit.getWorld(wn);
+            if(targetWorld == null){
+
+                final WorldCreator worldCreator2 = new WorldCreator(wn);
+                worldCreator2.generator(new PlutoGen());
+                worldCreator2.seed(Bukkit.getWorld("world").getSeed());
+                Bukkit.createWorld(worldCreator2);
+
+            }
+            targetWorld = Bukkit.getWorld(wn);
+            Location l = targetWorld.getHighestBlockAt(p.getLocation().getBlockX(), p.getLocation().getBlockZ()).getLocation();
+            p.teleport(l);
+
+            //RESOURCE PACK
+
+            p.sendMessage("Loading Ressource Pack for 'Pluto'.");
+            Load.loadResourceoack(p, TargetDimension.PLUTO);
         }
+        
+        
 
         //SANGUINIS SYSTEM
 
@@ -187,7 +217,7 @@ public class DimChanger {
 
             //RESOURCE PACK
 
-            p.sendMessage("Loading Ressource Pack for 'Rocky'. Some features will only work if you are using Optifine!");
+            p.sendMessage("Loading Ressource Pack for 'Rocky'.");
             Load.loadResourceoack(p, TargetDimension.OVERWORLD);
         }else if(t == TargetDimension.IGNIS){
 
@@ -214,7 +244,7 @@ public class DimChanger {
 
             //RESOURCE PACK
 
-            p.sendMessage("Loading Ressource Pack for 'Ignis'. Some features will only work if you are using Optifine!");
+            p.sendMessage("Loading Ressource Pack for 'Ignis'.");
             Load.loadResourceoack(p, TargetDimension.OVERWORLD);
         }
 
