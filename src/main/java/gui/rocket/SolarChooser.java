@@ -27,7 +27,7 @@ public class SolarChooser implements Listener {
             return;
         }
 
-        final Inventory gui = Bukkit.createInventory(null, 36, String.valueOf(ChatColor.BOLD) + ChatColor.GOLD + "Please choose your destiny");
+        final Inventory gui = Bukkit.createInventory(null, 36, String.valueOf(ChatColor.BOLD) + ChatColor.GOLD + "Please choose your destination");
 
         final ItemStack Empty = new ItemStack(Material.LIGHT_GRAY_STAINED_GLASS_PANE, 1);
         final ItemMeta Emptym = Empty.getItemMeta();

@@ -20,8 +20,8 @@ public class RpChecker implements Listener {
     @EventHandler(priority = EventPriority.LOW)
     public void event(final PlayerJoinEvent e) {
 
-        e.getPlayer().sendMessage("This Server is using CelSpace. Please accept incoming Texturepacks and use Optifine or another Client capable of using CEM and CIT!");
-        e.getPlayer().sendMessage("If your are not using Optifine or another sufficient Client, the Texturepack will NOT work!");
+        e.getPlayer().sendMessage("This Server is using CelSpace. Please accept incoming texturepacks and use Optifine or suitable substitutes.");
+        e.getPlayer().sendMessage("For more information execute: '/celspace client'");
 
     }
 }

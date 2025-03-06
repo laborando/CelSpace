@@ -102,6 +102,7 @@ public class Exe implements CommandExecutor {
                 sender.sendMessage(ChatColor.BLUE + "           |   |-mercury");
                 sender.sendMessage(ChatColor.BLUE + "           |   |-venus");
                 sender.sendMessage(ChatColor.BLUE + "           |   |-earth");
+                sender.sendMessage(ChatColor.BLUE + "           |   |   \\-moon");
                 sender.sendMessage(ChatColor.BLUE + "           |   |-mars");
                 sender.sendMessage(ChatColor.BLUE + "           |   \\-pluto");
                 sender.sendMessage(ChatColor.BLUE + "           |");
@@ -109,7 +110,9 @@ public class Exe implements CommandExecutor {
                 sender.sendMessage(ChatColor.BLUE + "               |-ignis");
                 sender.sendMessage(ChatColor.BLUE + "               \\-rocky");
                 sender.sendMessage(ChatColor.YELLOW + "   --> help    | Shows a abbreviation of this list");
+                sender.sendMessage(ChatColor.YELLOW + "   --> clients | Gives a link to the page where more information about client requirements are stated");
                 sender.sendMessage(ChatColor.RED + "Debug/Dev Commands:");
+                sender.sendMessage(ChatColor.YELLOW + " - celspace");
                 sender.sendMessage(ChatColor.YELLOW + "   --> cw      | Clears the weather");
                 sender.sendMessage(ChatColor.YELLOW + "   --> twm     | Creats a testworld with Mars Generator");
                 sender.sendMessage(ChatColor.YELLOW + "   --> twv     | Creats a testworld with Venus Generator");
@@ -118,7 +121,14 @@ public class Exe implements CommandExecutor {
                 return false;
             }
 
-
+            if (arg.equalsIgnoreCase("client")) {
+                sender.sendMessage(ChatColor.BLUE + "This Server is using Celspace.");
+                sender.sendMessage(ChatColor.BLUE + "For better experience, Celspace uses texturepacks with features now implemented in vanilla minecraft (e.g.: Custom Entity Models for the rocket).");
+                sender.sendMessage(ChatColor.BLUE + "You can play with an vanilla client, but features might look strange, e.g.: minecarts flying like rockets, pluto consisting of blue ice.");
+                sender.sendMessage(ChatColor.BLUE + "The easiest way to support the tp. is to use Optifine. For more information, look here under 'Client requirements':");
+                sender.sendMessage(ChatColor.GOLD + "https://legacy.curseforge.com/minecraft/bukkit-plugins/celspace");
+                return false;
+            }
 
             if (arg.equalsIgnoreCase("clearRp")) {
                 if (!(sender instanceof Player p)) {
@@ -128,16 +138,10 @@ public class Exe implements CommandExecutor {
                 p.setResourcePack("");
             }
 
-
             if (!(sender.isOp())) {
                 sender.sendMessage(ChatColor.RED + "You don't have the permission to execute this command!");
                 return false;
             }
-
-
-
-
-
 
             if (!(sender instanceof Player p)) {
                 sender.sendMessage(ChatColor.RED + "This command can only be executed as a player!");

@@ -16,13 +16,14 @@ public class TabComp implements TabCompleter {
 
         if (command.getName().equalsIgnoreCase("celspace") && args.length == 1) {
             final List<String> completions = new ArrayList<String>();
-            completions.add("goto");
             completions.add("clearRp");
             completions.add("help");
+            completions.add("client");
 
             if(sender.isOp()){
 
                 if (sender instanceof Player){
+                    completions.add("goto");
                     completions.add("items");
                 }
 

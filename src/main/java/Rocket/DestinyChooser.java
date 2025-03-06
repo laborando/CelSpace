@@ -19,7 +19,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-/// **
 ///Only fordwardn choosDest to right ones for now
 public class DestinyChooser {
 

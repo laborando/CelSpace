@@ -21,8 +21,6 @@ public class RpConnected implements Listener {
 
                 String wn = p.getWorld().getName();
 
-                p.sendMessage("Loading rp for world " + wn);
-
                 switch (wn) {
                     case "moon":
                         Load.loadResourceoack(p, DimChanger.TargetDimension.MOON);
@@ -36,6 +34,9 @@ public class RpConnected implements Listener {
                     case "mars":
                         Load.loadResourceoack(p, DimChanger.TargetDimension.MARS);
                         break;
+                    case "pluto":
+                        Load.loadResourceoack(p, DimChanger.TargetDimension.PLUTO);
+                        break;
                     default:
                         Load.loadResourceoack(p, DimChanger.TargetDimension.OVERWORLD);
                         break;
@@ -45,18 +46,4 @@ public class RpConnected implements Listener {
         }.runTaskLater(Main.getInstance(), Main.getInstance().getConfig().getInt("LoadRPDelayAfterJoin")* 20L + 20);
     }
 
-    public static void autoAssignRp(Player p){
-        switch (p.getWorld().getName()) {
-            case "moon":
-                Load.loadResourceoack(p, DimChanger.TargetDimension.MOON);
-            case "mercury":
-                Load.loadResourceoack(p, DimChanger.TargetDimension.MERKUR);
-            case "venus":
-                Load.loadResourceoack(p, DimChanger.TargetDimension.VENUS);
-            case "mars":
-                Load.loadResourceoack(p, DimChanger.TargetDimension.MARS);
-            default:
-                Load.loadResourceoack(p, DimChanger.TargetDimension.OVERWORLD);
-        }
-    }
 }
